@@ -2,6 +2,26 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./abbreviation/abbreviation.js":
+/*!**************************************!*\
+  !*** ./abbreviation/abbreviation.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Abbreviation)
+/* harmony export */ });
+/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
+
+
+class Abbreviation extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
+
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/@ckeditor/ckeditor5-basic-styles/src/attributecommand.js":
 /*!*******************************************************************************!*\
   !*** ./node_modules/@ckeditor/ckeditor5-basic-styles/src/attributecommand.js ***!
@@ -99427,6 +99447,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ckeditor_ckeditor5_list_src_list__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ckeditor/ckeditor5-list/src/list */ "./node_modules/@ckeditor/ckeditor5-list/src/list.js");
 /* harmony import */ var _ckeditor_ckeditor5_basic_styles_src_bold__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ckeditor/ckeditor5-basic-styles/src/bold */ "./node_modules/@ckeditor/ckeditor5-basic-styles/src/bold.js");
 /* harmony import */ var _ckeditor_ckeditor5_basic_styles_src_italic__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ckeditor/ckeditor5-basic-styles/src/italic */ "./node_modules/@ckeditor/ckeditor5-basic-styles/src/italic.js");
+/* harmony import */ var _abbreviation_abbreviation__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./abbreviation/abbreviation */ "./abbreviation/abbreviation.js");
 
 
 
@@ -99434,6 +99455,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+							
 
 _ckeditor_ckeditor5_editor_classic_src_classiceditor__WEBPACK_IMPORTED_MODULE_0__["default"].create( document.querySelector( '#editor' ), {
 		plugins: [ _ckeditor_ckeditor5_essentials_src_essentials__WEBPACK_IMPORTED_MODULE_1__["default"], _ckeditor_ckeditor5_basic_styles_src_bold__WEBPACK_IMPORTED_MODULE_5__["default"], _ckeditor_ckeditor5_basic_styles_src_italic__WEBPACK_IMPORTED_MODULE_6__["default"], _ckeditor_ckeditor5_heading_src_heading__WEBPACK_IMPORTED_MODULE_3__["default"], _ckeditor_ckeditor5_list_src_list__WEBPACK_IMPORTED_MODULE_4__["default"], _ckeditor_ckeditor5_paragraph_src_paragraph__WEBPACK_IMPORTED_MODULE_2__["default"] ],

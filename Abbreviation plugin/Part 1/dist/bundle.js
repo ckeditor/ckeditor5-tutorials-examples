@@ -47,15 +47,21 @@ class AbbreviationEditing extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_I
 	}
 	_defineSchema() {
 		const schema = this.editor.model.schema;
+
+    	// Extend the text node's schema to accept the abbreviation attribute.
 		schema.extend( '$text', {
 			allowAttributes: [ 'abbreviation' ]
 		} );
 	}
 	_defineConverters() {
 		const conversion = this.editor.conversion;
-
+		
+        // Conversion from a model attribute to a view element
 		conversion.for( 'downcast' ).attributeToElement( {
 			model: 'abbreviation',
+
+            // Callback function provides access to the model attribute value
+			// and the DowncastWriter
 			view: ( modelAttributeValue, conversionApi ) => {
 				const { writer } = conversionApi;
 				return writer.createAttributeElement( 'abbr', {
@@ -64,6 +70,7 @@ class AbbreviationEditing extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_I
 			}
 		} );
 
+		// Conversion from a view element to a model attribute
 		conversion.for( 'upcast' ).elementToAttribute( {
 			view: {
 				name: 'abbr',
@@ -71,6 +78,8 @@ class AbbreviationEditing extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_I
 			},
 			model: {
 				key: 'abbreviation',
+
+                // Callback function provides access to the view element
 				value: viewElement => {
 					const title = viewElement.getAttribute( 'title' );
 					return title;
@@ -100,25 +109,28 @@ __webpack_require__.r(__webpack_exports__);
 class AbbreviationUI extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
 	init() {
 		const editor = this.editor;
+        // The translation function.
 		const { t } = editor.locale;
 
+        // Register the button in the editor's UI component factory.
 		editor.ui.componentFactory.add( 'abbreviation', locale => {
 			const button = new _ckeditor_ckeditor5_ui_src_button_buttonview__WEBPACK_IMPORTED_MODULE_1__["default"]( locale );
-
+			
+            // The localized label.
 			button.label = t( 'Abbreviation' );
 			button.tooltip = true;
 			button.withText = true;
 
 			this.listenTo( button, 'execute', () => {
-				const selection = editor.model.document.selection;
 				const title = 'What You See Is What You Get';
 				const abbr = 'WYSIWYG';
 
+				// Change the model to insert the abbreviation.
 				editor.model.change( writer => {
-					writer.insertText( abbr, { 'abbreviation': title }, selection.getFirstPosition() );
-					for ( const range of selection.getRanges() ) {
-						writer.remove( range );
-					}
+					editor.model.insertContent( 
+						// Create a text node with the abbreviation attribute.
+						writer.createText( abbr, { abbreviation: title } ) 
+					);
 				} );
 			} );
 
