@@ -35,10 +35,7 @@
     "tutorial",
     "ckeditor5"
   ],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ckeditor/ckeditor5-tutorials-examples/issues"
-  },
-  "homepage": "https://github.com/ckeditor/ckeditor5-tutorials-examples#readme"
+  "author": "CKSource (https://cksource.com/)",
+  "license": "SEE LICENSE IN ../LICENSE.md",
+  "homepage": "https://ckeditor.com"
 }

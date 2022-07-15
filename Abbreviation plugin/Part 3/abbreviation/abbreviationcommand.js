@@ -1,3 +1,8 @@
+/**
+ * @license Copyright (c) 2003-2022, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md.
+ */
+
 import Command from '@ckeditor/ckeditor5-core/src/command';
 import findAttributeRange from '@ckeditor/ckeditor5-typing/src/utils/findattributerange'; 	
 import getRangeText from './utils.js';

@@ -25,7 +25,7 @@
   },
   "name": "starter-files",
   "version": "1.0.0",
-  "description": "Starter files for the abbreviation plugin tutorial part 1.",
+  "description": "Final code for the abbreviation plugin tutorial part 1 (starter files for part 2).",
   "main": "app.js",
   "repository": {
     "type": "git",
@@ -35,10 +35,7 @@
     "tutorial",
     "ckeditor5"
   ],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ckeditor/ckeditor5-tutorials-examples/issues"
-  },
-  "homepage": "https://github.com/ckeditor/ckeditor5-tutorials-examples#readme"
+  "author": "CKSource (https://cksource.com/)",
+  "license": "SEE LICENSE IN ../LICENSE.md",
+  "homepage": "https://ckeditor.com"
 }
