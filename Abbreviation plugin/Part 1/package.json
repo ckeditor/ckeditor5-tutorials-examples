@@ -23,7 +23,7 @@
   "devDependencies": {
     "@ckeditor/ckeditor5-inspector": "^4.1.0"
   },
-  "name": "starter-files",
+  "name": "part-1",
   "version": "1.0.0",
   "description": "Final code for the abbreviation plugin tutorial part 1 (starter files for part 2).",
   "main": "app.js",
