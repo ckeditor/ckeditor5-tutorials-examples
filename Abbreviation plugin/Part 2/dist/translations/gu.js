@@ -1,0 +1,1 @@
+(function(d){	const l = d['gu'] = d['gu'] || {};	l.dictionary=Object.assign(		l.dictionary||{},		{"%0 of %1":"",Bold:"ઘાટુ - બોલ્ડ્",Italic:"ત્રાંસુ - ઇટલિક્","Show more items":""}	);l.getPluralForm=function(n){return (n != 1);;};})(window.CKEDITOR_TRANSLATIONS||(window.CKEDITOR_TRANSLATIONS={}));
