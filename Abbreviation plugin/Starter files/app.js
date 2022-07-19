@@ -11,11 +11,13 @@ import List from '@ckeditor/ckeditor5-list/src/list';
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
 
+import CKEditorInspector from '@ckeditor/ckeditor5-inspector';
+
 import Abbreviation from './abbreviation/abbreviation';							
 
 ClassicEditor
     .create( document.querySelector( '#editor' ), {
-		plugins: [ Essentials, Bold, Italic, Heading, List, Paragraph ],
+		plugins: [ Essentials, Bold, Italic, Heading, List, Paragraph, Abbreviation ],
 		toolbar: [ 'heading', '|', 'bold', 'italic', 'numberedList', 'bulletedList' ]
     } )
     .then( editor => {
