@@ -1,0 +1,41 @@
+{
+  "dependencies": {
+    "@ckeditor/ckeditor5-basic-styles": "^34.2.0",
+    "@ckeditor/ckeditor5-core": "^34.2.0",
+    "@ckeditor/ckeditor5-dev-utils": "^30.3.2",
+    "@ckeditor/ckeditor5-editor-classic": "^34.2.0",
+    "@ckeditor/ckeditor5-essentials": "^34.2.0",
+    "@ckeditor/ckeditor5-heading": "^34.2.0",
+    "@ckeditor/ckeditor5-list": "^34.2.0",
+    "@ckeditor/ckeditor5-paragraph": "^34.2.0",
+    "@ckeditor/ckeditor5-theme-lark": "^34.2.0",
+    "@ckeditor/ckeditor5-ui": "^34.2.0",
+    "css-loader": "^5.2.7",
+    "postcss-loader": "^4.3.0",
+    "raw-loader": "^4.0.2",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0"
+  },
+  "scripts": {
+    "build": "webpack --mode development"
+  },
+  "devDependencies": {
+    "@ckeditor/ckeditor5-inspector": "^4.1.0"
+  },
+  "name": "starter-files",
+  "version": "1.0.0",
+  "description": "Starter files for the abbreviation plugin tutorial part 1.",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ckeditor/ckeditor5-tutorials-examples.git"
+  },
+  "keywords": [
+    "tutorial",
+    "ckeditor5"
+  ],
+  "author": "CKSource (https://cksource.com/)",
+  "license": "SEE LICENSE IN ../LICENSE.md",
+  "homepage": "https://ckeditor.com"
+}
