@@ -9,15 +9,12 @@ import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
 export default class AbbreviationUI extends Plugin {
 	init() {
 		const editor = this.editor;
-        // The translation function.
-		const { t } = editor.locale;
 
         // Register the button in the editor's UI component factory.
-		editor.ui.componentFactory.add( 'abbreviation', locale => {
-			const button = new ButtonView( locale );
+		editor.ui.componentFactory.add( 'abbreviation', () => {
+			const button = new ButtonView();
 			
-            // The localized label.
-			button.label = t( 'Abbreviation' );
+			button.label = 'Abbreviation';
 			button.tooltip = true;
 			button.withText = true;
 

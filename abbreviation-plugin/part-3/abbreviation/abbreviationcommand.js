@@ -71,7 +71,6 @@ export default class AbbreviationCommand extends Command {
 						writer.createText( abbr, { abbreviation: title } ),
 						this.value.range
 					);
-					console.log( positionAfter );
 					// Put the selection at the end of the inserted abbreviation.
 					writer.setSelection( positionAfter );
 				}
