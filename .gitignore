@@ -1,0 +1,7 @@
+**/node_modules
+**/package-lock.json
+
+# Files associated with specific development environments.
+.DS_Store
+.idea
+.vscode
