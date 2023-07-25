@@ -12,7 +12,7 @@ import { Bold, Italic } from '@ckeditor/ckeditor5-basic-styles';
 
 import CKEditorInspector from '@ckeditor/ckeditor5-inspector';
 
-import Abbreviation from './abbreviation/abbreviation'
+import Abbreviation from './abbreviation/abbreviation';
 
 ClassicEditor
     .create( document.querySelector( '#editor' ), {
