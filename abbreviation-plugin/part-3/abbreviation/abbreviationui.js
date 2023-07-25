@@ -3,13 +3,12 @@
  * For licensing, see LICENSE.md.
  */
 
-import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
-import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
+import { Plugin } from '@ckeditor/ckeditor5-core';
+import { ButtonView } from '@ckeditor/ckeditor5-ui';
 import { ContextualBalloon, clickOutsideHandler } from '@ckeditor/ckeditor5-ui';
 import FormView from './abbreviationview';
-import '../styles.css';
 import getRangeText from './utils.js';
-
+import '../styles.css';
 
 export default class AbbreviationUI extends Plugin {
 	static get requires() {
