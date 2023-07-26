@@ -3,7 +3,7 @@
  * For licensing, see LICENSE.md.
  */
 
-import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
+import { Plugin } from '@ckeditor/ckeditor5-core';
 
 export default class AbbreviationUI extends Plugin {
 	init() {

@@ -3,9 +3,8 @@
  * For licensing, see LICENSE.md.
  */
 
-import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
-import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
-import { ContextualBalloon, clickOutsideHandler } from '@ckeditor/ckeditor5-ui';
+import { Plugin } from '@ckeditor/ckeditor5-core';
+import { ButtonView, ContextualBalloon, clickOutsideHandler } from '@ckeditor/ckeditor5-ui';
 import FormView from './abbreviationview';
 import '../styles.css';
 

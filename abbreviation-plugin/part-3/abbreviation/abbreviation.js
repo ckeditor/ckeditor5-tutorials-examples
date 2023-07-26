@@ -3,7 +3,7 @@
  * For licensing, see LICENSE.md.
  */
 
-import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
+import { Plugin } from '@ckeditor/ckeditor5-core';
 import AbbreviationEditing from './abbreviationediting';
 import AbbreviationUI from './abbreviationui';
 
