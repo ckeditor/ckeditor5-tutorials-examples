@@ -1,11 +1,9 @@
 /**
- * @license Copyright (c) 2003-2022, CKSource Holding sp. z o.o. All rights reserved.
+ * @license Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
  * For licensing, see LICENSE.md.
  */
 
-import { Plugin } from '@ckeditor/ckeditor5-core';
-import { ButtonView } from '@ckeditor/ckeditor5-ui';
-import { ContextualBalloon, clickOutsideHandler } from '@ckeditor/ckeditor5-ui';
+import { ButtonView, ContextualBalloon, Plugin, clickOutsideHandler } from 'ckeditor5';
 import FormView from './abbreviationview';
 import getRangeText from './utils.js';
 import '../styles.css';
