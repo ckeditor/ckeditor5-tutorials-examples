@@ -14,5 +14,8 @@
   "dependencies": {
     // TODO: After releasing new instalation methods, update version.
     "ckeditor5": "41.3.0-alpha.4"
-  }
+  },
+  "author": "CKSource (https://cksource.com/)",
+  "license": "SEE LICENSE IN ../LICENSE.md",
+  "homepage": "https://ckeditor.com"
 }
