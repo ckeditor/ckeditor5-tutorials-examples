@@ -1,11 +1,9 @@
 /**
- * @license Copyright (c) 2003-2022, CKSource Holding sp. z o.o. All rights reserved.
+ * @license Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
  * For licensing, see LICENSE.md.
  */
 
-import { Command } from '@ckeditor/ckeditor5-core';
-import { findAttributeRange } from '@ckeditor/ckeditor5-typing';
-import { toMap } from '@ckeditor/ckeditor5-utils';
+import { Command, findAttributeRange, toMap } from 'ckeditor5';
 import getRangeText from './utils.js';
 
 export default class AbbreviationCommand extends Command {
