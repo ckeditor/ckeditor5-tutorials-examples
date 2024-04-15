@@ -1,17 +1,20 @@
 /**
- * @license Copyright (c) 2003-2022, CKSource Holding sp. z o.o. All rights reserved.
+ * @license Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
  * For licensing, see LICENSE.md.
  */
 
-import { ClassicEditor } from '@ckeditor/ckeditor5-editor-classic';
-import { Essentials } from '@ckeditor/ckeditor5-essentials';
-import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
-import { Heading } from '@ckeditor/ckeditor5-heading';
-import { List } from '@ckeditor/ckeditor5-list';
-import { Bold, Italic } from '@ckeditor/ckeditor5-basic-styles';
-
-import { Plugin } from '@ckeditor/ckeditor5-core';
-import { ButtonView } from '@ckeditor/ckeditor5-ui';
+import { 
+  ClassicEditor,
+  Bold,
+  Essentials,
+  Heading,
+  Italic,
+  Paragraph,
+  List,
+  Plugin,
+  ButtonView
+} from 'ckeditor5';
+import 'ckeditor5/dist/index.css';
 
 class Timestamp extends Plugin {
 	init() {
