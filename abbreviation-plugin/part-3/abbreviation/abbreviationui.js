@@ -66,6 +66,11 @@ export default class AbbreviationUI extends Plugin {
 			callback: () => this._hideUI()
 		} );
 
+		formView.keystrokes.set( 'Esc', ( data, cancel ) => {
+            this._hideUI();
+            cancel();
+        } );
+
 		return formView;
 	}
 
