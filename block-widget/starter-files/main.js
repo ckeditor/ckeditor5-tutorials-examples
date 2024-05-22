@@ -9,7 +9,8 @@ import {
   List,
   Paragraph
 } from 'ckeditor5';
-import 'ckeditor5/dist/index.css';
+import CKEditorInspector from '@ckeditor/ckeditor5-inspector';
+import 'ckeditor5/index.css';
 
 ClassicEditor
   .create( document.querySelector( '#editor' ), {
@@ -18,6 +19,7 @@ ClassicEditor
   } )
   .then( editor => {
       console.log( 'Editor was initialized', editor );
+      CKEditorInspector.attach( editor );
 
       // Expose for playing in the console.
       window.editor = editor;
