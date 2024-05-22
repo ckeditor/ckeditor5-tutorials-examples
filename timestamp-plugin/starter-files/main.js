@@ -12,7 +12,7 @@ import {
   Paragraph,
   List
 } from 'ckeditor5';
-import 'ckeditor5/dist/index.css';
+import 'ckeditor5/index.css';
 
 ClassicEditor
 	.create( document.querySelector( '#editor' ), {

@@ -14,7 +14,7 @@ import {
   Plugin,
   ButtonView
 } from 'ckeditor5';
-import 'ckeditor5/dist/index.css';
+import 'ckeditor5/index.css';
 
 class Timestamp extends Plugin {
 	init() {

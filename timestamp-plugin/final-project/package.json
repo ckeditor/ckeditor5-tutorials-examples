@@ -11,9 +11,8 @@
   "devDependencies": {
     "vite": "^5.2.0"
   },
-  "//": "TODO: After releasing new instalation methods, update version of ckeditor5.",
   "dependencies": {
-    "ckeditor5": "41.3.0-alpha.4"
+    "ckeditor5": "^0.0.0-nightly-20240522.0"
   },
   "author": "CKSource (https://cksource.com/)",
   "license": "SEE LICENSE IN ../LICENSE.md",
