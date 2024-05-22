@@ -12,7 +12,6 @@
     "vite": "^5.2.0"
   },
   "dependencies": {
-    "@ckeditor/ckeditor5-inspector": "^4.1.0",
     "ckeditor5": "^0.0.0-nightly-20240522.0"
   }
 }
