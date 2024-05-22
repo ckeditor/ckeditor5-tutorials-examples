@@ -6,7 +6,7 @@
 import { Bold, ClassicEditor, Essentials, Heading, Italic, List, Paragraph } from 'ckeditor5';
 import CKEditorInspector from '@ckeditor/ckeditor5-inspector';
 import Abbreviation from './abbreviation/abbreviation';
-import 'ckeditor5/dist/index.css';
+import 'ckeditor5/index.css';
 
 ClassicEditor
     .create( document.querySelector( '#editor' ), {
