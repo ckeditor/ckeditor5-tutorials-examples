@@ -12,7 +12,7 @@ ClassicEditor
     .then( editor => {
         console.log( 'Editor was initialized', editor );
 
-        CKEditorInspector.attach( { 'editor': editor } )
+        CKEditorInspector.attach( { 'editor': editor } );
 
         // Expose for playing in the console.
         window.editor = editor;
