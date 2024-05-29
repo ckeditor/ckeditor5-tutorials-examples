@@ -1,5 +1,5 @@
 {
-  "name": "ckeditor5-vite-example",
+  "name": "crash-course",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,7 +9,8 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "^5.0.12"
+    "@ckeditor/ckeditor5-inspector": "^4.1.0",
+    "vite": "^5.2.0"
   },
   "dependencies": {
     "ckeditor5": "^0.0.0-nightly-20240522.0"
