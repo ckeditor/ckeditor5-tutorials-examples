@@ -1,0 +1,160 @@
+/* assets/styles.css */
+
+/* --- General application styles --------------------------------------------------- */
+
+.app {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin: 0 auto;
+}
+
+.app h2 {
+    font-size: 1.3em;
+}
+
+.app textarea {
+    width: 100%;
+    height: 150px;
+    font-family: 'Courier New', Courier, monospace;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+/* --- Product offer editor styles ----------------------------------------------------- */
+
+.app .app__offer-editor {
+    flex: 1 1 auto;
+    max-width: 800px;
+}
+
+/* --- Generic product preview styles --------------------------------------------------- */
+
+.app .product-preview {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: var(--product-image);
+    background-size: cover;
+    height: 150px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 1px 1px 3px hsla(0, 0%, 0%, .3);
+    min-width: 160px;
+}
+
+.app .product-preview .product-preview__name {
+    padding: 10px;
+    background: hsl(0, 0%, 100%);
+    font-weight: bold;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.app .product-preview .product-preview__price {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    background: hsl(346, 100%, 56%);
+    padding: 6px 10px;
+    min-width: 50px;
+    text-align: center;
+    color: hsl(0, 0%, 100%);
+    text-transform: uppercase;
+    font-size: .8em;
+}
+
+.app .product-preview .product-preview__add {
+    display: none;
+}
+
+/* --- Product list styles --------------------------------------------------- */
+
+.app .app__product-list {
+    margin-left: 20px;
+    padding: 20px;
+    min-width: 400px;
+    border-left: 1px solid hsl(0, 0%, 87%);
+}
+
+.app .app__product-list h2 {
+    margin-top: 10px;
+}
+
+.app .app__product-list ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    margin-top: 10px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.app .app__product-list .product-preview {
+    opacity: .7;
+}
+
+.app .app__product-list .product-preview:hover {
+    opacity: 1;
+}
+
+.app .app__product-list .product-preview:hover .product-preview__add {
+    display: block;
+}
+
+.app .app__product-list .product-preview .product-preview__add {
+    display: none;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 45%;
+    left: 50%;
+
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 100px;
+    background: hsl(0, 0%, 100%);
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 2px hsla(0, 0%, 0%, .3);
+}
+
+.app .app__product-list .product-preview .product-preview__add span {
+    font-size: 25px;
+    vertical-align: middle;
+    color: hsl(0, 0%, 24%);
+    line-height: 40px;
+    display: inline-block;
+}
+
+.app .app__product-list .product-preview .product-preview__name {
+    font-size: 10px;
+}
+
+.app .app__product-list .product-preview .product-preview__price {
+    font-size: 10px;
+}
+
+/* --- In-editor product widget styles --------------------------------------------------- */
+
+.app .ck-content .product {
+    margin: 1em;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(1em);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
