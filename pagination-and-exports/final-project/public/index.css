@@ -1,0 +1,4157 @@
+/**
+ * @license Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+/*
+ * These definitions bring violet accents (tint) across the AI UI.
+ */
+:root {
+	--ck-ai-form-submit-button-text-color: 						var(--ck-color-text);
+	--ck-ai-form-submit-button-border-color: 					transparent;
+	--ck-ai-form-submit-button-disabled-border-color: 			transparent;
+	--ck-ai-toolbar-button-hover-color: 						var(--ck-color-text);
+	--ck-color-ai-selection:								hsla(201, 100%, 56%, 0.3);
+}
+
+/* Note: This class name is mentioned in the guide and acts like a public API. */
+.ck-ai-assistant-ui_theme {
+	--ck-color-button-default-hover-background: 				hsl(262.1,100%,96.3%);
+	--ck-color-button-default-active-background:				hsl(262.1,100%,96.3%);
+
+	--ck-color-button-on-background: 							hsl(262.1,100%,96.3%);
+	--ck-color-button-on-hover-background: 						hsl(262.5,60%,92.2%);
+	--ck-color-button-on-active-background:						hsl(262.1,100%,96.3%);
+	--ck-color-button-on-disabled-background: 					hsl(262.1,100%,96.3%);
+	--ck-color-button-on-color:									hsl(263.2,59.2%,52%);
+
+	--ck-color-button-action-background: 						hsl(263.2,59.2%,52%);
+	--ck-color-button-action-hover-background: 					hsl(262.6,58.9%,49.6%);
+	--ck-color-button-action-active-background:					hsl(262.6,58.9%,49.6%);
+	--ck-color-button-action-disabled-background: 				hsl(263.8,59.3%,75.9%);
+
+	--ck-color-list-button-hover-background: 					hsl(262.1,100%,96.3%);
+
+	--ck-ai-form-content-background: 							hsl(0,0%,97.6%);
+	--ck-ai-form-submit-button-text-color: 						var(--ck-color-button-on-color);
+	--ck-ai-form-submit-button-border-color: 					var(--ck-color-button-action-background);
+	--ck-ai-form-submit-button-disabled-border-color: 			var(--ck-color-button-action-disabled-background);
+	--ck-ai-toolbar-button-hover-color: 						var(--ck-color-button-on-color);
+
+	--ck-color-ai-selection:								hsl(262.5,60%,90%);
+}
+
+/*
+ * Apply the theme colors for specific elements.
+ */
+.ck-ai-commands-dropdown > .ck-button:hover,
+.ck-ai-assistant-button:hover {
+	color: var(--ck-ai-toolbar-button-hover-color);
+}
+
+/*
+ * Classes used by the "fake visual selection" displayed in the content
+ * when the AI dialog is open.
+ *
+ * Narrow down to <span> to prevent changing background for widgets and nested editables.
+ */
+.ck span.ck-fake-ai-selection {
+	background: var(--ck-color-ai-selection);
+}
+
+.ck .ck-widget.ck-fake-ai-selection {
+	outline-color: var(--ck-color-ai-selection);
+}
+
+/*
+ * Classes used by the "fake visual candidate selection" displayed in the content when an input
+ * in the AI dropdown has focus (the browser does not render the native selection in this state).
+ *
+ * Narrow down to <span> to prevent changing background for widgets and nested editables.
+ */
+.ck span.ck-fake-ai-selection-candidate {
+	background: var(--ck-color-ai-selection);
+}
+
+/* A collapsed fake visual selection. */
+.ck .ck-fake-ai-selection_collapsed {
+	height: 100%;
+	border-right: 1px solid var(--ck-color-base-text);
+	margin-right: -1px;
+	outline: solid 1px hsla(0, 0%, 100%, .5);
+}
+
+/*
+ * Styles of the AI response field. The margins, font sizes and line-heights have been reduced
+ * to save space.
+ *
+ * Note: This class name is mentioned in the guide and acts like a public API.
+ */
+.ck.ck-content.ck-ai-form__content-field h2 {
+		font-size: 1.3em;
+	}
+.ck.ck-content.ck-ai-form__content-field h3 {
+		font-size: 1.2em;
+	}
+.ck.ck-content.ck-ai-form__content-field h4, .ck.ck-content.ck-ai-form__content-field h5, .ck.ck-content.ck-ai-form__content-field h6 {
+		font-size: 1.1em;
+	}
+.ck.ck-content.ck-ai-form__content-field h2, .ck.ck-content.ck-ai-form__content-field h3, .ck.ck-content.ck-ai-form__content-field h4, .ck.ck-content.ck-ai-form__content-field h5, .ck.ck-content.ck-ai-form__content-field h6, .ck.ck-content.ck-ai-form__content-field p, .ck.ck-content.ck-ai-form__content-field ul, .ck.ck-content.ck-ai-form__content-field ol {
+		margin-block-start: .5em;
+		margin-block-end: .5em;
+		line-height: 1.7em;
+	}
+.ck.ck-content.ck-ai-form__content-field > :first-child {
+		margin-top: 0;
+	}
+.ck.ck-content.ck-ai-form__content-field > :last-child {
+		margin-bottom: 0;
+	}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+:root {
+	--ck-ai-dropdown-view-width: 250px;
+	--ck-ai-dropdown-view-list-max-height: 250px;
+}
+
+.ck.ck-ai-commands-search {
+	width: var(--ck-ai-dropdown-view-width);
+}
+
+.ck.ck-ai-commands-search > .ck-labeled-field-view {
+		padding: var(--ck-spacing-large);
+	}
+
+.ck.ck-ai-commands-search > .ck-labeled-field-view .ck-input {
+			min-width: unset;
+		}
+
+.ck.ck-ai-commands-search > .ck-search__results {
+		border-top: 1px solid var(--ck-color-base-border);
+	}
+
+.ck.ck-ai-commands-search > .ck-search__results > .ck-list {
+			max-height: var(--ck-ai-dropdown-view-list-max-height);
+			overflow: auto;
+		}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+:root {
+	--ck-ai-form-view-width: 600px;
+	--ck-ai-form-content-height: 175px;
+	--ck-ai-form-content-background: hsl(0, 0%, 98%);
+	--ck-ai-form-history-font-size: .9em;
+
+	--ck-ai-form-error-background: var(--ck-color-light-red);
+}
+
+/* Note: This class name is mentioned in the guide and acts like a public API. */
+.ck .ck-ai-form {
+	width: var(--ck-ai-form-view-width);
+
+	/* Don't overflow the parent dialog container */
+	max-width: 100%;
+}
+@media screen and (max-width: 600px) {
+.ck .ck-ai-form {
+		/* Allow the for the layout to be fluid in narrow viewports to avoid breaking it due to limited
+		 * horizontal space (https://github.com/cksource/ckeditor5-commercial/issues/5913). */
+		--ck-ai-form-view-width: 100vw;
+}
+	}
+.ck .ck-ai-form .ck-ai-form-content {
+		padding: var(--ck-spacing-large);
+		width: 100%;
+	}
+.ck .ck-ai-form .ck-ai-form-content .ck-input {
+			width: 100%;
+		}
+.ck .ck-ai-form .ck-ai-form-content .ck-ai-form__content-area-wrapper {
+			width: 100%;
+			max-height: var(--ck-ai-form-content-height);
+			overflow-y: auto;
+			border: 1px solid var(--ck-color-base-border);
+			border-radius: 2px;
+		}
+.ck .ck-ai-form .ck-ai-form-content .ck-ai-form__content-area-wrapper:focus {
+				outline: none;
+				border: var(--ck-focus-ring);
+				box-shadow: var(--ck-focus-outer-shadow), 0 0;
+			}
+.ck .ck-ai-form .ck-ai-form-content .ck-ai-form__content-area {
+			display: flex;
+			background-color: var(--ck-ai-form-content-background);
+		}
+.ck .ck-ai-form .ck-ai-form-content .ck-ai-form__content-area.ck-ai-form__content-area--processing {
+				--ck-color-text: var(--ck-color-input-disabled-text);
+				background-color: var(--ck-color-input-disabled-background);
+			}
+/* Note: This class name is mentioned in the guide and acts like a public API */
+.ck .ck-ai-form .ck-ai-form-content .ck-ai-form__content-area .ck-ai-form__content-field {
+				width: 100%;
+				white-space: normal;
+				padding: var(--ck-spacing-tiny) var(--ck-spacing-medium);
+				min-height: calc( var(--ck-line-height-base) * var(--ck-font-size-base) );
+				box-sizing: content-box;
+			}
+[dir="ltr"] .ck .ck-ai-form .ck-ai-form-content .ck-ai-form__content-area .ck-ai-form__content-field {
+					padding-right: 0;
+			}
+[dir="rtl"] .ck .ck-ai-form .ck-ai-form-content .ck-ai-form__content-area .ck-ai-form__content-field {
+					padding-left: 0;
+			}
+.ck .ck-ai-form .ck-ai-form-content .ck-ai-form__content-area .ck-ai-form__content-field > * {
+					white-space: normal;
+					color: inherit;
+				}
+[dir="ltr"] .ck .ck-ai-form .ck-ai-form-content .ck-ai-form__content-area .ck-spinner-container {
+					margin-right: var(--ck-spacing-medium);
+
+			}
+[dir="rtl"] .ck .ck-ai-form .ck-ai-form-content .ck-ai-form__content-area .ck-spinner-container {
+					margin-left: var(--ck-spacing-medium);
+
+			}
+.ck .ck-ai-form .ck-ai-form-content .ck-ai-form__content-area .ck-ai-form__copy-button-wrapper {
+				display: flex;
+				flex-direction: column-reverse;
+				padding-left: 2px;
+			}
+.ck .ck-ai-form .ck-ai-form-content .ck-ai-form__content-area .ck-ai-form__copy-button {
+				position: sticky;
+				right: 1px;
+				bottom: 1px;
+				padding: 4px;
+				min-height: unset;
+				min-width: unset;
+			}
+.ck .ck-ai-form .ck-ai-form-content .ck-ai-form__content-area .ck-ai-form__copy-button svg {
+					--ck-icon-size: 16px;
+				}
+.ck .ck-ai-form .ck-ai-form-content .ck-ai-form__content-area .ck-ai-form__copy-button.ck-ai-form__copy-button--copied {
+					color: inherit;
+				}
+.ck .ck-ai-form .ck-ai-form-content .ck-ai-form__toolbar {
+			border: none;
+			padding: 0;
+			margin-top: var(--ck-spacing-medium);
+			margin-bottom: calc( 2 * var(--ck-spacing-medium) );
+		}
+.ck .ck-ai-form .ck-ai-form-content .ck-ai-form__loader {
+			display: flex;
+			align-items: center;
+		}
+.ck .ck-ai-form .ck-ai-form-content .ck-ai-form__loader .ck-spinner {
+				box-sizing: border-box;
+			}
+.ck .ck-ai-form .ck-ai-form-content .ck-autocomplete {
+			display: flex;
+			justify-content: space-between;
+		}
+.ck .ck-ai-form .ck-ai-form-content .ck-autocomplete > .ck-labeled-field-view {
+				flex-grow: 1;
+			}
+[dir="ltr"] .ck .ck-ai-form .ck-ai-form-content .ck-autocomplete > .ck.ck-ai-form__submit {
+					margin-left: var(--ck-spacing-medium);
+			}
+[dir="rtl"] .ck .ck-ai-form .ck-ai-form-content .ck-autocomplete > .ck.ck-ai-form__submit {
+					margin-right: var(--ck-spacing-medium);
+			}
+.ck .ck-ai-form .ck-ai-form-content .ck-autocomplete > .ck.ck-ai-form__submit {
+
+				border-color: var(--ck-ai-form-submit-button-border-color);
+				color: var(--ck-ai-form-submit-button-text-color);
+			}
+.ck .ck-ai-form .ck-ai-form-content .ck-autocomplete > .ck.ck-ai-form__submit.ck-disabled {
+					border-color: var(--ck-ai-form-submit-button-disabled-border-color);
+				}
+/* Toggle history button */
+.ck .ck-ai-form .ck-ai-form-content .ck-autocomplete > .ck-labeled-field-view .ck-ai-form__toggle-history {
+				position: absolute;
+				font-size: var(--ck-font-size-tiny);
+			}
+[dir="ltr"] .ck .ck-ai-form .ck-ai-form-content .ck-autocomplete > .ck-labeled-field-view .ck-ai-form__toggle-history {
+					right: var(--ck-spacing-medium);
+			}
+[dir="rtl"] .ck .ck-ai-form .ck-ai-form-content .ck-autocomplete > .ck-labeled-field-view .ck-ai-form__toggle-history {
+					left: var(--ck-spacing-medium);
+			}
+.ck .ck-ai-form .ck-ai-form-content .ck-autocomplete > .ck-labeled-field-view .ck-ai-form__toggle-history {
+
+				bottom: var(--ck-spacing-small);
+				top: var(--ck-spacing-small);
+				padding: 4px;
+				min-height: unset;
+				min-width: unset;
+			}
+/* Give the toggle history button some space */
+[dir="ltr"] .ck .ck-ai-form .ck-ai-form-content .ck-autocomplete .ck-textarea {
+					padding-right: 30px;
+			}
+[dir="rtl"] .ck .ck-ai-form .ck-ai-form-content .ck-autocomplete .ck-textarea {
+					padding-left: 30px;
+			}
+/* Squash the textarea horizontally if necessary on narrow layouts
+				 * to avoid breaking the layout even at the cost of the placeholder
+				 * being cut off (https://github.com/cksource/ckeditor5-commercial/issues/5913). */
+@media screen and (max-width: 600px) {
+.ck .ck-ai-form .ck-ai-form-content .ck-autocomplete .ck-textarea {
+					--ck-input-width: auto;
+			}
+	}
+/* Prompt history group */
+.ck .ck-ai-form .ck-ai-form-content .ck-autocomplete .ck-search__results .ck-list .ck-list__group {
+				display: grid;
+				grid-template-columns: auto 1fr;
+				grid-template-rows: auto;
+				grid-column-gap: 0px;
+				grid-row-gap: 0px;
+
+				/* History group label */
+			}
+.ck .ck-ai-form .ck-ai-form-content .ck-autocomplete .ck-search__results .ck-list .ck-list__group > span {
+					grid-area: 1 / 1 / 2 / 2;
+				}
+/* Clear button in the history */
+.ck .ck-ai-form .ck-ai-form-content .ck-autocomplete .ck-search__results .ck-list .ck-list__group > .ck-button {
+					padding: 0;
+					min-height: auto;
+					grid-area: 1 / 2 / 2 / 3;
+					font-size: var(--ck-ai-form-history-font-size);
+					justify-self: start;
+					background: none;
+					margin: var(--ck-spacing-medium) 0 0;
+				}
+.ck .ck-ai-form .ck-ai-form-content .ck-autocomplete .ck-search__results .ck-list .ck-list__group > .ck-button .ck-button__label {
+						line-height: inherit;
+					}
+.ck .ck-ai-form .ck-ai-form-content .ck-autocomplete .ck-search__results .ck-list .ck-list__group > .ck-button .ck-button__label:hover {
+							text-decoration: underline;
+						}
+.ck .ck-ai-form .ck-ai-form-content .ck-autocomplete .ck-search__results .ck-list .ck-list__group > .ck-list {
+					grid-area: 2 / 1 / 3 / 3;
+
+					/* Prompts can be very long. We need to display them whole. */
+				}
+.ck .ck-ai-form .ck-ai-form-content .ck-autocomplete .ck-search__results .ck-list .ck-list__group > .ck-list .ck-list__item .ck-button .ck-button__label {
+						white-space: nowrap;
+						overflow: hidden;
+						max-width: 100%;
+						text-overflow: ellipsis;
+						font-size: var(--ck-ai-form-history-font-size);
+						line-height: var(--ck-line-height-base);
+					}
+.ck .ck-ai-form .ck-ai-form__error {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: var(--ck-spacing-medium);
+		background-color: var(--ck-ai-form-error-background);
+		color: var(--ck-color-base-text);
+		border-radius: 2px;
+		margin-bottom: var(--ck-spacing-medium);
+	}
+
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+:root {
+	--ck-user-colors--0: hsla(235, 73%, 67%, 1);
+	--ck-user-colors--0-alpha: hsla(235, 73%, 67%, 0.15);
+
+	--ck-user-colors--1: hsla(173, 100%, 24%, 1);
+	--ck-user-colors--1-alpha: hsla(173, 100%, 24%, 0.15);
+
+	--ck-user-colors--2: hsla(0, 46%, 50%, 1);
+	--ck-user-colors--2-alpha: hsla(0, 46%, 50%, 0.15);
+
+	--ck-user-colors--3: hsla(256, 54%, 45%, 1);
+	--ck-user-colors--3-alpha: hsla(256, 54%, 45%, 0.15);
+
+	--ck-user-colors--4: hsla(95, 50%, 36%, 1);
+	--ck-user-colors--4-alpha: hsla(95, 50%, 36%, 0.15);
+
+	--ck-user-colors--5: hsla(336, 78%, 43%, 1);
+	--ck-user-colors--5-alpha: hsla(336, 78%, 43%, 0.15);
+
+	--ck-user-colors--6: hsla(0, 80%, 59%, 1);
+	--ck-user-colors--6-alpha: hsla(0, 80%, 59%, 0.15);
+
+	--ck-user-colors--7: hsla(184, 90%, 43%, 1);
+	--ck-user-colors--7-alpha: hsla(184, 90%, 43%, 0.15);
+
+	--ck-user-dot-size: 6px;
+}
+
+/* We are using mixins here because of lack of PostCSS loop plugin. */
+
+.ck .ck-user__color--0 {
+		color: var(--ck-user-colors--0);
+	}
+
+.ck .ck-user__bg-color--0 {
+		background-color: var(--ck-user-colors--0);
+	}
+
+.ck .ck-user__selection--0 {
+		background-color: var(--ck-user-colors--0-alpha);
+	}
+
+.ck .ck-user__selection--0.ck-widget {
+			background-color: transparent;
+			border: 3px solid var(--ck-user-colors--0);
+		}
+
+.ck .ck-user__marker--0, .ck .ck-user__marker--0 .ck-user__marker-tooltip, .ck .ck-user__marker--0 .ck-user__marker-dot, .ck .ck-user__marker--0::selection, .ck .ck-user__marker--0 .ck-user__marker-tooltip::selection, .ck .ck-user__marker--0 .ck-user__marker-dot::selection {
+				background-color: var(--ck-user-colors--0);
+			}
+
+.ck .ck-user__marker--0 .ck-user__marker-line {
+			border: 1px solid var(--ck-user-colors--0);
+		}
+.ck .ck-user__color--1 {
+		color: var(--ck-user-colors--1);
+	}
+.ck .ck-user__bg-color--1 {
+		background-color: var(--ck-user-colors--1);
+	}
+.ck .ck-user__selection--1 {
+		background-color: var(--ck-user-colors--1-alpha);
+	}
+.ck .ck-user__selection--1.ck-widget {
+			background-color: transparent;
+			border: 3px solid var(--ck-user-colors--1);
+		}
+.ck .ck-user__marker--1, .ck .ck-user__marker--1 .ck-user__marker-tooltip, .ck .ck-user__marker--1 .ck-user__marker-dot, .ck .ck-user__marker--1::selection, .ck .ck-user__marker--1 .ck-user__marker-tooltip::selection, .ck .ck-user__marker--1 .ck-user__marker-dot::selection {
+				background-color: var(--ck-user-colors--1);
+			}
+.ck .ck-user__marker--1 .ck-user__marker-line {
+			border: 1px solid var(--ck-user-colors--1);
+		}
+.ck .ck-user__color--2 {
+		color: var(--ck-user-colors--2);
+	}
+.ck .ck-user__bg-color--2 {
+		background-color: var(--ck-user-colors--2);
+	}
+.ck .ck-user__selection--2 {
+		background-color: var(--ck-user-colors--2-alpha);
+	}
+.ck .ck-user__selection--2.ck-widget {
+			background-color: transparent;
+			border: 3px solid var(--ck-user-colors--2);
+		}
+.ck .ck-user__marker--2, .ck .ck-user__marker--2 .ck-user__marker-tooltip, .ck .ck-user__marker--2 .ck-user__marker-dot, .ck .ck-user__marker--2::selection, .ck .ck-user__marker--2 .ck-user__marker-tooltip::selection, .ck .ck-user__marker--2 .ck-user__marker-dot::selection {
+				background-color: var(--ck-user-colors--2);
+			}
+.ck .ck-user__marker--2 .ck-user__marker-line {
+			border: 1px solid var(--ck-user-colors--2);
+		}
+.ck .ck-user__color--3 {
+		color: var(--ck-user-colors--3);
+	}
+.ck .ck-user__bg-color--3 {
+		background-color: var(--ck-user-colors--3);
+	}
+.ck .ck-user__selection--3 {
+		background-color: var(--ck-user-colors--3-alpha);
+	}
+.ck .ck-user__selection--3.ck-widget {
+			background-color: transparent;
+			border: 3px solid var(--ck-user-colors--3);
+		}
+.ck .ck-user__marker--3, .ck .ck-user__marker--3 .ck-user__marker-tooltip, .ck .ck-user__marker--3 .ck-user__marker-dot, .ck .ck-user__marker--3::selection, .ck .ck-user__marker--3 .ck-user__marker-tooltip::selection, .ck .ck-user__marker--3 .ck-user__marker-dot::selection {
+				background-color: var(--ck-user-colors--3);
+			}
+.ck .ck-user__marker--3 .ck-user__marker-line {
+			border: 1px solid var(--ck-user-colors--3);
+		}
+.ck .ck-user__color--4 {
+		color: var(--ck-user-colors--4);
+	}
+.ck .ck-user__bg-color--4 {
+		background-color: var(--ck-user-colors--4);
+	}
+.ck .ck-user__selection--4 {
+		background-color: var(--ck-user-colors--4-alpha);
+	}
+.ck .ck-user__selection--4.ck-widget {
+			background-color: transparent;
+			border: 3px solid var(--ck-user-colors--4);
+		}
+.ck .ck-user__marker--4, .ck .ck-user__marker--4 .ck-user__marker-tooltip, .ck .ck-user__marker--4 .ck-user__marker-dot, .ck .ck-user__marker--4::selection, .ck .ck-user__marker--4 .ck-user__marker-tooltip::selection, .ck .ck-user__marker--4 .ck-user__marker-dot::selection {
+				background-color: var(--ck-user-colors--4);
+			}
+.ck .ck-user__marker--4 .ck-user__marker-line {
+			border: 1px solid var(--ck-user-colors--4);
+		}
+.ck .ck-user__color--5 {
+		color: var(--ck-user-colors--5);
+	}
+.ck .ck-user__bg-color--5 {
+		background-color: var(--ck-user-colors--5);
+	}
+.ck .ck-user__selection--5 {
+		background-color: var(--ck-user-colors--5-alpha);
+	}
+.ck .ck-user__selection--5.ck-widget {
+			background-color: transparent;
+			border: 3px solid var(--ck-user-colors--5);
+		}
+.ck .ck-user__marker--5, .ck .ck-user__marker--5 .ck-user__marker-tooltip, .ck .ck-user__marker--5 .ck-user__marker-dot, .ck .ck-user__marker--5::selection, .ck .ck-user__marker--5 .ck-user__marker-tooltip::selection, .ck .ck-user__marker--5 .ck-user__marker-dot::selection {
+				background-color: var(--ck-user-colors--5);
+			}
+.ck .ck-user__marker--5 .ck-user__marker-line {
+			border: 1px solid var(--ck-user-colors--5);
+		}
+.ck .ck-user__color--6 {
+		color: var(--ck-user-colors--6);
+	}
+.ck .ck-user__bg-color--6 {
+		background-color: var(--ck-user-colors--6);
+	}
+.ck .ck-user__selection--6 {
+		background-color: var(--ck-user-colors--6-alpha);
+	}
+.ck .ck-user__selection--6.ck-widget {
+			background-color: transparent;
+			border: 3px solid var(--ck-user-colors--6);
+		}
+.ck .ck-user__marker--6, .ck .ck-user__marker--6 .ck-user__marker-tooltip, .ck .ck-user__marker--6 .ck-user__marker-dot, .ck .ck-user__marker--6::selection, .ck .ck-user__marker--6 .ck-user__marker-tooltip::selection, .ck .ck-user__marker--6 .ck-user__marker-dot::selection {
+				background-color: var(--ck-user-colors--6);
+			}
+.ck .ck-user__marker--6 .ck-user__marker-line {
+			border: 1px solid var(--ck-user-colors--6);
+		}
+.ck .ck-user__color--7 {
+		color: var(--ck-user-colors--7);
+	}
+.ck .ck-user__bg-color--7 {
+		background-color: var(--ck-user-colors--7);
+	}
+.ck .ck-user__selection--7 {
+		background-color: var(--ck-user-colors--7-alpha);
+	}
+.ck .ck-user__selection--7.ck-widget {
+			background-color: transparent;
+			border: 3px solid var(--ck-user-colors--7);
+		}
+.ck .ck-user__marker--7, .ck .ck-user__marker--7 .ck-user__marker-tooltip, .ck .ck-user__marker--7 .ck-user__marker-dot, .ck .ck-user__marker--7::selection, .ck .ck-user__marker--7 .ck-user__marker-tooltip::selection, .ck .ck-user__marker--7 .ck-user__marker-dot::selection {
+				background-color: var(--ck-user-colors--7);
+			}
+.ck .ck-user__marker--7 .ck-user__marker-line {
+			border: 1px solid var(--ck-user-colors--7);
+		}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+/**
+ * Makes element unselectable.
+ */
+
+:root {
+	--ck-user-avatar-size: 40px;
+	--ck-user-avatar-background: hsl(210, 52%, 44%);
+	--ck-user-avatar-color: hsl(0, 0%, 100%);
+	--ck-user-me-border-color: hsl(0, 0%, 100%);
+}
+
+.ck.ck-user {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	border-radius: 50%;
+	background-color: var(--ck-user-avatar-background);
+	box-sizing: border-box;
+	height: var(--ck-user-avatar-size);
+	width: var(--ck-user-avatar-size);
+	min-width: var(--ck-user-avatar-size);
+	min-height: var(--ck-user-avatar-size);
+	line-height: 100%;
+	margin: 2px;
+}
+
+.ck.ck-user.ck-user_me {
+		border: 2px solid var(--ck-user-me-border-color);
+		outline: 2px solid var(--ck-user-avatar-background);
+	}
+
+.ck.ck-user__name {
+	color: var(--ck-user-avatar-color);
+	cursor: default;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.ck.ck-user__name.ck-user__name--hidden {
+		display: none;
+	}
+
+.ck.ck-user__img {
+	display: none;
+	width: 100%;
+	height: 100%;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color: var(--ck-user-avatar-background);
+	border-radius: 50%;
+	border: none;
+}
+
+.ck.ck-user__img.ck-user__anonymous {
+		display: block;
+		background-image: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%3E%0A%20%20%3Cpath%20fill%3D%22%23FFF%22%20fill-rule%3D%22nonzero%22%20d%3D%22M9.8%2020H2c0-5.7%205-5.7%206-7l.2-.8c-1.6-.8-2.7-2.7-2.7-5%200-2.8%202-5.2%204.3-5.2S14%204.4%2014%207.3c0%202.2-1%204-2.6%205l.2.6c1.2%201.3%206%201.4%206%207H9.8z%22%2F%3E%0A%3C%2Fsvg%3E);
+
+		/* Do not display initials when user is anonymous. */
+	}
+
+.ck.ck-user__img.ck-user__anonymous + .ck-user__name {
+			display: none;
+		}
+
+.ck.ck-user__img.ck-user__avatar {
+		display: block;
+
+		/* In case if avatar is transparent make background white. */
+		background-color: hsl(0, 0%, 100%);
+	}
+
+.ck.ck-user__img.ck-user__img--hidden {
+		display: none;
+	}
+
+.ck.ck-user__notification {
+	display: flex;
+	width: 15px;
+	height: 15px;
+	justify-content: center;
+	align-items: center;
+	background: var(--ck-color-base-background);
+	border: 2px solid var(--ck-color-base-background);
+	border-radius: 50%;
+	box-sizing: content-box;
+
+	position: absolute;
+	top: -8px;
+	right: -7px;
+	overflow: hidden;
+	transform: translateZ(0);
+}
+
+.ck.ck-user__notification .ck-user__icon {
+		color: var(--ck-color-annotation-info);
+		background: var(--ck-color-base-background);
+		width: 19px;
+		height: 19px;
+		max-width: 19px;
+		max-height: 19px;
+		min-width: 19px;
+		min-height: 19px;
+	}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+:root {
+	--ck-color-comment-box-border: hsl(55, 98%, 48%);
+	--ck-color-suggestion-box-deletion-border: hsl(345, 62%, 60%);
+	--ck-color-suggestion-box-insertion-border: hsl(128, 62%, 60%);
+	--ck-color-suggestion-box-format-border: hsl(191, 62%, 60%);
+}
+
+.ck .ck-suggestion {
+	border-top-left-radius: var(--ck-border-radius);
+}
+
+.ck .ck-annotation {
+	border-left: 3px solid transparent;
+}
+
+
+/* See: #3683.
+ * Inline Suggestion annotations that can't be commented on contains a scrollbar by default */
+.ck .ck-suggestion--disabled-comments .ck-annotation {
+	min-height: 80px;
+}
+
+/* See: #2459.
+With track-changes feature enabled, we need to distinguish various types of annotations (comments and suggestions). */
+.ck .ck-comment,
+.ck .ck-thread__comment-count,
+.ck .ck-comment__input-container,
+.ck .ck-thread__header {
+	border-left: 3px solid var(--ck-color-comment-box-border);
+}
+
+.ck .ck-suggestion-insertion .ck-suggestion {
+	border-left-color: var(--ck-color-suggestion-box-insertion-border);
+}
+
+.ck .ck-suggestion-deletion .ck-suggestion {
+	border-left-color: var(--ck-color-suggestion-box-deletion-border);
+}
+
+.ck .ck-suggestion-replace .ck-suggestion {
+	border-left-color: var(--ck-color-suggestion-box-insertion-border);
+}
+
+.ck .ck-suggestion-format .ck-suggestion {
+	border-left-color: var(--ck-color-suggestion-box-format-border);
+}
+
+.ck .ck-suggestion-wrapper {
+	outline: 0;
+	overflow: hidden;
+}
+
+.ck .ck-suggestion-type {
+	font-weight: bold;
+}
+
+.ck .ck-suggestion-color {
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	border-radius: 14px;
+	vertical-align: text-bottom;
+	margin: 0 5px;
+	box-shadow: 0 0 0 1px hsl(0, 0%, 27%);
+}
+
+/* Comments inside suggestion. */
+
+/* Handle comments inside suggestion keep same border-color. */
+.ck .ck-suggestion-insertion .ck-comment,
+.ck .ck-suggestion-insertion .ck-thread__comment-count,
+.ck .ck-suggestion-insertion .ck-comment__input-container,
+.ck .ck-suggestion-replace .ck-comment,
+.ck .ck-suggestion-replace .ck-thread__comment-count,
+.ck .ck-suggestion-replace .ck-comment__input-container {
+	border-left-color: var(--ck-color-suggestion-box-insertion-border);
+}
+
+.ck .ck-suggestion-deletion .ck-comment,
+.ck .ck-suggestion-deletion .ck-thread__comment-count,
+.ck .ck-suggestion-deletion .ck-comment__input-container {
+	border-left-color: var(--ck-color-suggestion-box-deletion-border);
+}
+
+.ck .ck-suggestion-format .ck-comment,
+.ck .ck-suggestion-format .ck-thread__comment-count,
+.ck .ck-suggestion-format .ck-comment__input-container {
+	border-left-color: var(--ck-color-suggestion-box-format-border);
+}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+:root {
+	--ck-color-suggestion-marker-insertion-border: hsla(128, 71%, 40%, .35);
+	--ck-color-suggestion-marker-insertion-border-active: hsla(128, 71%, 25%, .5);
+	--ck-color-suggestion-marker-insertion-background: hsla(128, 71%, 65%, .35);
+	--ck-color-suggestion-marker-insertion-background-active: hsla(128, 71%, 50%, .5);
+
+	--ck-color-suggestion-marker-deletion-border: hsla(345, 71%, 40%, .35);
+	--ck-color-suggestion-marker-deletion-border-active: hsla(345, 71%, 25%, .5);
+	--ck-color-suggestion-marker-deletion-background: hsla(345, 71%, 65%, .35);
+	--ck-color-suggestion-marker-deletion-background-active: hsla(345, 71%, 50%, .5);
+	--ck-color-suggestion-marker-deletion-stroke: hsla(345, 71%, 20%, .5);
+
+	--ck-color-suggestion-marker-format-border: hsla(191, 60%, 75%, 1);
+	--ck-color-suggestion-marker-format-border-active: hsla(191, 60%, 60%, 1);
+
+	--ck-color-suggestion-widget-insertion-background: hsla(128, 71%, 65%, .05);
+	--ck-color-suggestion-widget-insertion-background-active: hsla(128, 71%, 50%, .07);
+
+	--ck-color-suggestion-widget-deletion-background: hsla(345, 71%, 65%, .05);
+	--ck-color-suggestion-widget-deletion-background-active: hsla(345, 71%, 45%, .07);
+
+	--ck-color-suggestion-widget-format-background: hsla(191, 90%, 40%, .09);
+	--ck-color-suggestion-widget-format-background-active: hsla(191, 90%, 40%, .16);
+}
+
+.ck-content .ck-suggestion-marker-insertion {
+	border-top: 3px solid var(--ck-color-suggestion-marker-insertion-border);
+	border-bottom: 3px solid var(--ck-color-suggestion-marker-insertion-border);
+	background: var(--ck-color-suggestion-marker-insertion-background);
+}
+
+.ck-content .ck-suggestion-marker-insertion.ck-suggestion-marker--active {
+		border-color: var(--ck-color-suggestion-marker-insertion-border-active);
+		background: var(--ck-color-suggestion-marker-insertion-background-active);
+	}
+
+/* Disable background of marker inside widget. */
+
+.ck-content .ck-suggestion-marker-insertion.ck-widget {
+		background: none;
+		text-decoration: none;
+		border: 3px solid var(--ck-color-suggestion-marker-insertion-border);
+	}
+
+.ck-content .ck-suggestion-marker-insertion.ck-widget.ck-suggestion-marker--active {
+			border-color: var(--ck-color-suggestion-marker-insertion-border-active);
+		}
+
+.ck-content .ck-suggestion-marker-deletion {
+	border-top: 3px solid var(--ck-color-suggestion-marker-deletion-border);
+	border-bottom: 3px solid var(--ck-color-suggestion-marker-deletion-border);
+
+	/* #2810. Safari doesn't support combined text-decoration values. */
+	text-decoration: line-through;
+	text-decoration-color: var(--ck-color-suggestion-marker-deletion-stroke);
+	text-decoration-thickness: 3px;
+
+	background: var(--ck-color-suggestion-marker-deletion-background);
+}
+
+.ck-content .ck-suggestion-marker-deletion.ck-suggestion-marker--active {
+		border-color: var(--ck-color-suggestion-marker-deletion-border-active);
+		background: var(--ck-color-suggestion-marker-deletion-background-active);
+	}
+
+/* Disable background of marker inside widget. */
+
+.ck-content .ck-suggestion-marker-deletion.ck-widget {
+		background: none;
+		text-decoration: none;
+		border: 3px solid var(--ck-color-suggestion-marker-deletion-border);
+	}
+
+.ck-content .ck-suggestion-marker-deletion.ck-widget.ck-suggestion-marker--active {
+			border-color: var(--ck-color-suggestion-marker-deletion-border-active);
+		}
+
+.ck-content .ck-suggestion-marker-merge::after {
+		border-top: 3px solid var(--ck-color-suggestion-marker-deletion-border);
+		border-bottom: 3px solid var(--ck-color-suggestion-marker-deletion-border);
+
+		/* #2810. Safari doesn't support combined text-decoration values. */
+		text-decoration: line-through;
+		text-decoration-color: var(--ck-color-suggestion-marker-deletion-stroke);
+
+		background: var(--ck-color-suggestion-marker-deletion-background);
+		color: var(--ck-color-suggestion-marker-deletion-stroke);
+		content: '¶';
+	}
+
+.ck-content .ck-suggestion-marker-merge.ck-suggestion-marker--active::after {
+		border-color: var(--ck-color-suggestion-marker-deletion-border-active);
+		background: var(--ck-color-suggestion-marker-deletion-background-active);
+	}
+
+.ck-content .ck-suggestion-marker-split::after {
+		border-top: 3px solid var(--ck-color-suggestion-marker-insertion-border);
+		border-bottom: 3px solid var(--ck-color-suggestion-marker-insertion-border);
+		background: var(--ck-color-suggestion-marker-insertion-background);
+		color: var(--ck-color-suggestion-marker-insertion-border);
+		content: '¶';
+	}
+
+.ck-content .ck-suggestion-marker-split.ck-suggestion-marker--active::after {
+		border-color: var(--ck-color-suggestion-marker-insertion-border-active);
+		background: var(--ck-color-suggestion-marker-insertion-background-active);
+	}
+
+.ck-content .ck-suggestion-marker-formatInline {
+	border-top: 3px solid var(--ck-color-suggestion-marker-format-border);
+	border-bottom: 3px solid var(--ck-color-suggestion-marker-format-border);
+}
+
+.ck-content .ck-suggestion-marker-formatInline.ck-suggestion-marker--active {
+		border-color: var(--ck-color-suggestion-marker-format-border-active);
+	}
+
+.ck-content .ck-suggestion-marker-formatInline.ck-widget {
+		background: none;
+		border: 3px solid var(--ck-color-suggestion-marker-format-border);
+	}
+
+.ck-content .ck-suggestion-marker-formatInline.ck-widget.ck-suggestion-marker--active {
+			border-color: var(--ck-color-suggestion-marker-format-border-active);
+		}
+
+/* This is a tricky case.
+ * We can't use `border-left` because sticky marker to the element looks kinda ugly.
+ * We can't use `::before` pseudoelement because it requires `position: relative` of parent, which breaks side-image.
+ * We can't use `outline` because it's impossible to display only left side of outline.
+ * So... we need to use power of CSS hacks <3 and use doubled box-shadow.
+ */
+
+.ck-content .ck-suggestion-marker-formatBlock {
+	border: 0;
+	background: none;
+	box-shadow: -7px 0 0 0 var(--ck-color-base-background), -10px 0 0 0 var(--ck-color-suggestion-marker-format-border);
+}
+
+.ck-content .ck-suggestion-marker-formatBlock.ck-suggestion-marker--active {
+		box-shadow: -5px 0 0 0 var(--ck-color-base-background), -8px 0 0 0 var(--ck-color-suggestion-marker-format-border-active);
+	}
+
+.ck-content ul .ck-suggestion-marker-formatBlock,
+.ck-content ol .ck-suggestion-marker-formatBlock {
+	box-shadow: -2px 0 0 0 var(--ck-color-base-background), -5px 0 0 0 var(--ck-color-suggestion-marker-format-border);
+}
+
+.ck-content ul .ck-suggestion-marker-formatBlock.ck-suggestion-marker--active, .ck-content ol .ck-suggestion-marker-formatBlock.ck-suggestion-marker--active {
+		box-shadow: -2px 0 0 0 var(--ck-color-base-background), -5px 0 0 0 var(--ck-color-suggestion-marker-format-border-active);
+	}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+.ck-content .ck-widget.image > figcaption.ck-suggestion-marker-deletion {
+		background-color: var(--ck-color-suggestion-widget-deletion-background);
+		border: none;
+	}
+
+.ck-content .ck-widget.image > figcaption.ck-suggestion-marker-deletion.ck-suggestion-marker--active {
+			background-color: var(--ck-color-suggestion-widget-deletion-background-active);
+		}
+
+.ck-content .ck-widget.image > figcaption.ck-suggestion-marker-insertion {
+		background-color: var(--ck-color-suggestion-widget-insertion-background);
+		border: none;
+	}
+
+.ck-content .ck-widget.image > figcaption.ck-suggestion-marker-insertion.ck-suggestion-marker--active {
+			background-color: var(--ck-color-suggestion-widget-insertion-background-active);
+		}
+
+.ck-content .ck-suggestion-marker-deletion.ck-widget.image {
+	background-color: var(--ck-color-suggestion-widget-deletion-background);
+}
+
+.ck-content .ck-suggestion-marker-deletion.ck-widget.image img {
+		opacity: 0.6;
+	}
+
+.ck-content .ck-suggestion-marker-deletion.ck-widget.image figcaption {
+		background-color: var(--ck-color-suggestion-widget-deletion-background);
+	}
+
+.ck-content .ck-suggestion-marker-deletion.ck-widget.image.ck-suggestion-marker--active {
+		background-color: var(--ck-color-suggestion-widget-deletion-background-active);
+	}
+
+.ck-content .ck-suggestion-marker-deletion.ck-widget.image.ck-suggestion-marker--active figcaption {
+			background-color: var(--ck-color-suggestion-widget-deletion-background-active);
+		}
+
+.ck-content .ck-suggestion-marker-insertion.ck-widget.image {
+	background-color: var(--ck-color-suggestion-widget-insertion-background);
+
+	/* stylelint-disable no-descending-specificity */
+}
+
+.ck-content .ck-suggestion-marker-insertion.ck-widget.image figcaption {
+		background-color: var(--ck-color-suggestion-widget-insertion-background);
+	}
+
+/* stylelint-enable no-descending-specificity */
+
+.ck-content .ck-suggestion-marker-insertion.ck-widget.image.ck-suggestion-marker--active {
+		background-color: var(--ck-color-suggestion-widget-insertion-background-active);
+	}
+
+.ck-content .ck-suggestion-marker-insertion.ck-widget.image.ck-suggestion-marker--active figcaption {
+			background-color: var(--ck-color-suggestion-widget-insertion-background-active);
+		}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+.ck-content .ck-suggestion-marker-deletion.ck-widget.ck-horizontal-line {
+	background-color: var(--ck-color-suggestion-widget-deletion-background);
+}
+
+.ck-content .ck-suggestion-marker-deletion.ck-widget.ck-horizontal-line.ck-suggestion-marker--active {
+		background-color: var(--ck-color-suggestion-widget-deletion-background-active);
+	}
+
+.ck-content .ck-suggestion-marker-insertion.ck-widget.ck-horizontal-line {
+	background-color: var(--ck-color-suggestion-widget-insertion-background);
+}
+
+.ck-content .ck-suggestion-marker-insertion.ck-widget.ck-horizontal-line.ck-suggestion-marker--active {
+		background-color: var(--ck-color-suggestion-widget-insertion-background-active);
+	}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+.ck-content .ck-suggestion-marker-deletion.ck-widget.media {
+	background-color: var(--ck-color-suggestion-widget-deletion-background);
+}
+
+.ck-content .ck-suggestion-marker-deletion.ck-widget.media .ck-media__wrapper {
+		opacity: 0.6;
+	}
+
+.ck-content .ck-suggestion-marker-deletion.ck-widget.media.ck-suggestion-marker--active {
+		background-color: var(--ck-color-suggestion-widget-deletion-background-active);
+	}
+
+.ck-content .ck-suggestion-marker-insertion.ck-widget.media {
+	background-color: var(--ck-color-suggestion-widget-insertion-background);
+}
+
+.ck-content .ck-suggestion-marker-insertion.ck-widget.media.ck-suggestion-marker--active {
+		background-color: var(--ck-color-suggestion-widget-insertion-background-active);
+	}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+.ck-content .ck-suggestion-marker-deletion.ck-widget.page-break {
+	background-color: var(--ck-color-suggestion-widget-deletion-background);
+}
+
+.ck-content .ck-suggestion-marker-deletion.ck-widget.page-break.ck-suggestion-marker--active {
+		background-color: var(--ck-color-suggestion-widget-deletion-background-active);
+	}
+
+.ck-content .ck-suggestion-marker-insertion.ck-widget.page-break {
+	background-color: var(--ck-color-suggestion-widget-insertion-background);
+}
+
+.ck-content .ck-suggestion-marker-insertion.ck-widget.page-break.ck-suggestion-marker--active {
+		background-color: var(--ck-color-suggestion-widget-insertion-background-active);
+	}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+:root {
+	--ck-color-suggestion-widget-th-insertion-background: hsla(128, 71%, 65%, .12);
+	--ck-color-suggestion-widget-th-insertion-background-active: hsla(128, 71%, 50%, .14);
+
+	--ck-color-suggestion-widget-th-deletion-background: hsla(345, 71%, 65%, .14);
+	--ck-color-suggestion-widget-th-deletion-background-active: hsla(345, 71%, 45%, .16);
+}
+
+.ck-content figure.table .ck-suggestion-marker-formatBlock {
+	box-shadow: -3px 0 0 0 var(--ck-color-suggestion-marker-format-border);
+}
+
+.ck-content figure.table .ck-suggestion-marker-formatBlock.ck-suggestion-marker--active {
+		box-shadow: -3px 0 0 0 var(--ck-color-suggestion-marker-format-border-active);
+	}
+
+.ck-content .ck-widget.table > figcaption.ck-suggestion-marker-deletion {
+		background-color: var(--ck-color-suggestion-widget-deletion-background);
+		border: none;
+	}
+
+.ck-content .ck-widget.table > figcaption.ck-suggestion-marker-deletion.ck-suggestion-marker--active {
+			background-color: var(--ck-color-suggestion-widget-deletion-background-active);
+		}
+
+.ck-content .ck-widget.table > figcaption.ck-suggestion-marker-insertion {
+		background-color: var(--ck-color-suggestion-widget-insertion-background);
+		border: none;
+	}
+
+.ck-content .ck-widget.table > figcaption.ck-suggestion-marker-insertion.ck-suggestion-marker--active {
+			background-color: var(--ck-color-suggestion-widget-insertion-background-active);
+		}
+
+.ck-content .ck-suggestion-marker-insertion.table {
+	border-color: var(--ck-color-suggestion-marker-insertion-border);
+}
+
+.ck-content .ck-suggestion-marker-insertion.table > figcaption {
+		background-color: var(--ck-color-suggestion-widget-insertion-background);
+	}
+
+.ck-content .ck-suggestion-marker-insertion.table > table > tbody > tr > th {
+			background-color: var(--ck-color-suggestion-widget-th-insertion-background);
+			border-color: var(--ck-color-suggestion-marker-insertion-border);
+		}
+
+.ck-content .ck-suggestion-marker-insertion.table > table > thead > tr > th {
+			background-color: var(--ck-color-suggestion-widget-th-insertion-background);
+			border-color: var(--ck-color-suggestion-marker-insertion-border);
+		}
+
+.ck-content .ck-suggestion-marker-insertion.table > table > tbody > tr > td {
+			background-color: var(--ck-color-suggestion-widget-insertion-background);
+			border-color: var(--ck-color-suggestion-marker-insertion-border);
+		}
+
+.ck-content .ck-suggestion-marker-insertion.ck-suggestion-marker--active.table {
+	border-color: var(--ck-color-suggestion-marker-insertion-border-active);
+}
+
+.ck-content .ck-suggestion-marker-insertion.ck-suggestion-marker--active.table > figcaption {
+		background-color: var(--ck-color-suggestion-widget-insertion-background-active);
+	}
+
+.ck-content .ck-suggestion-marker-insertion.ck-suggestion-marker--active.table > table > tbody > tr > th {
+			background-color: var(--ck-color-suggestion-widget-th-insertion-background-active);
+			border-color: var(--ck-color-suggestion-marker-insertion-border-active);
+		}
+
+.ck-content .ck-suggestion-marker-insertion.ck-suggestion-marker--active.table > table > thead > tr > th {
+			background-color: var(--ck-color-suggestion-widget-th-insertion-background-active);
+			border-color: var(--ck-color-suggestion-marker-insertion-border-active);
+		}
+
+.ck-content .ck-suggestion-marker-insertion.ck-suggestion-marker--active.table > table > tbody > tr > td {
+			background-color: var(--ck-color-suggestion-widget-insertion-background-active);
+			border-color: var(--ck-color-suggestion-marker-insertion-border-active);
+		}
+
+.ck-content .ck-suggestion-marker-deletion.ck-widget.table  {
+	border-color: var(--ck-color-suggestion-marker-deletion-border);
+}
+
+.ck-content .ck-suggestion-marker-deletion.ck-widget.table > figcaption {
+		background-color: var(--ck-color-suggestion-widget-deletion-background);
+	}
+
+.ck-content .ck-suggestion-marker-deletion.ck-widget.table > table > tbody > tr > th {
+			background-color: var(--ck-color-suggestion-widget-th-deletion-background);
+			border-color: var(--ck-color-suggestion-marker-deletion-border);
+			text-decoration: none;
+		}
+
+.ck-content .ck-suggestion-marker-deletion.ck-widget.table > table > thead > tr > th {
+			background-color: var(--ck-color-suggestion-widget-th-deletion-background);
+			border-color: var(--ck-color-suggestion-marker-deletion-border);
+			text-decoration: none;
+		}
+
+.ck-content .ck-suggestion-marker-deletion.ck-widget.table > table > tbody > tr > td {
+			background-color: var(--ck-color-suggestion-widget-deletion-background);
+			border-color: var(--ck-color-suggestion-marker-deletion-border);
+			text-decoration: none;
+		}
+
+.ck-content .ck-suggestion-marker-deletion.ck-suggestion-marker--active.table {
+	border-color: var(--ck-color-suggestion-marker-deletion-border-active);
+}
+
+.ck-content .ck-suggestion-marker-deletion.ck-suggestion-marker--active.table > figcaption {
+		background-color: var(--ck-color-suggestion-widget-deletion-background-active);
+	}
+
+.ck-content .ck-suggestion-marker-deletion.ck-suggestion-marker--active.table > table > tbody > tr > th {
+			background-color: var(--ck-color-suggestion-widget-th-deletion-background-active);
+			border-color: var(--ck-color-suggestion-marker-deletion-border-active);
+		}
+
+.ck-content .ck-suggestion-marker-deletion.ck-suggestion-marker--active.table > table > thead > tr > th {
+			background-color: var(--ck-color-suggestion-widget-th-deletion-background-active);
+			border-color: var(--ck-color-suggestion-marker-deletion-border-active);
+		}
+
+.ck-content .ck-suggestion-marker-deletion.ck-suggestion-marker--active.table > table > tbody > tr > td {
+			background-color: var(--ck-color-suggestion-widget-deletion-background-active);
+			border-color: var(--ck-color-suggestion-marker-deletion-border-active);
+		}
+
+/*
+ * We need here at least 022 CSS Specificity because of table styles like `.ck-content .table table th { background: ... }
+ * See: https://github.com/ckeditor/ckeditor5-table/blob/master/theme/table.css#L29
+ */
+.ck-content .table th.ck-suggestion-marker-insertion {
+		background-color: var(--ck-color-suggestion-widget-th-insertion-background);
+	}
+.ck-content .table th.ck-suggestion-marker-insertion.ck-suggestion-marker--active {
+			background-color: var(--ck-color-suggestion-widget-th-insertion-background-active);
+		}
+.ck-content .table th.ck-suggestion-marker-deletion {
+		background-color: var(--ck-color-suggestion-widget-th-deletion-background);
+		text-decoration: none;
+	}
+.ck-content .table th.ck-suggestion-marker-deletion.ck-suggestion-marker--active {
+			background-color: var(--ck-color-suggestion-widget-th-deletion-background-active);
+		}
+.ck-content .table td.ck-suggestion-marker-insertion {
+		background-color: var(--ck-color-suggestion-widget-insertion-background);
+	}
+.ck-content .table td.ck-suggestion-marker-insertion.ck-suggestion-marker--active {
+			background-color: var(--ck-color-suggestion-widget-insertion-background-active);
+		}
+.ck-content .table td.ck-suggestion-marker-deletion {
+		background-color: var(--ck-color-suggestion-widget-deletion-background);
+		text-decoration: none;
+	}
+.ck-content .table td.ck-suggestion-marker-deletion.ck-suggestion-marker--active {
+			background-color: var(--ck-color-suggestion-widget-deletion-background-active);
+		}
+.ck-content .table th.ck-suggestion-marker-formatInline,
+	.ck-content .table td.ck-suggestion-marker-formatInline,
+	.ck-content .table th.ck-suggestion-marker-formatBlock,
+	.ck-content .table td.ck-suggestion-marker-formatBlock {
+		background-color: var(--ck-color-suggestion-widget-format-background);
+		box-shadow: none;
+	}
+.ck-content .table th.ck-suggestion-marker-formatInline.ck-suggestion-marker--active, .ck-content .table td.ck-suggestion-marker-formatInline.ck-suggestion-marker--active, .ck-content .table th.ck-suggestion-marker-formatBlock.ck-suggestion-marker--active, .ck-content .table td.ck-suggestion-marker-formatBlock.ck-suggestion-marker--active {
+			background-color: var(--ck-color-suggestion-widget-format-background-active);
+			box-shadow: none;
+		}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+.ck-content pre > code.ck-suggestion-marker-formatBlock {
+	display: block;
+	box-shadow: -7px 0 0 0 hsl(0deg 0% 93%), -10px 0 0 0 var(--ck-color-suggestion-marker-format-border);
+}
+
+.ck-content pre > code.ck-suggestion-marker-formatBlock.ck-suggestion-marker--active {
+		box-shadow: -5px 0 0 0 hsl(0deg 0% 93%), -8px 0 0 0 var(--ck-color-suggestion-marker-format-border-active);
+	}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+:root {
+	--ck-color-comment-marker: hsl(55, 98%, 83%);
+	--ck-color-comment-marker-active: hsl(55, 98%, 68%);
+}
+
+.ck-comment-marker {
+	background: var(--ck-color-comment-marker);
+
+	/* Match size with suggestion markers */
+	border-top: 3px solid transparent;
+	border-bottom: 3px solid transparent;
+
+	/* #152. In the image case, we change marker background to border. */
+}
+
+.ck-comment-marker.ck-widget {
+		background-color: transparent;
+		border: 3px solid var(--ck-color-comment-marker);
+	}
+
+.ck-comment-marker--active {
+	background: var(--ck-color-comment-marker-active);
+
+	/* See #2469. Inactive comment marker inside an active one should be highlighted too. */
+}
+
+.ck-comment-marker--active .ck-comment-marker {
+		background: var(--ck-color-comment-marker-active);
+	}
+
+.ck-comment-marker--active.ck-widget {
+		border-color: var(--ck-color-comment-marker-active);
+
+		/* See #2469. Inactive comment in a widget inside an active comment should not be highlighted. */
+	}
+
+.ck-comment-marker--active.ck-widget .ck-comment-marker {
+			background-color: var(--ck-color-comment-marker);
+		}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+.ck .ck-comments-archive-dropdown.ck-dropdown__panel {
+		z-index: var( --ck-z-panel );
+	}
+
+.ck .ck-comments-archive {
+	width: 400px;
+	max-height: 450px;
+	box-sizing: content-box;
+}
+
+.ck .ck-comments-archive .ck-annotation {
+		animation: none;
+	}
+
+.ck .ck-comments-archive .ck-comments-archive__header, .ck .ck-comments-archive .ck-comments-archive__content {
+		overflow: auto;
+		max-height: 410px;
+		padding: var( --ck-spacing-large );
+	}
+
+.ck .ck-comments-archive .ck-comments-archive__header {
+		max-height: 40px;
+		line-height: var( --ck-font-size-base );
+		font-weight: bold;
+		border-bottom: 1px solid var( --ck-color-toolbar-border );
+	}
+
+.ck .ck-comments-archive .ck-comments-archive__content .ck-annotation-wrapper:not(:last-child) {
+			margin-bottom: var( --ck-spacing-large );
+		}
+
+.ck .ck-comments-archive .ck-comments-archive__info {
+		text-align: center;
+		font-style: italic;
+		color: var( --ck-color-annotation-info );
+	}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+:root {
+	--ck-color-comment-background: hsl(210, 52%, 97%);
+	--ck-color-comment-separator: hsl(210, 52%, 87%);
+	--ck-color-comment-remove-background: var(--ck-color-light-red);
+	--ck-color-comment-input-background: var(--ck-color-comment-background);
+}
+
+.ck .ck-comment__wrapper {
+	font-size: var(--ck-font-size-base);
+	position: relative;
+	outline: 0;
+	transition: all 300ms linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+.ck .ck-comment__wrapper {
+		transition: none;
+}
+	}
+
+.ck .ck-comment__wrapper.ck-comment--remove-confirmation {
+		transform: translate3d( -100%, 0, 0 );
+	}
+
+.ck .ck-comment__wrapper:first-of-type {
+		border-top-right-radius: var(--ck-border-radius);
+		border-top-left-radius: var(--ck-border-radius);
+	}
+
+.ck .ck-comment::after {
+		content: '';
+		display: block;
+		position: absolute;
+		opacity: 1;
+		top: calc( var(--ck-user-avatar-size) + var(--ck-spacing-small) );
+		left: calc(
+			var(--ck-spacing-standard) + ( var(--ck-user-avatar-size) / 2 )
+
+			/* Half width of line. */
+			- 2px
+		);
+		width: 4px;
+		height: 100%;
+		background-color: var(--ck-color-comment-separator);
+	}
+
+.ck .ck-comment--remove {
+	background-color: var(--ck-color-comment-remove-background);
+}
+
+.ck .ck-comment--remove::after {
+		opacity: 0;
+	}
+
+.ck .ck-comment--edit {
+	background-color: var(--ck-color-comment-input-background);
+}
+
+.ck .ck-comment--edit::after {
+		opacity: 0;
+	}
+
+.ck .ck-comment--edit .ck-comment__input-actions {
+		margin-top: var(--ck-spacing-standard);
+	}
+
+.ck .ck-comment__content {
+	word-break: break-word;
+}
+
+.ck .ck-comment--info .ck-comment__content {
+		font-style: italic;
+	}
+
+/* Common styles for typography inside comment element and editable input.
+We are styling resetting list-style because of parent <ul> element. */
+.ck .ck-comment p, .ck .ck-comment__input p {
+		margin: 0;
+	}
+.ck .ck-comment ul,
+	.ck .ck-comment__input ul,
+	.ck .ck-comment ol,
+	.ck .ck-comment__input ol {
+		padding-left: 10px;
+		margin-left: 10px;
+	}
+.ck .ck-comment ul, .ck .ck-comment__input ul {
+		list-style: disc;
+		margin-bottom: 5px;
+		margin-top: 0;
+	}
+.ck .ck-comment ul ul, .ck .ck-comment__input ul ul {
+			list-style: circle;
+		}
+.ck .ck-comment ul ul ul, .ck .ck-comment__input ul ul ul {
+				list-style: square;
+			}
+
+.ck .ck-comment__main .ck-comment__input-wrapper {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		transition: all 300ms linear;
+	}
+
+.ck .ck-comment__main .ck-comment__input-wrapper .ck-comment__input {
+			padding: 0;
+		}
+
+.ck .ck-comment__user {
+	/* Display user above vertical line. */
+	z-index: var(--ck-z-default);
+}
+
+/* We need specificity 030 to beat styles in `commentinput.css`. */
+.ck-comment__input-actions .ck.ck-button.ck-comment__input-actions--submit {
+	background: var(--ck-color-base-action);
+	color: hsl(0, 0%, 100%);
+}
+.ck-comment__input-actions .ck.ck-button.ck-comment__input-actions--submit:hover {
+		background: var(--ck-color-button-save);
+	}
+
+.ck-comment__input-actions .ck.ck-button.ck-comment__input-actions--cancel {
+	color: var(--ck-color-text);
+}
+
+.ck .ck-comment__external {
+	font-style: italic;
+	color: var(--ck-color-annotation-info);
+	font-size: var(--ck-font-size-tiny);
+	margin-top: var(--ck-spacing-standard);
+}
+
+.ck .ck-comment .ck-dropdown .ck-dropdown__arrow {
+		display: none;
+	}
+
+.ck .ck-comment .ck-dropdown .ck-list {
+		margin: 0;
+		padding: 0;
+	}
+
+.ck .ck-comment .ck-dropdown .ck-list .ck-list__item {
+			font-size: 1.2em;
+			color: var(--ck-color-base-text);
+			min-width: auto;
+		}
+
+.ck .ck-comment .ck-dropdown .ck-list .ck-list__item .ck-button {
+				color: var(--ck-color-text);
+			}
+
+.ck .ck-comment .ck-dropdown .ck-list .ck-list__item .ck-button__label {
+				margin: 0 var(--ck-spacing-large);
+			}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+:root {
+	--ck-color-thread-remove-background: var(--ck-color-comment-remove-background);
+	--ck-color-comment-count: hsl(210, 52%, 57%);
+
+	--ck-color-thread-header-background: hsl(54, 88%, 93%);
+	--ck-color-thread-header-active-background: hsl(52, 100%, 83%);
+
+	--ck-color-unlinked-background: hsl(0, 0%, 96%);
+	--ck-color-unlinked-active-background: hsl(0, 0%, 92%);
+}
+
+.ck .ck-thread {
+	width: 100%;
+	color: var(--ck-color-base-text);
+	outline: 0;
+	background-color: var(--ck-color-base-background);
+	overflow: hidden;
+	transition: all 300ms ease;
+	border-radius: var(--ck-border-radius);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+.ck .ck-thread {
+		transition: none;
+}
+	}
+
+.ck .ck-thread__header {
+	display: flex;
+	justify-content: space-between;
+	line-height: 1.57;
+	padding: var(--ck-spacing-standard);
+	background-color: var(--ck-color-thread-header-background);
+	font-size: var(--ck-font-size-base);
+}
+
+.ck .ck-thread__header .ck-button {
+		font-size: var(--ck-annotation-button-size);
+	}
+
+.ck .ck-thread__header .ck-context-wrapper {
+		display: inline-flex;
+		width: 100%;
+		min-width: 0;
+		height: 25px;
+		position: relative;
+		padding-right: var(--ck-spacing-large);
+	}
+
+.ck .ck-thread__header .ck-context {
+		display: flex;
+		white-space: nowrap;
+		overflow: hidden;
+		width: 100%;
+		padding: var(--ck-spacing-small) var(--ck-spacing-medium);
+	}
+
+.ck .ck-thread__header .ck-context.ck-context--quotes::after, .ck .ck-thread__header .ck-context.ck-context--quotes::before {
+				display: inline-block;
+				content: '"';
+			}
+
+.ck .ck-thread__header .ck-context .ck-context__type {
+			font-weight: bold;
+			padding-right: var(--ck-spacing-standard);
+		}
+
+.ck .ck-thread__header .ck-context .ck-context__value {
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+.ck .ck-thread__header .ck-context.overlay {
+			display: inline-block;
+			position: absolute;
+			top: 0;
+			z-index: 2;
+
+			background: var(--ck-color-base-background);
+			box-shadow: 0 2px 3px hsla(0, 0%, 100%, 0.2);
+			border-radius: 2px;
+			white-space: normal;
+			box-sizing: border-box;
+		}
+
+.ck .ck-thread__comment-count {
+	/* Make avatar size in the comment smaller than in presence list. */
+	--ck-user-avatar-size: 28px;
+
+	padding-left: calc( var(--ck-user-avatar-size) + var(--ck-spacing-standard) * 2 );
+
+	color: var(--ck-color-comment-count);
+	font-size: var(--ck-font-size-base);
+	font-weight: bold;
+	cursor: pointer;
+
+	/* Keep similar transition like `ck-annotation`. */
+	transition: background-color 300ms ease;
+}
+
+.ck .ck-thread__comment-count::before {
+		content: '\25BC';
+		margin-right: var(--ck-spacing-small);
+	}
+
+.ck .ck-thread--remove .ck-comment {
+		background-color: var(--ck-color-comment-remove-background);
+	}
+
+.ck .ck-thread--remove .ck-thread__input--active {
+		background-color: var(--ck-color-base-background);
+	}
+
+.ck .ck-thread--remove .ck-thread__input--active.ck-thread__input {
+			background-color: var(--ck-color-comment-remove-background);
+		}
+
+.ck .ck-thread--remove .ck-thread__comment-count {
+		background-color: var(--ck-color-comment-remove-background);
+	}
+
+/* Handle visibility of vertical line below avatars. */
+
+.ck .ck-thread--remove .ck-comment__wrapper .ck-comment::after {
+			opacity: 0;
+		}
+
+/* Handle visibility of vertical line below avatars. */
+.ck .ck-thread__comments .ck-comment__wrapper:last-of-type .ck-comment::after {
+			opacity: 0;
+		}
+
+.ck .ck-thread__container {
+	transition: transform 300ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+.ck .ck-thread__container {
+		transition: none;
+}
+	}
+
+.ck .ck-thread__comments {
+	position: relative;
+	z-index: var(--ck-z-default);
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	border-radius: var(--ck-border-radius);
+}
+
+.ck .ck-thread__user {
+	font-size: 0.85em;
+}
+
+.ck .ck-thread__input {
+	/* #1829. Firefox is wrongly rendering flex container width 100% with overflowed (non-spaced) text. */
+	width: calc( 100% - var(--ck-user-avatar-size) );
+	white-space: normal;
+
+	transition: background-color 200ms ease-in-out;
+	border-radius: var(--ck-border-radius);
+
+	/*
+		This is equal to the height of the wrapper when the editor instance is loaded.
+		Editor instance is loaded _after_ the comment view is created,
+		so the min-height is set to avoid jitter.
+	*/
+	min-height: 38px;
+}
+
+.ck .ck-thread--active .ck-comment__options.ck-dropdown {
+		display: block;
+	}
+
+.ck .ck-thread--active .ck-thread__input {
+		display: block;
+		background-color: var(--ck-color-comment-background);
+	}
+
+.ck .ck-thread--active .ck-thread__header {
+		background-color: var(--ck-color-thread-header-active-background);
+	}
+
+.ck .ck-thread--unlinked {
+	--ck-color-comment-box-border: var(--ck-color-base-border);
+
+	--ck-color-thread-header-background: var(--ck-color-unlinked-background);
+	--ck-color-thread-header-active-background: var(--ck-color-unlinked-active-background);
+}
+
+.ck .ck-thread--remove-confirmation .ck-thread__container {
+		transform: translate3d( -100%, 0, 0 );
+	}
+
+/* We need specificity 020 to beat .ck.ck-button. */
+.ck.ck-button.ck-thread__remove-confirm-submit {
+	color: var(--ck-color-button-save);
+}
+
+.ck.ck-button.ck-thread__remove-confirm-cancel {
+	color: var(--ck-color-button-cancel);
+}
+
+.ck .ck-thread__remove-confirm {
+	font-size: var(--ck-font-size-base);
+	position: absolute;
+	display: flex;
+	justify-content: flex-start;
+	top: 0;
+	left: 100%;
+	width: 100%;
+	height: 100%;
+	background-color: var(--ck-color-comment-remove-background);
+}
+
+.ck .ck-thread__remove-confirm .ck-thread__remove-confirm-inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding-top: var(--ck-spacing-standard);
+		height: 100%;
+		width: 100%;
+
+		/* Maximum height of confirmation (in case with such long comment). */
+		max-height: 400px;
+	}
+
+.ck .ck-thread__remove-confirm p {
+		font-weight: bold;
+		margin: 0;
+	}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+.ck .ck-comment__input-container {
+	/* Make avatar size in the comment smaller than in presence list. */
+	--ck-user-avatar-size: 28px;
+
+	font-size: var(--ck-font-size-base);
+
+	display: none;
+	padding: var(--ck-spacing-standard);
+	background: var(--ck-color-comment-background);
+}
+
+.ck .ck-comment__input-container--active {
+	display: flex;
+}
+
+.ck .ck-comment__input {
+	padding: var(--ck-spacing-standard);
+
+	/* To keep vertical align with avatar. */
+	padding-top: var(--ck-spacing-medium);
+
+	color: var(--ck-color-base-text);
+	border-width: 0;
+	resize: none;
+	background-color: transparent;
+	transition: color 300ms ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+.ck .ck-comment__input {
+		transition: none;
+}
+	}
+
+.ck .ck-comment__input:focus {
+		outline: none;
+	}
+
+.ck .ck-comment__input .ck-editor__editable_inline {
+		/* Disable default outline and border in editable input. */
+		--ck-focus-ring: none;
+		--ck-inner-shadow: none;
+
+		padding: 0;
+		overflow: visible;
+		border: 0;
+		background-color: transparent;
+		word-break: break-word;
+	}
+
+/* Overwrite default CKEditor 5 margin of editable children.
+See: ckeditor5-theme-lark/theme/ckeditor5-ui/components/editorui/editorui.css. */
+.ck-comment__input-wrapper .ck.ck-editor__editable_inline *:first-child {
+	margin-top: 0;
+}
+.ck-comment__input-wrapper .ck.ck-editor__editable_inline *:last-child {
+	margin-bottom: 0;
+}
+
+.ck .ck-comment__input-actions {
+	width: 100%;
+	text-align: right;
+	display: none;
+}
+
+.ck .ck-comment__input-actions.ck-comment__input-actions--active {
+		display: block;
+	}
+
+.ck .ck-comment__input-actions .ck.ck-button {
+		/* Overwrite CK5 button default styles. */
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		min-height: var(--ck-ui-component-min-height);
+		min-width: 60px;
+		font-size: var(--ck-annotation-button-size);
+		margin-left: var(--ck-spacing-large);
+		padding: 0 var(--ck-spacing-medium);
+	}
+
+.ck .ck-comment__input-actions .ck-button.ck-disabled {
+		opacity: .3;
+	}
+
+.ck .ck-comment__input-textarea {
+	display: block;
+}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+/* Common styles for inline comment and inline suggestion. */
+
+:root {
+	--ck-inline-annotation-container-width: 300px;
+	--ck-inline-annotation-container-max-height: 400px;
+}
+
+.ck.ck-balloon-panel .ck-annotation-wrapper {
+	/* Override default `position: absolute`. */
+	position: static;
+
+	width: var(--ck-inline-annotation-container-width);
+	max-height: var(--ck-inline-annotation-container-max-height);
+
+	overflow-y: auto;
+
+	/* Get rid of scroll chaining. */
+	overscroll-behavior-y: contain;
+
+	/* We need to hide overflow in x-axis to prevent container stretching because of buttons tooltip. */
+	overflow-x: hidden;
+}
+
+.ck.ck-balloon-panel .ck-annotation {
+	/* We don't need fadeInLeft animation for inline annotations. */
+	animation: none;
+}
+
+.ck.ck-balloon-panel .ck-annotation-wrapper * {
+	/* Default `.ck.ck-reset_all *` has `white-space: nowrap` and display content in one line. */
+	white-space: normal;
+}
+
+/* Because `.ck.ck-reset_all *` is overriding default font property. */
+.ck.ck-balloon-panel .ck-annotation-wrapper strong {
+	font-weight: bold;
+}
+
+.ck.ck-balloon-panel .ck-annotation-wrapper i {
+	font-style: italic;
+}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+:root {
+	--ck-color-annotation-wrapper-background: hsl(0, 0%, 100%);
+	--ck-color-annotation-wrapper-drop-shadow: 0 1px 1px 1px hsl(0, 0%, 90%);
+}
+
+.ck.ck-sidebar {
+	position: relative;
+	transition: min-height 250ms ease;
+	outline: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+.ck.ck-sidebar {
+		transition: none;
+}
+	}
+
+.ck-sidebar-item {
+	position: absolute;
+	width: 100%;
+	transition: top 300ms ease, box-shadow 300ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+.ck-sidebar-item {
+		transition: none;
+}
+	}
+
+.ck-sidebar-item--no-animation {
+	transition: top 0s ease !important;
+}
+
+.ck.ck-annotation-wrapper {
+	outline: 0;
+	border-radius: var(--ck-border-radius);
+	background: var(--ck-color-annotation-wrapper-background);
+	box-shadow: var(--ck-color-annotation-wrapper-drop-shadow);
+}
+
+.ck.ck-annotation-wrapper--active .ck-annotation__actions, .ck.ck-annotation-wrapper:hover .ck-annotation__actions {
+		opacity: 1;
+	}
+
+.ck.ck-annotation-wrapper--active .ck-annotation__actions .ck-comment--resolve, .ck.ck-annotation-wrapper:hover .ck-annotation__actions .ck-comment--resolve {
+			color: var(--ck-color-button-save);
+		}
+
+.ck.ck-annotation-wrapper--active .ck-suggestion--accept, .ck.ck-annotation-wrapper:hover .ck-suggestion--accept {
+		color: var(--ck-color-button-save)
+	}
+
+.ck.ck-annotation-wrapper--active .ck-suggestion--discard, .ck.ck-annotation-wrapper:hover .ck-suggestion--discard {
+		color: var(--ck-color-button-cancel)
+	}
+
+/* Handle case where annotation is inactive and users hover them. */
+.ck.ck-annotation-wrapper:not(.ck-annotation-wrapper--active):hover {
+	box-shadow: var(--ck-drop-shadow);
+}
+
+.ck.ck-annotation-wrapper--active {
+	box-shadow: var(--ck-drop-shadow-active);
+}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+:root {
+	--ck-annotation-counter-icon-size: 16px;
+	--ck-annotation-counter-number-size: 10px;
+	--ck-color-annotation-counter-comment: hsl(55, 98%, 48%);
+	--ck-color-annotation-counter-suggestion-insertion: hsl(128, 62%, 60%);
+	--ck-color-annotation-counter-suggestion-deletion: hsl(345, 62%, 60%);
+	--ck-color-annotation-counter-suggestion-format: hsl(191, 62%, 60%);
+}
+
+/* Center a annotation counter icon no matter of parent container width. */
+.ck.ck-sidebar--narrow .ck-sidebar-item {
+	display: flex;
+	justify-content: center;
+}
+
+.ck.ck-sidebar--narrow .ck-annotation-counter {
+	/* Let's reduce icon size a bit. */
+	font-size: var(--ck-annotation-counter-icon-size);
+
+	/* Reduce default `.ck-button` min-height which is 2.3em, bigger than current icon. */
+	min-height: unset;
+	padding: 0;
+
+	cursor: pointer;
+	color: hsl(0, 0%, 50%);
+}
+
+.ck.ck-sidebar--narrow .ck-annotation-counter:hover,
+.ck.ck-sidebar--narrow .ck-annotation-counter:focus {
+	background: transparent;
+	box-shadow: none;
+	color: hsl(0, 0%, 30%);
+}
+
+.ck.ck-sidebar--narrow .ck-annotation-counter__badge {
+	border-radius: 50%;
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	background: hsl(0, 0%, 20%);
+	font-weight: bold;
+	color: hsl(0, 0%, 100%);
+	font-size: var(--ck-annotation-counter-number-size);
+	font-family: var(--ck-font-face);
+	right: 0;
+	top: -6px;
+
+	/* Improve visibility of counter number. */
+	text-shadow: -1px 0 2px hsl(0, 0%, 27%), 1px 0 2px hsl(0, 0%, 27%);
+
+	/* Display number perfectly center of circle. */
+	display: flex;
+	justify-content: center;
+
+	/* We can't use here `align-items: center` because we need to edit `line-height` for edit mode case. */
+	line-height: 16px;
+
+	/* To display above comment icon. */
+	z-index: 1;
+}
+
+/* When annotation is in edit mode, center `...` differently. */
+.ck.ck-sidebar--narrow .ck-annotation-counter__badge--edit-mode {
+	line-height: 1;
+}
+
+.ck.ck-sidebar--narrow .ck-annotation-counter__badge--suggestion-insertion,
+.ck.ck-sidebar--narrow .ck-annotation-counter__badge--suggestion-replace {
+	background: var(--ck-color-annotation-counter-suggestion-insertion);
+}
+
+.ck.ck-sidebar--narrow .ck-annotation-counter__badge--suggestion-deletion {
+	background: var(--ck-color-annotation-counter-suggestion-deletion);
+}
+
+.ck.ck-sidebar--narrow .ck-annotation-counter__badge--suggestion-format {
+	background: var(--ck-color-annotation-counter-suggestion-format);
+}
+
+.ck.ck-sidebar--narrow .ck-annotation-counter__badge--comment {
+	background: var(--ck-color-annotation-counter-comment);
+}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+/* Common styles for single comment and single suggestion. */
+:root {
+	--ck-color-annotation-icon: hsl(0, 0%, 50%);
+	--ck-color-annotation-info: hsl(0, 0%, 46%);
+
+	--ck-annotation-button-size: 0.85em;
+}
+
+.ck .ck-annotation {
+	/* Make avatar size in the comment smaller than in presence list. */
+	--ck-user-avatar-size: 28px;
+
+	font-size: var(--ck-font-size-base);
+
+	display: flex;
+	position: relative;
+	animation: fadeInLeft 300ms;
+	transition: background-color 300ms ease;
+	padding: var(--ck-spacing-standard);
+	white-space: normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+.ck .ck-annotation {
+		animation: none;
+		transition: none;
+}
+	}
+
+.ck .ck-annotation .ck-button {
+		/* Overwrite CK5 button default styles. */
+		background-color: transparent;
+		min-width: unset;
+		min-height: unset;
+		cursor: pointer;
+		color: var(--ck-color-annotation-icon);
+		border-radius: var(--ck-border-radius);
+		font-size: var(--ck-annotation-button-size);
+	}
+
+.ck .ck-annotation .ck-user {
+		font-size: 0.85em;
+	}
+
+.ck .ck-annotation__main {
+	display: grid;
+	grid-template-areas:
+		"info actions"
+		"content content";
+	grid-template-columns: minmax(0, 1fr) auto;
+
+	/* #1829. Firefox is wrongly rendering flex container width 100% with overflowed (non-spaced) text. */
+	width: calc( 100% - var(--ck-user-avatar-size) );
+
+	transition: all 200ms ease;
+	border-radius: var(--ck-border-radius);
+	padding-left: var(--ck-spacing-standard);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+.ck .ck-annotation__main {
+		transition: none;
+}
+	}
+
+.ck .ck-annotation__main p {
+	margin: 0;
+
+	/* We need it to prevent `.ck.ck-reset` ovverride. */
+	white-space: normal;
+	font-size: var(--ck-font-size-base);
+
+	/* TODO: refactor this value later. */
+	line-height: 1.5em;
+}
+
+.ck .ck-annotation__user {
+	margin-top: var(--ck-spacing-small);
+}
+
+.ck .ck-annotation__info {
+	grid-area: info;
+
+	display: flex;
+	align-items: center;
+	color: var(--ck-color-annotation-info);
+
+	/* #156. Edit & remove icon are higher than plain text with the same font-size, so we need to take care if icons are hidden. */
+	min-height: 2.4em;
+}
+
+.ck .ck-annotation__info-name,
+.ck .ck-annotation__info-time {
+	font-weight: bold;
+	white-space: nowrap;
+	overflow: hidden;
+
+	/* We need it to prevent `.ck.ck-reset` ovverride. */
+	color: var(--ck-color-annotation-info);
+	font-size: var(--ck-font-size-small);
+}
+
+.ck .ck-annotation__info-name {
+	text-overflow: ellipsis;
+}
+
+.ck .ck-annotation__info-time {
+	flex: 0 0 auto;
+
+	margin: 0 var(--ck-spacing-large);
+}
+
+.ck.ck-balloon-panel .ck-annotation-wrapper .ck-annotation__info-name,
+.ck.ck-balloon-panel .ck-annotation-wrapper .ck-annotation__info-time {
+	white-space: nowrap;
+}
+
+.ck .ck-annotation__actions {
+	grid-area: actions;
+
+	transition: opacity 200ms ease;
+	opacity: 0.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+.ck .ck-annotation__actions {
+		transition: none;
+}
+	}
+
+/* Because of display flex, we need to strech out annotation content to 100%. */
+.ck .ck-annotation__content-wrapper {
+	grid-area: content;
+
+	width: 100%;
+}
+
+@keyframes fadeInLeft {
+	from {
+		transform: translate3d( -5%, 0, 0 );
+		opacity: 0;
+	}
+
+	to {
+		transform: translate3d( 0, 0, 0 );
+		opacity: 1;
+	}
+}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+:root {
+	--ck-document-outline-padding: var(--ck-spacing-large);
+	--ck-document-outline-base-font-size: .875em;
+	--ck-document-outline-placeholder-color: var(--ck-color-engine-placeholder-text);
+
+	--ck-document-outline-indent-level-1: 0;
+	--ck-document-outline-indent-level-2: 1.5em;
+	--ck-document-outline-indent-level-3: 3em;
+	--ck-document-outline-indent-level-4: 4.5em;
+	--ck-document-outline-indent-level-5: 6em;
+	--ck-document-outline-indent-level-6: 7.5em;
+
+	--ck-document-outline-item-padding: var(--ck-spacing-small);
+	--ck-document-outline-item-active-color: var(--ck-color-base-active);
+	--ck-document-outline-item-default-color: hsl(0, 0%, 26%);
+	--ck-document-outline-item-hover-state-color: var(--ck-color-base-text);
+}
+
+.ck.ck-document-outline {
+	padding: var(--ck-document-outline-padding);
+	font-size: var(--ck-document-outline-base-font-size);
+	user-select: none;
+}
+
+.ck.ck-document-outline:empty::before {
+		content: attr(data-document-outline-empty-placeholder);
+		display: inline-block;
+		color: var(--ck-document-outline-placeholder-color);
+	}
+
+.ck.ck-document-outline .ck-document-outline__item {
+		padding: var(--ck-document-outline-item-padding);
+		color: var(--ck-document-outline-item-default-color);
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		cursor: pointer;
+	}
+
+.ck.ck-document-outline .ck-document-outline__item.ck-document-outline__item_empty {
+			font-style: italic;
+		}
+
+.ck.ck-document-outline .ck-document-outline__item.ck-document-outline__item_empty:hover,
+		.ck.ck-document-outline .ck-document-outline__item:hover {
+			color: var(--ck-document-outline-item-hover-state-color);
+			text-decoration: underline;
+		}
+
+.ck.ck-document-outline .ck-document-outline__item.ck-document-outline__item_active {
+			color: var(--ck-document-outline-item-active-color);
+		}
+
+.ck.ck-document-outline .ck-document-outline__item.ck-document-outline__item_level-1 {
+			font-size: 1.1em;
+			font-weight: bold;
+		}
+
+.ck.ck-document-outline[dir="ltr"] .ck-document-outline__item.ck-document-outline__item_level-1 {
+		padding-left: var(--ck-document-outline-indent-level-1);
+	}
+
+.ck.ck-document-outline[dir="ltr"] .ck-document-outline__item.ck-document-outline__item_level-2 {
+		padding-left: var(--ck-document-outline-indent-level-2);
+	}
+
+.ck.ck-document-outline[dir="ltr"] .ck-document-outline__item.ck-document-outline__item_level-3 {
+		padding-left: var(--ck-document-outline-indent-level-3);
+	}
+
+.ck.ck-document-outline[dir="ltr"] .ck-document-outline__item.ck-document-outline__item_level-4 {
+		padding-left: var(--ck-document-outline-indent-level-4);
+	}
+
+.ck.ck-document-outline[dir="ltr"] .ck-document-outline__item.ck-document-outline__item_level-5 {
+		padding-left: var(--ck-document-outline-indent-level-5);
+	}
+
+.ck.ck-document-outline[dir="ltr"] .ck-document-outline__item.ck-document-outline__item_level-6 {
+		padding-left: var(--ck-document-outline-indent-level-6);
+	}
+
+.ck.ck-document-outline[dir="rtl"] .ck-document-outline__item.ck-document-outline__item_level-1 {
+		padding-right: var(--ck-document-outline-indent-level-1);
+	}
+
+.ck.ck-document-outline[dir="rtl"] .ck-document-outline__item.ck-document-outline__item_level-2 {
+		padding-right: var(--ck-document-outline-indent-level-2);
+	}
+
+.ck.ck-document-outline[dir="rtl"] .ck-document-outline__item.ck-document-outline__item_level-3 {
+		padding-right: var(--ck-document-outline-indent-level-3);
+	}
+
+.ck.ck-document-outline[dir="rtl"] .ck-document-outline__item.ck-document-outline__item_level-4 {
+		padding-right: var(--ck-document-outline-indent-level-4);
+	}
+
+.ck.ck-document-outline[dir="rtl"] .ck-document-outline__item.ck-document-outline__item_level-5 {
+		padding-right: var(--ck-document-outline-indent-level-5);
+	}
+
+.ck.ck-document-outline[dir="rtl"] .ck-document-outline__item.ck-document-outline__item_level-6 {
+		padding-right: var(--ck-document-outline-indent-level-6);
+	}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+:root {
+	--ck-table-of-contents-padding: 1em;
+	--ck-table-of-contents-line-height: 1.5;
+	--ck-table-of-contents-items-start-padding: 24px;
+	--ck-table-of-contents-border-color: var(--ck-color-base-border);
+	--ck-table-of-contents-label-background-color: hsl(0, 0%, 46%);
+	--ck-table-of-contents-background-color: var(--ck-color-base-foreground);
+}
+
+.ck-content .table-of-contents {
+		margin: 0.9em auto;
+	}
+
+.ck-content .table-of-contents.table-of-contents_empty {
+			display: none;
+		}
+
+.ck-content .table-of-contents .table-of-contents__placeholder {
+			margin: 0;
+			padding: var(--ck-table-of-contents-padding);
+			font-style: italic;
+		}
+
+.ck-content .table-of-contents > ol {
+			padding: var(--ck-table-of-contents-padding);
+		}
+
+.ck-content .table-of-contents ol {
+			margin: 0;
+			line-height: var(--ck-table-of-contents-line-height);
+			list-style-type: none;
+		}
+
+.ck-content .table-of-contents ol ol {
+				padding-inline-start: var(--ck-table-of-contents-items-start-padding);
+			}
+
+.ck-content .table-of-contents ol li {
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				cursor: default;
+			}
+
+.ck-editor__editable .ck-widget.table-of-contents {
+	position: relative;
+	background-color: var(--ck-table-of-contents-background-color);
+	border: 1px solid var(--ck-table-of-contents-border-color);
+	/* Necessary to render properly next to floated objects, e.g. side image case. */
+	display: flow-root;
+	min-width: 15em;
+}
+
+.ck-editor__editable .ck-widget.table-of-contents[data-table-of-contents-label]::after {
+		content: attr(data-table-of-contents-label);
+
+		position: absolute;
+		top: -1px;
+		right: 10px;
+		padding: var(--ck-spacing-tiny) var(--ck-spacing-medium);
+		background-color: var(--ck-table-of-contents-label-background-color);
+
+		font-size: 10px;
+		font-family: var(--ck-font-face);
+		line-height: 16px;
+		color: hsl(0, 0%, 100%);
+		white-space: nowrap;
+	}
+
+[dir="rtl"] .ck-editor__editable .ck-widget.table-of-contents[data-table-of-contents-label]::after {
+			left: 10px;
+			right: auto;
+	}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+/* Cursor while painting the formatting over an object */
+
+/* & a .ck-widget,
+	& .ck-widget {
+		&,
+		& *:not(.ck-editor__nested-editable *) {
+			cursor: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMSAyMCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjIwIj4KICA8bWFzayBpZD0iYSIgbWFza1VuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeD0iMTMiIHk9IjEiIHdpZHRoPSIxNyIgaGVpZ2h0PSIxOCIgZmlsbD0iIzAwMCI+CiAgICA8cmVjdCBmaWxsPSIjZmZmIiB4PSIxMyIgeT0iMSIgd2lkdGg9IjE3IiBoZWlnaHQ9IjE4Ii8+CiAgICA8cGF0aCBkPSJNMTQgM2ExIDEgMCAwIDEgMS0xaDEwYTEgMSAwIDAgMSAxIDF2MmExIDEgMCAwIDEtMSAxSDE1YTEgMSAwIDAgMS0xLTFWM1oiLz4KICAgIDxwYXRoIGQ9Ik0yNyAzLjI1YTEuNSAxLjUgMCAwIDEgMS41IDEuNXYxLjdhMi4yNSAyLjI1IDAgMCAxLTEuOTMyIDIuMjI2bC00LjQyNC42MzJhLjc1Ljc1IDAgMCAwLS42NDQuNzQzVjExYTEgMSAwIDAgMSAxIDF2NWExIDEgMCAwIDEtMSAxSDIwYTEgMSAwIDAgMS0xLTF2LTVhMSAxIDAgMCAxIDEtMXYtLjk1YTIuMjUgMi4yNSAwIDAgMSAxLjkzMi0yLjIyNmw0LjQyNC0uNjMyQS43NS43NSAwIDAgMCAyNyA2LjQ0OVYzLjI1WiIvPgogIDwvbWFzaz4KICA8cGF0aCBkPSJNMTQgM2ExIDEgMCAwIDEgMS0xaDEwYTEgMSAwIDAgMSAxIDF2MmExIDEgMCAwIDEtMSAxSDE1YTEgMSAwIDAgMS0xLTFWM1oiIGZpbGw9IiMwMDAiLz4KICA8cGF0aCBkPSJNMjcgMy4yNWExLjUgMS41IDAgMCAxIDEuNSAxLjV2MS43YTIuMjUgMi4yNSAwIDAgMS0xLjkzMiAyLjIyNmwtNC40MjQuNjMyYS43NS43NSAwIDAgMC0uNjQ0Ljc0M1YxMWExIDEgMCAwIDEgMSAxdjVhMSAxIDAgMCAxLTEgMUgyMGExIDEgMCAwIDEtMS0xdi01YTEgMSAwIDAgMSAxLTF2LS45NWEyLjI1IDIuMjUgMCAwIDEgMS45MzItMi4yMjZsNC40MjQtLjYzMkEuNzUuNzUgMCAwIDAgMjcgNi40NDlWMy4yNVoiIGZpbGw9IiMwMDAiLz4KICA8cGF0aCBkPSJNMTQgM2ExIDEgMCAwIDEgMS0xaDEwYTEgMSAwIDAgMSAxIDF2MmExIDEgMCAwIDEtMSAxSDE1YTEgMSAwIDAgMS0xLTFWM1oiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyIiBtYXNrPSJ1cmwoI2EpIi8+CiAgPHBhdGggZD0iTTI3IDMuMjVhMS41IDEuNSAwIDAgMSAxLjUgMS41djEuN2EyLjI1IDIuMjUgMCAwIDEtMS45MzIgMi4yMjZsLTQuNDI0LjYzMmEuNzUuNzUgMCAwIDAtLjY0NC43NDNWMTFhMSAxIDAgMCAxIDEgMXY1YTEgMSAwIDAgMS0xIDFIMjBhMSAxIDAgMCAxLTEtMXYtNWExIDEgMCAwIDEgMS0xdi0uOTVhMi4yNSAyLjI1IDAgMCAxIDEuOTMyLTIuMjI2bDQuNDI0LS42MzJBLjc1Ljc1IDAgMCAwIDI3IDYuNDQ5VjMuMjVaIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMiIgbWFzaz0idXJsKCNhKSIvPgogIDxtYXNrIGlkPSJiIiBtYXNrVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4PSIxLjc1IiB5PSIxLjE2NSIgd2lkdGg9IjEyIiBoZWlnaHQ9IjE3IiBmaWxsPSIjMDAwIj4KICAgIDxyZWN0IGZpbGw9IiNmZmYiIHg9IjEuNzUiIHk9IjEuMTY1IiB3aWR0aD0iMTIiIGhlaWdodD0iMTciLz4KICAgIDxwYXRoIGQ9Im0xMi4yNSA5Ljk2LTkuNS03Ljc5NSAyIDEyLjEyNCAyLjM4NC0yLjUzIDIuNzUgNC43NjIgMS43MzItMS0yLjc1LTQuNzYzIDMuMzg0LS43OTlaIi8+CiAgPC9tYXNrPgogIDxwYXRoIGQ9Im0xMi4yNSA5Ljk2LTkuNS03Ljc5NSAyIDEyLjEyNCAyLjM4NC0yLjUzIDIuNzUgNC43NjIgMS43MzItMS0yLjc1LTQuNzYzIDMuMzg0LS43OTlaIiBmaWxsPSIjMDAwIi8+CiAgPHBhdGggZD0ibTEyLjI1IDkuOTYtOS41LTcuNzk1IDIgMTIuMTI0IDIuMzg0LTIuNTMgMi43NSA0Ljc2MiAxLjczMi0xLTIuNzUtNC43NjMgMy4zODQtLjc5OVoiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBtYXNrPSJ1cmwoI2IpIi8+Cjwvc3ZnPgo=) 3 2, default;
+		}
+	} */
+
+/* Cursor while painting the formatting over a text */
+
+.ck.ck-editor__editable_inline.ck-format-painter-active,
+	.ck.ck-editor__editable_inline.ck-format-painter-active a,
+	.ck.ck-editor__editable_inline.ck-format-painter-active .ck-widget .ck-editor__nested-editable,
+	.ck.ck-editor__editable_inline.ck-format-painter-active a .ck-widget .ck-editor__nested-editable {
+		cursor: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMSAyMCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjIwIj4KICA8cGF0aCBkPSJNMTQgM2ExIDEgMCAwIDEgMS0xaDEwYTEgMSAwIDAgMSAxIDF2MmExIDEgMCAwIDEtMSAxSDE1YTEgMSAwIDAgMS0xLTFWM1oiIGZpbGw9IiMwMDAiLz4KICA8cGF0aCBkPSJNMjcgMy4yNWExLjUgMS41IDAgMCAxIDEuNSAxLjV2MS43YTIuMjUgMi4yNSAwIDAgMS0xLjkzMiAyLjIyNmwtNC40MjQuNjMyYS43NS43NSAwIDAgMC0uNjQ0Ljc0M1YxMWExIDEgMCAwIDEgMSAxdjVhMSAxIDAgMCAxLTEgMUgyMGExIDEgMCAwIDEtMS0xdi01YTEgMSAwIDAgMSAxLTF2LS45NWEyLjI1IDIuMjUgMCAwIDEgMS45MzItMi4yMjZsNC40MjQtLjYzMkEuNzUuNzUgMCAwIDAgMjcgNi40NDlWMy4yNVoiIGZpbGw9IiMwMDAiLz4KICA8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTI2Ljg1NSAyLjI1SDI3YTIuNSAyLjUgMCAwIDEgMi41IDIuNXYxLjdhMy4yNSAzLjI1IDAgMCAxLTIuNzkgMy4yMTZsLTQuMjEuNjAyYTIgMiAwIDAgMSAxIDEuNzMydjVhMiAyIDAgMCAxLTIgMkgyMGEyIDIgMCAwIDEtMi0ydi01YTIgMiAwIDAgMSAxLTEuNzMydi0uMjE3QTMuMjUgMy4yNSAwIDAgMSAyMS4xMjkgN0gxNWEyIDIgMCAwIDEtMi0yVjNhMiAyIDAgMCAxIDItMmgxMGEyIDIgMCAwIDEgMS44NTUgMS4yNVpNMjAgMTAuMDVWMTFhMSAxIDAgMCAwLTEgMXY1YTEgMSAwIDAgMCAxIDFoMS41YTEgMSAwIDAgMCAxLTF2LTVhMSAxIDAgMCAwLTEtMXYtLjk1YzAtLjAxNiAwLS4wMzMuMDAyLS4wNWEuNzUuNzUgMCAwIDEgLjY0Mi0uNjkybDQuNDI0LS42MzJBMi4yNSAyLjI1IDAgMCAwIDI4LjUgNi40NVY0Ljc1YTEuNDk2IDEuNDk2IDAgMCAwLTEuNS0xLjV2My4yYS43NS43NSAwIDAgMS0uNjQ0Ljc0MmwtNC40MjQuNjMyQTIuMjUgMi4yNSAwIDAgMCAyMCAxMC4wNVpNMTUgMmExIDEgMCAwIDAtMSAxdjJhMSAxIDAgMCAwIDEgMWgxMGExIDEgMCAwIDAgMS0xVjNhMSAxIDAgMCAwLTEtMUgxNVoiIGZpbGw9IiNmZmYiLz4KICA8cGF0aCBkPSJNMi41IDIuNUEuNS41IDAgMCAxIDMgMmgyLjVhLjUuNSAwIDAgMSAuMzU0LjE0NmwuNjQ2LjY0Ny42NDYtLjY0N0EuNS41IDAgMCAxIDcuNSAySDEwYS41LjUgMCAwIDEgMCAxSDcuNzA3TDcgMy43MDdWMTBoLjVhLjUuNSAwIDAgMSAwIDFIN3Y0Ljc5M2wuNzA3LjcwN0gxMGEuNS41IDAgMCAxIDAgMUg3LjVhLjUuNSAwIDAgMS0uMzU0LS4xNDZsLS42NDYtLjY0Ny0uNjQ2LjY0N2EuNS41IDAgMCAxLS4zNTQuMTQ2SDNhLjUuNSAwIDAgMSAwLTFoMi4yOTNMNiAxNS43OTNWMTFoLS41YS41LjUgMCAwIDEgMC0xSDZWMy43MDdMNS4yOTMgM0gzYS41LjUgMCAwIDEtLjUtLjVaIiBmaWxsPSIjMDAwIi8+CiAgPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Im01Ljc5MyAzLjUtLjUtLjVIM2EuNS41IDAgMCAxIDAtMWgyLjVhLjUuNSAwIDAgMSAuMzU0LjE0NmwuMTQ1LjE0Ni41MDEuNS42NDYtLjY0NkEuNS41IDAgMCAxIDcuNSAySDEwYS41LjUgMCAwIDEgMCAxSDcuNzA3TDcgMy43MDdWMTBoLjVhLjUuNSAwIDAgMSAwIDFIN3Y0Ljc5M2wuNzA3LjcwN0gxMGEuNS41IDAgMCAxIDAgMUg3LjVhLjUuNSAwIDAgMS0uMzU0LS4xNDZsLS42NDYtLjY0Ny0uNS41LS4xNDYuMTQ3YS41LjUgMCAwIDEtLjM1NC4xNDZIM2EuNS41IDAgMCAxIDAtMWgyLjI5M0w2IDE1Ljc5M1YxMWgtLjVhLjUuNSAwIDAgMSAwLTFINlYzLjcwN0w1Ljc5MyAzLjVabS0uOTE0LjVMNSA0LjEyMXY0Ljk2NGExLjUgMS41IDAgMCAwIDAgMi44M3YzLjQ2NGwtLjEyMS4xMjFIM2ExLjUgMS41IDAgMCAwIDAgM2gyLjVhMS41IDEuNSAwIDAgMCAxLS4zODIgMS41IDEuNSAwIDAgMCAxIC4zODJIMTBhMS41IDEuNSAwIDAgMCAwLTNIOC4xMjFMOCAxNS4zNzl2LTMuNDY0YTEuNSAxLjUgMCAwIDAgMC0yLjgzVjQuMTIxTDguMTIxIDRIMTBhMS41IDEuNSAwIDAgMCAwLTNINy41YTEuNSAxLjUgMCAwIDAtMSAuMzgyQTEuNSAxLjUgMCAwIDAgNS41IDFIM2ExLjUgMS41IDAgMSAwIDAgM2gxLjg3OVoiIGZpbGw9IiNmZmYiLz4KPC9zdmc+Cg==) 3 3, text;
+	}
+
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+.ck-content .multi-level-list {
+	list-style: none;
+}
+
+.ck-content .multi-level-list li {
+		position: relative;
+	}
+
+.ck-content .multi-level-list li .multi-level-list__marker {
+			position: absolute;
+			padding-inline-end: 5px;
+			transform: translate(-100%, 0);
+			pointer-events: none;
+
+			/* RTL styles */
+		}
+
+[dir="rtl"] .ck-content .multi-level-list li .multi-level-list__marker {
+				transform: translate(100%, 0);
+		}
+
+/* Do not show list markers as selected. */
+
+.ck-content .multi-level-list li .multi-level-list__marker::selection {
+				background-color: transparent;
+			}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+
+/* When there are no list styles and there is no collapsible. */
+
+
+.ck.ck-multi-level-list-properties.ck-multi-level-list-properties_without-styles {
+		padding: var(--ck-spacing-large);
+	}
+
+
+.ck.ck-multi-level-list-properties.ck-multi-level-list-properties_without-styles > * {
+			min-width: 14em;
+		}
+
+
+.ck.ck-multi-level-list-properties.ck-multi-level-list-properties_without-styles > * + * {
+				margin-top: var(--ck-spacing-standard);
+			}
+
+
+/*
+	* When the numbered list property field (start at) should be displayed,
+	* more horizontal space is needed. Reconfigure the style grid to create that space.
+	*/
+
+
+.ck.ck-multi-level-list-properties.ck-multi-level-list-properties_with-multi-level-properties > .ck-multi-level-list-styles {
+			grid-template-columns: repeat( 4, auto );
+		}
+
+
+/* When list styles are rendered and property fields are in a collapsible. */
+
+
+.ck.ck-multi-level-list-properties.ck-multi-level-list-properties_with-multi-level-properties > .ck-collapsible {
+			border-top: 1px solid var(--ck-color-base-border);
+		}
+
+
+.ck.ck-multi-level-list-properties.ck-multi-level-list-properties_with-multi-level-properties > .ck-collapsible > .ck-collapsible__children > * {
+					width: 100%;
+				}
+
+
+.ck.ck-multi-level-list-properties.ck-multi-level-list-properties_with-multi-level-properties > .ck-collapsible > .ck-collapsible__children > * + * {
+						margin-top: var(--ck-spacing-standard);
+					}
+
+
+.ck.ck-multi-level-list-properties .ck.ck-multi-level-list-properties__start-index .ck-input {
+		min-width: auto;
+		width: 100%;
+	}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+.ck.ck-pagination-view-line {
+	position: absolute;
+	height: 0;
+	border-top: 1px dotted var(--ck-color-pagination-divider);
+	pointer-events: none;
+}
+
+.ck.ck-pagination-view-line::after {
+		content: attr(data-page-number);
+		font-size: 10px;
+		background: hsl(0, 0%, 77%);
+		color: var(--ck-color-base-background);
+		display: inline-block;
+		position: absolute;
+		right: -1px;
+		transform: translateX(100%);
+		min-width: 18px;
+		text-align: center;
+		top: -1px;
+		padding: var(--ck-spacing-tiny) var(--ck-spacing-medium);
+	}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+:root {
+	--ck-color-pagination-divider: hsl(0, 0%, 67%);
+}
+
+/*
+ * Content styles.
+ */
+
+.ck.ck-content:not(.ck-pagination_disabled) .page-break::after {
+			display: none;
+		}
+
+.ck.ck-editor__editable.ck-pagination-view .ck-widget__type-around {
+		display: none;
+	}
+
+.ck.ck-editor__editable.ck-pagination-view .page-break {
+		padding: 0;
+		margin: 0;
+		break-after: column;
+		display: block;
+		height: 0;
+
+	}
+
+.ck.ck-editor__editable.ck-pagination-view .page-break .page-break__label {
+			display: none;
+		}
+
+.ck.ck-editor__editable.ck-pagination-view .page-break::after {
+			display: none;
+		}
+
+.ck.ck-editor__editable.ck-pagination-view .ck-table-column-resizer {
+		display: none;
+	}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+/**
+ * Implements rounded corner interface for .ck-rounded-corners class.
+ *
+ * @see $ck-border-radius
+ */
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+/**
+ * A visual style of focused element's border.
+ */
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+/**
+ * A helper to combine multiple shadows.
+ */
+/**
+ * Gives an element a drop shadow so it looks like a floating panel.
+ */
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+/**
+ * A class which indicates that an element holding it is disabled.
+ */
+
+.ck.ck-page-navigator {
+	padding: 0 var(--ck-spacing-standard);
+	line-height: 1;
+}
+
+.ck.ck-page-navigator > .ck-input-number {
+		width: var(--ck-ui-component-min-height);
+		min-width: var(--ck-ui-component-min-height);
+
+		background: transparent;
+		text-align: center;
+
+		/* Disable native increment/decrement buttons (FF). */
+		-moz-appearance: textfield;
+
+		/* Disable native increment/decrement buttons (Webkit). */
+	}
+
+.ck.ck-page-navigator > .ck-input-number::-webkit-inner-spin-button,
+		.ck.ck-page-navigator > .ck-input-number::-webkit-outer-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+
+.ck.ck-page-navigator > .ck-input-number:not(:focus) {
+			border: 1px solid transparent;
+			border-bottom: 1px solid var(--ck-color-base-border);
+		}
+
+.ck.ck-page-navigator > span::before {
+		content: '/';
+		margin: 0 var(--ck-spacing-standard);
+	}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+.ck .ck-user__marker-dot {
+	/* If you are looking for handling dot color, see `usercolors.css` in the `ckeditor5-collaboration-core`. */
+	display: block;
+	position: absolute;
+	left: 50%;
+
+	/* #124 */
+	top: calc( ( var(--ck-user-dot-size) / 2 ) * -1 );
+
+	width: var(--ck-user-dot-size);
+	height: var(--ck-user-dot-size);
+	border-radius: 50%;
+	transform: translate( -50%, -50% );
+	cursor: default;
+}
+
+.ck .ck-user__marker-tooltip {
+	display: none;
+	position: absolute;
+
+	/* It should be one font in case of inheriting (example: headers sans-serif and content serif type). */
+	font-family: Georgia, sans-serif;
+
+	/* It should be px value in case of inheriting (like headers example). */
+	font-size: var(--ck-font-size-base);
+
+	/* In case of inheriting from various components. */
+	line-height: 1;
+	font-style: initial;
+	font-weight: initial;
+
+	left: 0;
+	opacity: 0;
+
+	/* Moving up this element with 100% of its height. */
+	top: -20px;
+
+	padding: var(--ck-spacing-small);
+	color: hsl(0, 0%, 100%);
+	white-space: nowrap;
+	transition: opacity 200ms linear, transform 300ms ease-in-out;
+	z-index: 99999;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+.ck .ck-user__marker-tooltip {
+		transition: none;
+}
+	}
+
+.ck .ck-user__marker-line {
+	/* If you are looking for handling line color, see `usercolors.css` in the `ckeditor5-collaboration-core`. */
+	position: absolute;
+	bottom: 0;
+	height: 100%;
+	width: 0;
+}
+
+.ck .ck-user__marker {
+	display: inline;
+	position: relative;
+	cursor: default;
+}
+
+.ck .ck-user__marker.ck-user__marker_hovered .ck-user__marker-dot {
+		width: 0;
+	}
+
+.ck .ck-user__marker.ck-user__marker_hovered .ck-user__marker-tooltip {
+		display: block;
+		opacity: 1;
+		animation: fadeInLeft 300ms ease-in-out;
+	}
+
+.ck .ck-placeholder .ck-user__marker {
+		display: none;
+	}
+
+@media (prefers-reduced-motion: reduce) {
+		.ck .ck-user__marker, .ck .ck-user__marker *, .ck .ck-user__marker::after {
+			animation: none !important;
+		}
+}
+
+@keyframes fadeInLeft {
+	from {
+		opacity: 0;
+		transform: translateX( -10px );
+	}
+	to {
+		opacity: 1;
+		transform: translateX( 0 );
+	}
+}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+/**
+ * Makes element unselectable.
+ */
+
+.ck.ck-balloon-panel.ck-tooltip {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	z-index: calc( var(--ck-z-dialog) + 100 );
+}
+
+:root {
+	--ck-color-presence-list-dropdown-background: hsl(0, 0%, 100%);
+	--ck-color-presence-list-dropdown-arrow-border: hsl(0, 0%, 92%);
+
+	--ck-presence-list-dropdown-list-max-width: 250px;
+	--ck-presence-list-dropdown-list-min-width: 180px;
+
+	--ck-presence-list-users-tooltip-max-width: 120px;
+	--ck-presence-list-users-tooltip-min-width: 25px;
+}
+
+.ck.ck-presence-list {
+	display: flex;
+	align-items: center;
+	margin-right: var(--ck-spacing-standard);
+	transition: margin-right 200ms ease-in-out;
+	font-size: var(--ck-font-size-base);
+}
+
+.ck.ck-presence-list * {
+		box-sizing: border-box;
+	}
+
+.ck.ck-presence-list__list {
+	display: flex;
+
+	/* Taking care about margin animation in collapsed mode. */
+	justify-content: flex-end;
+}
+
+.ck.ck-presence-list__counter {
+	color: var(--ck-color-base-text);
+	margin-right: var(--ck-spacing-large);
+}
+
+.ck.ck-presence-list__counter--hidden {
+	display: none;
+}
+
+.ck.ck-presence-list__list-item {
+	/**
+	 * Reset default CK5 button styles - `.ck-reset__all *`.
+	 * Reset default user agent button stylesheet too.
+	 */
+	font: inherit;
+	color: inherit;
+	border: 0;
+	padding: 0;
+	outline: none;
+	background: none;
+
+	position: relative;
+	margin-left: var(--ck-spacing-standard);
+}
+
+.ck.ck-presence-list__list-item:last-child {
+		order: -1;
+		margin-left: 0;
+	}
+
+.ck.ck-tooltip.ck-presence-list__list-item__tooltip > .ck-tooltip__text {
+		display: inline-block;
+		max-width: var(--ck-presence-list-users-tooltip-max-width);
+		overflow: hidden;
+		text-align: center;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+.ck.ck-presence-list__marker {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 3px;
+	margin-top: 3px;
+}
+
+/**
+ * Add better UX behavior of button to the `clickable` elements.
+ * We need to create stronger specificity than `.ck.ck-reset__all *`.
+ */
+.ck-presence-list__list button.ck-presence-list__list-item *,
+.ck-presence-list__balloon button.ck-presence-list__dropdown-list-item * {
+	cursor: pointer;
+}
+
+.ck.ck-presence-list--collapsed .ck-presence-list__list {
+		/* Because of moving avatars to the right with margin-left we need to set min-width of container. */
+		min-width: calc( var(--ck-user-avatar-size) * 2 );
+	}
+
+.ck.ck-presence-list--collapsed .ck-presence-list__list * {
+			cursor: pointer;
+			transition: all 400ms ease-in-out;
+		}
+
+.ck.ck-presence-list--collapsed .ck.ck-presence-list__list-item {
+		/* Adding extra px to create collapsed effect. */
+		margin-left: calc( var(--ck-user-avatar-size) * -1 + 7px);
+	}
+
+.ck.ck-presence-list--collapsed .ck.ck-presence-list__list-item:last-child {
+			order: unset;
+		}
+
+.ck.ck-presence-list--collapsed .ck.ck-presence-list__list-item:nth-last-child(2) {
+			opacity: .75;
+		}
+
+.ck.ck-presence-list--collapsed .ck.ck-presence-list__list-item:nth-last-child(3) {
+			opacity: .55;
+		}
+
+.ck.ck-presence-list--collapsed .ck.ck-presence-list__list-item:nth-last-child(4) {
+			opacity: .35;
+		}
+
+.ck.ck-presence-list--collapsed .ck.ck-presence-list__list-item:nth-last-child(5) {
+			opacity: .15;
+		}
+
+.ck.ck-presence-list--collapsed .ck.ck-presence-list__list-item:nth-last-child(n+6) {
+			display: none;
+		}
+
+.ck.ck-presence-list__balloon {
+	/* Overwrite arrows background of balloon */
+	--ck-color-panel-border: var(--ck-color-presence-list-dropdown-arrow-border);
+	--ck-color-panel-background: var(--ck-color-presence-list-dropdown-background);
+
+	background-color: var(--ck-color-presence-list-dropdown-background);
+	border: 0;
+	opacity: 1;
+	animation: 300ms fadeIn ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+.ck.ck-presence-list__balloon {
+		animation: none;
+}
+	}
+
+.ck.ck-presence-list__balloon .ck.ck-presence-list__dropdown-list-wrapper {
+		/* Temporary fix, we should rethink max-height of dropdown. */
+		max-height: 80vh;
+
+		min-width: var(--ck-presence-list-dropdown-list-min-width);
+		max-width: var(--ck-presence-list-dropdown-list-max-width);
+		overflow-y: auto;
+		overflow-x: hidden;
+		border-radius: var(--ck-border-radius);
+	}
+
+.ck.ck-presence-list__balloon .ck.ck-presence-list__dropdown-list-item {
+		/**
+		 * Reset default CK5 button styles - `.ck-reset__all *`.
+		 * Reset default user agent button stylesheet too.
+		 */
+		font: inherit;
+		color: inherit;
+		outline: none;
+		border: 0;
+		background: none;
+
+		display: flex;
+		align-items: center;
+		position: relative;
+		padding: var(--ck-spacing-standard);
+	}
+
+.ck.ck-presence-list__balloon .ck.ck-presence-list__dropdown-list-item:first-of-type .ck-presence-list__marker {
+				border-top-left-radius: var(--ck-border-radius);
+			}
+
+.ck.ck-presence-list__balloon .ck.ck-presence-list__dropdown-list-item:last-of-type .ck-presence-list__marker {
+				border-bottom-left-radius: var(--ck-border-radius);
+			}
+
+.ck.ck-presence-list__balloon .ck.ck-presence-list__dropdown-list .ck-user__full-name {
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			color: var(--ck-color-base-text);
+			margin-left: var(--ck-spacing-standard);
+		}
+
+.ck.ck-presence-list__balloon .ck.ck-presence-list__dropdown-list .ck.ck-presence-list__marker {
+			position: absolute;
+			left: 0;
+			margin: 0;
+			height: 100%;
+			width: 3px;
+		}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+.ck.ck-editor {
+	/* All the elements within `.ck-editor` are positioned relatively to it.
+	 If any element needs to be positioned with respect to the <body>, etc.,
+	 it must land outside of the `.ck-editor` in DOM. */
+	position: relative;
+}
+
+.ck.ck-editor .ck-editor__top .ck-sticky-panel .ck-toolbar {
+		/* https://github.com/ckeditor/ckeditor5-editor-classic/issues/62 */
+		z-index: var(--ck-z-panel);
+	}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+.ck {
+	--ck-revision-history-loading-overlay-transition-duration: .2s;
+	--ck-revision-history-loading-overlay-transition-delay: 0s;
+	--ck-revision-history-loading-overlay-spinner-rotation-duration: 1s;
+	--ck-revision-history-loading-overlay-spinner-size: 60px;
+	--ck-revision-history-loading-overlay-visible-background: hsla(0, 0%, 100%, 1);
+}
+
+.ck.ck-editor__editable::before, .ck.ck-editor__editable::after {
+		visibility: hidden;
+		transition: opacity var(--ck-revision-history-loading-overlay-transition-duration) ease;
+		opacity: 0;
+		content: '';
+		position: absolute;
+		transition-delay: 0;
+	}
+
+@media (prefers-reduced-motion: reduce) {
+
+.ck.ck-editor__editable::before, .ck.ck-editor__editable::after {
+			transition: none;
+	}
+		}
+
+.ck.ck-editor__editable::before {
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: var(--ck-revision-history-loading-overlay-visible-background);
+		z-index: var(--ck-z-default);
+	}
+
+.ck.ck-editor__editable::after {
+		box-sizing: border-box;
+		top: 50%;
+		left: 50%;
+		width: var(--ck-revision-history-loading-overlay-spinner-size);
+		height: var(--ck-revision-history-loading-overlay-spinner-size);
+		transform: translate(-50%, -50%);
+		border-radius: 50%;
+		border-top: 3px solid var(--ck-color-base-text);
+		border-right: 3px solid transparent;
+		animation: ck-revision-history-spinner-animation var(--ck-revision-history-loading-overlay-spinner-rotation-duration) linear infinite;
+		z-index: var(--ck-z-default);
+	}
+
+.ck.ck-editor__editable.ck-editor__editable__loading-overlay, .ck.ck-editor__editable.ck-editor__editable__overlay {
+		position: relative;
+		min-height: calc(var(--ck-revision-history-loading-overlay-spinner-size) + 2 * var(--ck-spacing-large));
+	}
+
+.ck.ck-editor__editable.ck-editor__editable__loading-overlay::before, .ck.ck-editor__editable.ck-editor__editable__overlay::before, .ck.ck-editor__editable.ck-editor__editable__loading-overlay::after, .ck.ck-editor__editable.ck-editor__editable__overlay::after {
+			visibility: visible;
+			opacity: .8;
+			transition-delay: var(--ck-revision-history-loading-overlay-transition-delay);
+		}
+
+.ck.ck-editor__editable.ck-editor__editable__overlay::after {
+			visibility: hidden;
+		}
+
+@keyframes ck-revision-history-spinner-animation {
+	/* Safari needs this 0deg step. */
+	from {
+		transform: translate(-50%, -50%) rotate(0deg);
+	}
+
+	to {
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
+}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+.ck.ck-revision-history-save-revision-form {
+	display: flex;
+	align-items: flex-start;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	width: 400px;
+}
+
+.ck.ck-revision-history-save-revision-form .ck-labeled-field-view {
+		width: 100%;
+	}
+
+.ck.ck-revision-history-save-revision-form .ck-label {
+		display: none;
+	}
+
+.ck.ck-revision-history-save-revision-form .ck-input {
+		width: 100%;
+	}
+
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+.ck-vertical-form .ck-button::after {
+		content: "";
+		width: 0;
+		position: absolute;
+		right: -1px;
+		top: -1px;
+		bottom: -1px;
+		z-index: 1;
+	}
+
+.ck-vertical-form .ck-button:focus::after {
+		display: none;
+	}
+
+@media screen and (max-width: 600px) {
+			.ck.ck-responsive-form .ck-button::after {
+				content: "";
+				width: 0;
+				position: absolute;
+				right: -1px;
+				top: -1px;
+				bottom: -1px;
+				z-index: 1;
+			}
+
+			.ck.ck-responsive-form .ck-button:focus::after {
+				display: none;
+			}
+	}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+.ck.ck-revision-history-sidebar__revision-name {
+	display: block;
+	font-size: 1.2em;
+	font-weight: bold;
+	position: relative;
+	left: calc(-1 * var(--ck-spacing-small));
+	margin-right: 30px;
+}
+
+.ck.ck-revision-history-sidebar__revision-name > .ck-labeled-field-view__input-wrapper > .ck-label {
+			display: none;
+		}
+
+.ck.ck-revision-history-sidebar__revision-name > .ck-labeled-field-view__input-wrapper > .ck-input {
+			padding: var(--ck-spacing-tiny) var(--ck-spacing-small);
+			min-height: auto;
+			color: inherit;
+			font-family: inherit;
+			font-weight: bold;
+			font-size: var(--ck-font-size-normal);
+			min-width: auto;
+			width: 100%;
+			border-radius: var(--ck-border-radius);
+			transition: var(--ck-revision-history-revision-transitions);
+			background: transparent;
+			text-overflow: ellipsis;
+		}
+
+@media (prefers-reduced-motion: reduce) {
+
+.ck.ck-revision-history-sidebar__revision-name > .ck-labeled-field-view__input-wrapper > .ck-input {
+				transition: none;
+		}
+			}
+
+.ck.ck-revision-history-sidebar__revision-name > .ck-labeled-field-view__input-wrapper > .ck-input, .ck.ck-revision-history-sidebar__revision-name > .ck-labeled-field-view__input-wrapper > .ck-input:focus, .ck.ck-revision-history-sidebar__revision-name > .ck-labeled-field-view__input-wrapper > .ck-input[readonly] {
+				background: transparent;
+			}
+
+.ck.ck-revision-history-sidebar__revision-name > .ck-labeled-field-view__input-wrapper > .ck-input:not(.ck-input_focused) {
+				/* Only when the input is focused, it should look like an input. By default, it should not be obvious
+				that revision names are inputs. */
+				border-color: transparent;
+			}
+
+.ck.ck-revision-history-sidebar__revision-name > .ck-labeled-field-view__input-wrapper > .ck-input::placeholder {
+				/* The placeholder should be transparent to the users. When there is no name (whis is not mandatory),
+				the date is displayed instead of a name and it should look like this is normal. */
+				color: inherit;
+			}
+
+/* Don't put the selection in the revision name when clicking an unselected revision. This is annoying. */
+
+.ck.ck-revision-history-sidebar__revision-name > .ck-labeled-field-view__input-wrapper > .ck-input[readonly] {
+				pointer-events: none;
+			}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+.ck.ck-revision-history-sidebar__revision-author {
+	display: block;
+	position: relative;
+	transition: var(--ck-revision-history-revision-transitions);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+.ck.ck-revision-history-sidebar__revision-author {
+		transition: none;
+}
+	}
+
+.ck.ck-revision-history-sidebar__revision-author .ck-revision-history-sidebar__revision-author__name {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		width: 100%;
+		white-space: nowrap;
+		display: block;
+		font-weight: bold;
+	}
+
+.ck.ck-revision-history-sidebar__revision-author .ck-icon {
+		position: absolute;
+		left: calc(-1 * var(--ck-revision-history-revision-author-icon-offset));
+		top: 3px;
+
+		width: 11px;
+		height: 10px;
+	}
+
+.ck.ck-revision-history-sidebar__revision-author:not(:first-of-type) .ck-icon {
+		display: none;
+	}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+.ck.ck-revision-history-sidebar__revision .ck-revision-history-sidebar__revision__actions {
+			display: none;
+			position: absolute;
+			top: var(--ck-spacing-small);
+			right: var(--ck-spacing-small);
+		}
+
+.ck.ck-revision-history-sidebar__revision .ck-revision-history-sidebar__revision__actions .ck-dropdown__button {
+				min-width: unset;
+				min-height: unset;
+			}
+
+.ck.ck-revision-history-sidebar__revision .ck-revision-history-sidebar__revision__actions .ck-dropdown__button .ck-button__icon {
+					transform: scale( .7 );
+				}
+
+.ck.ck-revision-history-sidebar__revision .ck-revision-history-sidebar__revision__actions .ck-dropdown__arrow {
+				display: none;
+			}
+
+.ck.ck-revision-history-sidebar__revision .ck-revision-history-sidebar__revision__actions .ck-list__item__danger {
+				color: var(--ck-color-button-cancel);
+			}
+
+.ck.ck-revision-history-sidebar__revision.ck-revision-history-sidebar__revision_selected .ck-revision-history-sidebar__revision__actions .ck-dropdown__button {
+					color: var(--ck-color-base-background);
+				}
+
+.ck.ck-revision-history-sidebar__revision.ck-revision-history-sidebar__revision_selected .ck-revision-history-sidebar__revision__actions .ck-dropdown__button:hover,
+					.ck.ck-revision-history-sidebar__revision.ck-revision-history-sidebar__revision_selected .ck-revision-history-sidebar__revision__actions .ck-dropdown__button.ck-on {
+						background: var(--ck-color-base-active-focus);
+					}
+
+.ck.ck-revision-history-sidebar__revision.ck-revision-history-sidebar__revision_selected .ck-revision-history-sidebar__revision__actions .ck-dropdown__button:hover:hover, .ck.ck-revision-history-sidebar__revision.ck-revision-history-sidebar__revision_selected .ck-revision-history-sidebar__revision__actions .ck-dropdown__button.ck-on:hover {
+							filter: brightness(95%);
+						}
+
+/* stylelint-disable no-descending-specificity */
+
+.ck.ck-revision-history-sidebar__revision.ck-revision-history-sidebar__revision_highlighted .ck-revision-history-sidebar__revision__actions .ck-dropdown__button:hover,
+					.ck.ck-revision-history-sidebar__revision.ck-revision-history-sidebar__revision_highlighted .ck-revision-history-sidebar__revision__actions .ck-dropdown__button.ck-on {
+						background: var(--ck-revision-history-revision-highlighted-background-color-hover);
+					}
+
+.ck.ck-revision-history-sidebar__revision.ck-revision-history-sidebar__revision_highlighted .ck-revision-history-sidebar__revision__actions .ck-dropdown__button:hover:hover, .ck.ck-revision-history-sidebar__revision.ck-revision-history-sidebar__revision_highlighted .ck-revision-history-sidebar__revision__actions .ck-dropdown__button.ck-on:hover {
+							filter: brightness(95%);
+						}
+
+/* stylelint-enable no-descending-specificity */
+
+.ck.ck-revision-history-sidebar__revision:hover:not(.ck-disabled) .ck-revision-history-sidebar__revision__actions,
+		.ck.ck-revision-history-sidebar__revision:not(.ck-disabled) .ck-revision-history-sidebar__revision__actions.ck-on {
+			display: block;
+		}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+.ck {
+	--ck-revision-history-revision-background-color: var(--ck-color-base-background);
+	--ck-revision-history-revision-border-color: hsl(213deg 20% 35%);
+	--ck-revision-history-revision-box-shadow: 0 1px 1px 1px hsl(0deg 0% 90%);
+	--ck-revision-history-revision-author-icon-offset: 20px;
+	--ck-revision-history-revision-transitions: background 100ms ease-in, border 100ms ease-in;
+	--ck-revision-history-revision-selected-text-color: var(--ck-color-base-background);
+	--ck-revision-history-revision-selected-input-text-color-empty: var(--ck-color-base-background);
+	--ck-revision-history-revision-selected-background-color: var(--ck-color-base-active);
+	--ck-revision-history-revision-highlighted-background-color: hsl(208deg 100% 94%);
+	--ck-revision-history-revision-highlighted-background-color-hover: hsl(208deg 100% 90%);
+	--ck-revision-history-revision-delete-confirmation-background: hsl(0deg 100% 90%);
+	--ck-revision-history-revision-delete-confirmation-active-button-background: hsl(0deg 100% 85%);
+}
+
+.ck.ck-revision-history-sidebar__revision-wrapper .ck-revision-history-sidebar__revision {
+		position: relative;
+		display: block;
+		background: var(--ck-revision-history-revision-background-color);
+
+		padding: var(--ck-spacing-large) calc(2 * var(--ck-spacing-standard));
+		border-radius: var(--ck-border-radius);
+		border-left: 3px solid var(--ck-revision-history-revision-border-color);
+		box-shadow: var(--ck-revision-history-revision-box-shadow);
+		width: 100%;
+		/*transition: var(--ck-revision-history-revision-transitions), transform .3s ease-in-out;*/
+		transition: transform .3s ease;
+	}
+
+@media (prefers-reduced-motion: reduce) {
+
+.ck.ck-revision-history-sidebar__revision-wrapper .ck-revision-history-sidebar__revision {
+			transition: none;
+	}
+		}
+
+.ck.ck-revision-history-sidebar__revision-wrapper .ck-revision-history-sidebar__revision:last-child {
+			margin-bottom: 0;
+		}
+
+.ck.ck-revision-history-sidebar__revision-wrapper .ck-revision-history-sidebar__revision .ck-revision-history-sidebar__revision__date {
+			display: block;
+			font-size: var(--ck-font-size-small);
+			font-weight: bold;
+			opacity: .8;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			width: 100%;
+			white-space: nowrap;
+			/*transition: var(--ck-revision-history-revision-transitions);*/
+		}
+
+.ck.ck-revision-history-sidebar__revision-wrapper .ck-revision-history-sidebar__revision .ck-revision-history-sidebar__revision__controls-wrapper {
+			display: flex;
+			flex-direction: row;
+			align-items: flex-start;
+			margin: var(--ck-spacing-standard) 0 0;
+		}
+
+.ck.ck-revision-history-sidebar__revision-wrapper .ck-revision-history-sidebar__revision .ck-revision-history-sidebar__revision-authors {
+			padding: 0;
+			margin: 0 0 0 var(--ck-revision-history-revision-author-icon-offset);
+			flex: 0 1 auto;
+			min-width: 0;
+		}
+
+.ck.ck-revision-history-sidebar__revision-wrapper .ck-revision-history-sidebar__revision.ck-revision-history-sidebar__revision_selected,
+		.ck.ck-revision-history-sidebar__revision-wrapper .ck-revision-history-sidebar__revision.ck-revision-history-sidebar__revision_highlighted {
+			border-left-color: transparent;
+			transform: translateX(calc(-1 * var(--ck-revision-history-sidebar-timeline-padding)));
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+
+.ck.ck-revision-history-sidebar__revision-wrapper .ck-revision-history-sidebar__revision.ck-revision-history-sidebar__revision_selected {
+			background: var(--ck-revision-history-revision-selected-background-color);
+			color: var(--ck-revision-history-revision-selected-text-color);
+		}
+
+.ck.ck-revision-history-sidebar__revision-wrapper .ck-revision-history-sidebar__revision.ck-revision-history-sidebar__revision_selected .ck-revision-history-sidebar__revision-name .ck-input {
+				color: var(--ck-revision-history-revision-selected-text-color);
+
+				/* The placeholder displays the date but without a different opacity it would not be unclear
+				whether this is an actual input value or not */
+			}
+
+.ck.ck-revision-history-sidebar__revision-wrapper .ck-revision-history-sidebar__revision.ck-revision-history-sidebar__revision_selected .ck-revision-history-sidebar__revision-name .ck-input.ck-input-text_empty::placeholder {
+					opacity: .7;
+				}
+
+.ck.ck-revision-history-sidebar__revision-wrapper .ck-revision-history-sidebar__revision.ck-revision-history-sidebar__revision_highlighted {
+			background: var(--ck-revision-history-revision-highlighted-background-color);
+		}
+
+.ck.ck-revision-history-sidebar__revision-wrapper .ck-revision-history-sidebar__revision.ck-revision-history-sidebar__actions_dropdown_open {
+			z-index: var(--ck-z-default);
+		}
+
+/* Slide the revision to the left when the delete confirmation prompt shows up. */
+
+.ck.ck-revision-history-sidebar__revision-wrapper.ck-revision-history-sidebar__revision-wrapper_confirmation_visible .ck-revision-history-sidebar__revision {
+			box-shadow: none;
+			position: relative;
+			transform: translate3d( -100%, 0, 0 );
+		}
+
+.ck.ck-revision-history-sidebar__revision-wrapper.ck-revision-history-sidebar__revision-wrapper_confirmation_visible .ck-revision-history-sidebar__revision, .ck.ck-revision-history-sidebar__revision-wrapper.ck-revision-history-sidebar__revision-wrapper_confirmation_visible .ck-revision-history-sidebar__revision * {
+				--ck-revision-history-revision-background-color: transparent;
+				--ck-revision-history-revision-selected-background-color: transparent;
+				--ck-revision-history-revision-highlighted-background-color: transparent;
+			}
+
+/* A confirmation that shows up when attempting to delete a revision */
+
+.ck.ck-revision-history-sidebar__revision-wrapper .ck-thread__remove-confirm {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: center;
+
+		position: absolute;
+		top: 0;
+		left: 100%;
+		width: 100%;
+		height: 100%;
+
+		border-radius: var(--ck-border-radius);
+		box-shadow: var(--ck-revision-history-revision-box-shadow);
+		background: var(--ck-revision-history-revision-delete-confirmation-background);
+		user-select: none;
+	}
+
+.ck.ck-revision-history-sidebar__revision-wrapper .ck-thread__remove-confirm .ck-thread__remove-confirm-inner {
+			text-align: center;
+			margin-top: var(--ck-spacing-small);
+
+			/* Confirmation message */
+		}
+
+.ck.ck-revision-history-sidebar__revision-wrapper .ck-thread__remove-confirm .ck-thread__remove-confirm-inner p {
+				margin: 0;
+				font-weight: bold;
+				color: var(--ck-color-text);
+			}
+
+/* Confirmation buttons */
+
+.ck.ck-revision-history-sidebar__revision-wrapper .ck-thread__remove-confirm .ck-thread__remove-confirm-inner .ck-thread__remove-confirm-actions {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-evenly;
+			}
+
+.ck.ck-revision-history-sidebar__revision-wrapper .ck-thread__remove-confirm .ck-thread__remove-confirm-inner .ck-thread__remove-confirm-actions .ck.ck-button:hover, .ck.ck-revision-history-sidebar__revision-wrapper .ck-thread__remove-confirm .ck-thread__remove-confirm-inner .ck-thread__remove-confirm-actions .ck.ck-button:focus, .ck.ck-revision-history-sidebar__revision-wrapper .ck-thread__remove-confirm .ck-thread__remove-confirm-inner .ck-thread__remove-confirm-actions .ck.ck-button:active {
+						background: var(--ck-revision-history-revision-delete-confirmation-active-button-background);
+					}
+
+.ck.ck-revision-history-sidebar__revision-wrapper .ck-thread__remove-confirm .ck-thread__remove-confirm-inner .ck-thread__remove-confirm-actions .ck.ck-button.ck-thread__remove-confirm-submit {
+						color: var(--ck-color-button-save);
+					}
+
+.ck.ck-revision-history-sidebar__revision-wrapper .ck-thread__remove-confirm .ck-thread__remove-confirm-inner .ck-thread__remove-confirm-actions .ck.ck-button.ck-thread__remove-confirm-cancel {
+						color: var(--ck-color-button-cancel);
+					}
+
+.ck.ck-revision-history-sidebar__revision-wrapper .ck-revision-history-sidebar__subrevisions {
+		margin-left: var(--ck-spacing-large);
+	}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+.ck {
+	--ck-revision-history-sidebar-revision-vertical-spacing: calc(2 * var(--ck-spacing-standard));
+}
+
+.ck.ck-revision-history-sidebar__time-period {
+	width: 100%;
+}
+
+.ck.ck-revision-history-sidebar__time-period .ck-revision-history-sidebar__time-period__label {
+		background: var(--ck-revision-history-sidebar-period-background);
+		font-size: 9px;
+		font-weight: bold;
+		padding: var(--ck-spacing-tiny) var(--ck-spacing-standard);
+		border-radius: var(--ck-border-radius);
+		color: var(--ck-color-base-background);
+		text-transform: uppercase;
+	}
+
+.ck.ck-revision-history-sidebar__time-period .ck-revision-history-sidebar__time-period__label:first-child {
+			margin-top: var(--ck-spacing-standard);
+		}
+
+.ck.ck-revision-history-sidebar__time-period .ck-revision-history-sidebar__time-period__revisions {
+		display: flex;
+		flex-direction: column;
+	}
+
+.ck.ck-revision-history-sidebar__time-period .ck-revision-history-sidebar__time-period__revisions .ck-revision-history-sidebar__revision-wrapper {
+			margin-top: var(--ck-revision-history-sidebar-revision-vertical-spacing);
+		}
+
+.ck.ck-revision-history-sidebar__time-period:not(.ck-hidden) + .ck-revision-history-sidebar__time-period {
+		margin-top: var(--ck-revision-history-sidebar-revision-vertical-spacing);
+	}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+.ck.ck-revision-history-sidebar__header {
+	--header-height: calc(var(--ck-ui-component-min-height) + 2 * var(--ck-spacing-small) + 1px);
+
+	height: var(--header-height);
+	min-height: var(--header-height);
+	line-height: var(--header-height);
+	border-bottom: 1px solid var(--ck-color-toolbar-border);
+	overflow: hidden;
+	font-family: inherit;
+	font-weight: bold;
+	color: inherit;
+	padding: 0 var(--ck-revision-history-sidebar-timeline-padding);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.ck.ck-revision-history-sidebar__header .ck-revision-history-sidebar__header__label {
+		font-family: inherit;
+		font-weight: bold;
+		color: inherit;
+		font-size: 1.2em;
+	}
+
+.ck.ck-revision-history-sidebar__header .ck-icon {
+		margin-right: var(--ck-spacing-large);
+	}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+.ck {
+	--ck-revision-history-sidebar-period-background: hsl(14deg 100% 57%);
+	--ck-revision-history-sidebar-timeline-padding: var(--ck-spacing-large);
+}
+
+.ck.ck-revision-history-sidebar {
+	display: flex;
+	flex-direction: column;
+}
+
+.ck.ck-revision-history-sidebar .ck-revision-history-sidebar__timeline {
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		padding: var(--ck-revision-history-sidebar-timeline-padding);
+		font-size: var(--ck-font-size-base);
+		overflow-y: auto;
+		height: 100%;
+
+		/*
+		 * Required for the revision delete confirmation slide-to-the-left effect.
+		 * Without it, a h-scroll shows up for a while
+		 */
+		overflow-x: hidden;
+	}
+
+.ck.ck-revision-history-sidebar .ck-revision-history-sidebar__timeline.ck-disabled {
+			filter: grayscale(1) opacity(var(--ck-disabled-opacity));
+		}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+.ck.ck-revision-history-ui.ck-revision-history-ui__changes-navigation {
+	display: flex;
+	align-items: center;
+	margin-left: auto;
+}
+
+.ck.ck-revision-history-ui.ck-revision-history-ui__changes-navigation .ck-revision-history-ui__changes-navigation__wrapper {
+		display: flex;
+		margin-right: var(--ck-spacing-standard);
+	}
+
+.ck.ck-revision-history-ui.ck-revision-history-ui__changes-navigation .ck-revision-history-ui__changes-navigation__label {
+		font-weight: bold;
+		white-space: pre;
+	}
+
+.ck.ck-revision-history-ui.ck-revision-history-ui__changes-navigation .ck-revision-history-ui__changes-navigation__navigation {
+		margin-left: var(--ck-spacing-small);
+	}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+.ck .ck-revision-change {
+	padding: var(--ck-spacing-small) var(--ck-spacing-large);
+	border-top-left-radius: var(--ck-border-radius);
+	outline: 0;
+}
+
+.ck .ck-revision-change > * {
+		vertical-align: bottom;
+		font-size: var(--ck-font-size-standard);
+	}
+
+.ck .ck-revision-change.ck-revision-change__add {
+		border-left-color: var(--ck-color-suggestion-box-insertion-border);
+	}
+
+.ck .ck-revision-change.ck-revision-change__remove {
+		border-left-color: var(--ck-color-suggestion-box-deletion-border);
+	}
+
+.ck .ck-revision-change .ck-revision-change__label {
+		font-weight: bold;
+		font-size: inherit;
+		vertical-align: inherit;
+	}
+
+.ck.ck-button.ck-revision-history-ui__back-to-editing {
+		background: var(--ck-color-base-active);
+		color: var(--ck-color-base-background);
+	}
+
+.ck.ck-button.ck-revision-history-ui__back-to-editing:hover:not(.ck-disabled) {
+			background: var(--ck-color-base-active-focus);
+		}
+
+.ck-content .ck-suggestion-preview-marker { opacity: 0.75; }
+
+.ck-content .ck-suggestion-preview-marker-split { opacity: 0.75; }
+
+.ck-content .ck-suggestion-preview-marker-split::after { content: '¶'; }
+
+.ck-content .ck-suggestion-preview-marker-merge { opacity: 0.75; text-decoration: line-through; }
+
+.ck-content .ck-suggestion-preview-marker-merge::after { content: '¶'; }
+
+.ck-content .ck-suggestion-preview-marker-deletion { text-decoration: line-through; }
+
+.ck-content .ck-suggestion-marker-deletion-new:not(.ck-widget),
+	.ck-content .ck-suggestion-marker-merge-new {
+		--ck-color-suggestion-marker-deletion-border: none;
+		--ck-color-suggestion-marker-deletion-border-active: none;
+		--ck-color-suggestion-marker-deletion-background: none;
+		--ck-color-suggestion-marker-deletion-background-active: none;
+		--ck-color-suggestion-marker-deletion-stroke: hsla(345, 60%, 30%, .8);
+
+		--ck-color-suggestion-widget-deletion-background: hsla(345, 71%, 65%, .03);
+		--ck-color-suggestion-widget-deletion-background-active: hsla(345, 71%, 45%, .05);
+	}
+
+.ck-content .ck-suggestion-marker-merge-new::after {
+		color: inherit;
+	}
+
+.ck-content .ck-suggestion-marker-insertion-new,
+	.ck-content .ck-suggestion-marker-split-new {
+		opacity: 0.75;
+	}
+
+.ck-content .ck-suggestion-marker-deletion-new.ck-suggestion-marker--active:not(.table),
+	.ck-content .ck-suggestion-marker-merge-new.ck-suggestion-marker--active {
+		--ck-color-suggestion-marker-deletion-background-active: hsla(345, 71%, 50%, .08);
+		--ck-color-suggestion-marker-deletion-stroke: hsla(345, 60%, 30%, 1);
+
+		opacity: 1;
+	}
+
+.ck-content .ck-suggestion-marker-insertion-new.ck-suggestion-marker--active,
+	.ck-content .ck-suggestion-marker-split-new.ck-suggestion-marker--active {
+		opacity: 1;
+	}
+
+.ck.ck-editor__editable_inline.ck-revision-history-root-add {
+	border: 3px solid var(--ck-color-suggestion-marker-insertion-border);
+}
+
+.ck.ck-editor__editable_inline.ck-revision-history-root-add.ck-revision-history-root--active {
+		border-color: var(--ck-color-suggestion-marker-insertion-border-active);
+	}
+
+.ck.ck-editor__editable_inline.ck-revision-history-root-remove {
+	border: 3px solid var(--ck-color-suggestion-marker-deletion-border);
+}
+
+.ck.ck-editor__editable_inline.ck-revision-history-root-remove.ck-revision-history-root--active {
+		border-color: var(--ck-color-suggestion-marker-deletion-border-active);
+	}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+:root {
+	--ck-slash-command-button-width: 250px;
+	--ck-slash-command-description-width: 200px;
+}
+
+.ck.ck-button.ck-slash-command-button {
+	display: flex;
+	justify-content: flex-start;
+	width: var(--ck-slash-command-button-width);
+	padding: calc(.2 * var(--ck-line-height-base) * var(--ck-font-size-base));
+}
+
+.ck.ck-button.ck-slash-command-button .ck.ck-icon {
+		flex-shrink: 0;
+		margin-left: 0;
+		padding: 5px;
+		color: var(--ck-color-base-text);
+		background-color: var(--ck-color-base-background);
+		border-radius: 2px;
+		box-sizing: initial;
+	}
+
+[dir="ltr"] .ck.ck-button.ck-slash-command-button .ck.ck-icon {
+			margin: 0 var(--ck-spacing-small) 0 0;
+	}
+
+[dir="rtl"] .ck.ck-button.ck-slash-command-button .ck.ck-icon {
+			margin: 0 0 0 var(--ck-spacing-small);
+	}
+
+.ck.ck-button.ck-slash-command-button > .ck-slash-command-button__text-part {
+		display: flex;
+		flex-direction: column;
+	}
+
+[dir="ltr"] .ck.ck-button.ck-slash-command-button > .ck-slash-command-button__text-part {
+			margin-left: var(--ck-spacing-small);
+	}
+
+[dir="rtl"] .ck.ck-button.ck-slash-command-button > .ck-slash-command-button__text-part {
+			margin-right: var(--ck-spacing-small);
+	}
+
+.ck.ck-button.ck-slash-command-button > .ck-slash-command-button__text-part > span {
+			line-height: 1.2em;
+		}
+
+.ck.ck-button.ck-slash-command-button > .ck-slash-command-button__text-part > .ck-button__label,
+		.ck.ck-button.ck-slash-command-button > .ck-slash-command-button__text-part > .ck-slash-command-button__description {
+			width: var(--ck-slash-command-description-width);
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+.ck.ck-button.ck-slash-command-button > .ck-slash-command-button__text-part > .ck-button__label {
+			font-weight: bold;
+		}
+
+.ck.ck-button.ck-slash-command-button > .ck-slash-command-button__text-part > .ck-slash-command-button__description {
+			font-size: var(--ck-font-size-small);
+			opacity: 0.75;
+		}
+
+.ck.ck-button.ck-slash-command-button.ck-on > .ck-slash-command-button__text-part > span {
+		color: var(--ck-color-list-button-on-text);
+	}
+
+/*
+ * What you're currently looking at is the source code of a legally protected, proprietary software.
+ * CKEditor 5 Collaboration is licensed under a commercial license and protected by copyright law. Where not otherwise indicated,
+ * all CKEditor 5 Collaboration content is authored by CKSource engineers and consists of CKSource-owned intellectual property.
+ *
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+:root {
+	--ck-template-dropdown-view-width: 345px;
+	--ck-template-dropdown-view-height: 300px;
+	--ck-template-icon-size: 45px;
+}
+
+/* Override default rules for icons to allow any fill color. */
+.ck-button.ck-template-button .ck.ck-icon {
+		color: unset;
+	}
+.ck-button.ck-template-button .ck.ck-icon * {
+			color: unset;
+		}
+.ck-button.ck-template-button .ck.ck-icon *:not([fill]) {
+				fill: unset;
+			}
+
+.ck.ck-template-form {
+	width: var(--ck-template-dropdown-view-width);
+}
+
+@media screen and (max-width: 600px) {
+
+.ck.ck-template-form {
+		--ck-template-dropdown-view-width: 260px;
+}
+	}
+
+.ck.ck-template-form > .ck-labeled-field-view {
+		padding: var(--ck-spacing-large);
+	}
+
+.ck.ck-template-form > .ck-search__results {
+		border-top: 1px solid var(--ck-color-base-border);
+	}
+
+.ck.ck-template-form > .ck-search__results > .ck.ck-list.ck-template-list {
+			max-height: var(--ck-template-dropdown-view-height);
+			padding: var(--ck-spacing-large);
+			overflow-x: hidden;
+			overflow-y: auto;
+			overscroll-behavior: contain;
+
+			/*
+			* This is a dirty way to increase the selector specificity and override the default rounded corners
+			* of a list inside a dropdown panel
+			*/
+		}
+
+.ck-rounded-corners .ck.ck-template-form > .ck-search__results > .ck.ck-list.ck-template-list {
+				border-radius: 0;
+		}
+
+/* This is an easy way to address the problem of spacings between hidden and visible list items */
+
+.ck.ck-template-form > .ck-search__results > .ck.ck-list.ck-template-list > .ck.ck-list__item:not(.ck-hidden) ~ .ck.ck-list__item {
+					margin-top: var(--ck-spacing-large);
+				}
+
+.ck.ck-template-form > .ck-search__results > .ck.ck-list.ck-template-list > .ck.ck-list__item > .ck.ck-button {
+					width: 100%;
+					margin: 0;
+					padding: 0;
+					border-radius: var(--ck-border-radius);
+
+					/* Crop the icon when the border-radius is large */
+					overflow: hidden;
+
+					display: grid;
+					grid-template-columns: var(--ck-template-icon-size) 1fr;
+					grid-template-rows: var(--ck-template-icon-size);
+					grid-auto-columns: 1fr;
+
+					gap: var(--ck-spacing-large) var(--ck-spacing-large);
+					grid-auto-flow: column dense;
+					align-items: center;
+					grid-template-areas: "ck-template-icon ck-template-content";
+				}
+
+.ck.ck-template-form > .ck-search__results > .ck.ck-list.ck-template-list > .ck.ck-list__item > .ck.ck-button:not(:focus) {
+						border-color: var(--ck-color-dropdown-panel-background);
+					}
+
+.ck.ck-template-form > .ck-search__results > .ck.ck-list.ck-template-list > .ck.ck-list__item > .ck.ck-button > .ck.ck-icon {
+						width: var(--ck-template-icon-size);
+						height: auto;
+						grid-area: ck-template-icon;
+						margin: 0;
+					}
+
+.ck.ck-template-form > .ck-search__results > .ck.ck-list.ck-template-list > .ck.ck-list__item > .ck.ck-button > .ck-template-form__text-part {
+						display: flex;
+						flex-direction: column;
+						justify-content: space-evenly;
+						height: 100%;
+						grid-area: ck-template-content;
+						min-width: 0;
+						margin: 0;
+					}
+
+.ck.ck-template-form > .ck-search__results > .ck.ck-list.ck-template-list > .ck.ck-list__item > .ck.ck-button > .ck-template-form__text-part > .ck.ck-button__label {
+							display: block;
+							font-weight: bold;
+							font-size: var(--ck-font-size-base);
+							color: var(--ck-color-text);
+							line-height: 1.1;
+
+							white-space: nowrap;
+							overflow: hidden;
+							text-overflow: ellipsis;
+						}
+
+.ck.ck-template-form > .ck-search__results > .ck.ck-list.ck-template-list > .ck.ck-list__item > .ck.ck-button > .ck-template-form__text-part .ck-template-form__description {
+							display: -webkit-box;
+							font-size: 0.85em;
+							color: var(--ck-color-text);
+							line-height: 1.1;
+
+							/* Leave some tiny spacing between title and description. */
+							margin-top: var(--ck-spacing-tiny);
+
+							white-space: normal;
+							overflow: hidden;
+							text-overflow: ellipsis;
+							-webkit-box-orient: vertical;
+							-webkit-line-clamp: 2;
+						}
+
+.ck.ck-template-form > .ck-search__results > .ck.ck-list.ck-template-list > .ck.ck-list__item > .ck.ck-button > .ck-template-form__text-part mark {
+							background: var(--ck-color-highlight-background);
+							vertical-align: initial;
+							font-weight: inherit;
+							line-height: inherit;
+							font-size: inherit;
+						}
