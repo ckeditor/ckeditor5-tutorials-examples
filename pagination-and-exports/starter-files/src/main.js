@@ -10,6 +10,7 @@ import {
     Table,
     TableProperties,
     TableCellProperties,
+    TableToolbar,
     Font,
     Indent,
     IndentBlock,
@@ -27,7 +28,7 @@ import './style.css'
 DecoupledEditor
   .create( document.querySelector( '#editor' ), {
       plugins: [ 
-        Essentials, Paragraph, Bold, Heading, Italic, Font, Indent, IndentBlock, BlockQuote, List, Link, Table, TableProperties, TableCellProperties, PageBreak, CloudServices,
+        Essentials, Paragraph, Bold, Heading, Italic, Font, Indent, IndentBlock, BlockQuote, List, Link, Table, TableProperties, TableCellProperties, TableToolbar, PageBreak, CloudServices,
           // Premium plugins
           Pagination, ExportPdf, ExportWord
       ],
