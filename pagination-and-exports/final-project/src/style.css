@@ -1,0 +1,43 @@
+/* Editor styles */
+.document-container {
+    width: 1000px;
+    margin: auto;
+    background-color: rgb(238, 238, 238);
+}
+.editor-container {
+    border: 1px solid hsl( 0, 0%, 80% );
+    max-height: calc( 100vh - 100px );
+    overflow: auto;
+}
+.ck.ck-editor__editable_inline {
+    /*
+        A4 size.
+        Expand the width by 2px because of the border and "box-sizing: border-box".
+    */
+    width: calc( 210mm + 2px );
+    height: auto;
+    padding: 20mm 12mm;
+    box-sizing: border-box;
+    border: 1px solid hsl( 0, 0%, 88% );
+    background: hsl( 0, 0%, 100% );
+    box-shadow: 0 2px 8px hsla( 0, 0%, 0%, .08 );
+    margin: 40px auto;
+}
+
+/* Content styles */
+@media print {
+    body {
+        margin: 0 !important;
+    }
+}
+.ck-content * {
+    line-height: 1.5;
+}
+.ck-content .table thead {
+    display: table-row-group;
+}
+.ck-content .table tr {
+    break-inside: avoid;
+    break-after: auto;
+}
+
