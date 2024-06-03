@@ -3,7 +3,7 @@ export default function ProductPreview( props ) {
 		<div
 			className='product-preview'
 			style={ {
-				'--product-image': `url(assets/${ props.image })`
+				'--product-image': `url(${ props.image })`
 			} }
 		>
 			<button

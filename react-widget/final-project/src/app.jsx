@@ -24,7 +24,7 @@ import ProductPreviewEditing from './ckeditor/productpreviewediting';
 import ProductList from './react/productlist';
 import ProductPreview from './react/productpreview';
 import 'ckeditor5/index.css';
-import './assets/styles.css';
+import './styles.css';
 
 // The React application function component. It renders the editor and the product list.
 export default function App( props ) {
