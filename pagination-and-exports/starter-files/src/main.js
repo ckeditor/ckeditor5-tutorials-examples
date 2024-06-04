@@ -21,8 +21,8 @@ import {
 
 import { ExportPdf, ExportWord, Pagination } from 'ckeditor5-premium-features';
 
-import 'ckeditor5/index.css';
-import 'ckeditor5-premium-features/index.css';
+import 'ckeditor5/ckeditor5.css';
+import 'ckeditor5-premium-features/ckeditor5-premium-features.css';
 import './style.css'
 
 DecoupledEditor
