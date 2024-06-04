@@ -13,7 +13,7 @@ import {
   toWidget,
   toWidgetEditable
 } from 'ckeditor5';
-import 'ckeditor5/index.css';
+import 'ckeditor5/ckeditor5.css';
 import CKEditorInspector from '@ckeditor/ckeditor5-inspector';  
 
 class SimpleBox extends Plugin {

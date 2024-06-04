@@ -9,7 +9,7 @@ import {
   List,
   Paragraph
 } from 'ckeditor5';
-import 'ckeditor5/index.css';
+import 'ckeditor5/ckeditor5.css';
 
 ClassicEditor
   .create( document.querySelector( '#editor' ), {
