@@ -2,7 +2,7 @@
 
 import { ClassicEditor, Bold, Italic, Essentials, Heading, List, Paragraph } from 'ckeditor5';
 import CKEditorInspector from '@ckeditor/ckeditor5-inspector';
-import 'ckeditor5/index.css';
+import 'ckeditor5/ckeditor5.css';
 
 ClassicEditor
     .create( document.querySelector( '#editor' ), {
