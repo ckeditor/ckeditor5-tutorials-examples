@@ -3,7 +3,7 @@
  * For licensing, see LICENSE.md.
  */
 
-import { Plugin } from '@ckeditor/ckeditor5-core';
+import { Plugin } from 'ckeditor5';
 import AbbreviationCommand from './abbreviationcommand';
 
 export default class AbbreviationEditing extends Plugin {

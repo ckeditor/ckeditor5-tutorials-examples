@@ -4,15 +4,15 @@
  */
 
 import {
-	View,
-	LabeledFieldView,
-	createLabeledInputText,
 	ButtonView,
-	submitHandler,
-	FocusCycler
-} from '@ckeditor/ckeditor5-ui';
-import { FocusTracker, KeystrokeHandler } from '@ckeditor/ckeditor5-utils';
-import { icons } from '@ckeditor/ckeditor5-core';
+	FocusCycler,
+	FocusTracker, KeystrokeHandler,
+	LabeledFieldView,
+	View,
+	createLabeledInputText,
+	icons,
+	submitHandler
+} from 'ckeditor5';
 
 export default class FormView extends View {
 	constructor( locale ) {
