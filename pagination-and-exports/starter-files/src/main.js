@@ -48,7 +48,8 @@ DecoupledEditor
 		licenseKey: 'your-license-key',
 		cloudServices: {
 			tokenUrl: 'https://example.com/cs-token-endpoint'
-		}
+		},
+		licenseKey: 'GPL'
 	})
 	.then(editor => {
 		console.log('Editor was initialized',editor);

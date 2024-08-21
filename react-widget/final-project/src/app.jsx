@@ -115,7 +115,8 @@ export default function App( props ) {
 										<ProductPreview id={ id } { ...product } />
 									);
 								}
-							}
+							},
+						    licenseKey: 'GPL'
 						} }
 						data={ editorData }
 						onReady={ ( editor ) => {

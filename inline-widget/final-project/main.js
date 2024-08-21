@@ -199,7 +199,8 @@ ClassicEditor
       toolbar: [ 'heading', '|', 'bold', 'italic', 'numberedList', 'bulletedList', '|', 'placeholder' ],
       placeholderConfig: {
           types: [ 'date', 'color', 'first name', 'surname' ]
-      }
+      },
+      licenseKey: 'GPL'
   } )
   .then( editor => {
       console.log( 'Editor was initialized', editor );
