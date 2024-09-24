@@ -14,7 +14,7 @@
     "@ckeditor/ckeditor5-inspector": "^4.1.0"
   },
   "dependencies": {
-    "ckeditor5": "^42.0.0"
+    "ckeditor5": "^43.1.0"
   },
   "author": "CKSource (https://cksource.com/)",
   "license": "SEE LICENSE IN ../LICENSE.md",
