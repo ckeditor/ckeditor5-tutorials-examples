@@ -2,8 +2,9 @@
   "name": "ckeditor5-tutorials-examples",
   "private": true,
   "version": "0.1.0",
-  "author": "CKSource (http://cksource.com/)",
-  "license": "MIT",
+  "author": "CKSource (https://cksource.com/)",
+  "license": "SEE LICENSE.md",
+  "homepage": "https://ckeditor.com",
   "scripts": {
     "prepare": "husky",
     "lint": "eslint \"**/*.{js,ts,jsx,tsx}\"",

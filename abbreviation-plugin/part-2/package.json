@@ -17,6 +17,6 @@
     "ckeditor5": "^43.1.0"
   },
   "author": "CKSource (https://cksource.com/)",
-  "license": "SEE LICENSE IN ../LICENSE.md",
+  "license": "SEE LICENSE.md",
   "homepage": "https://ckeditor.com"
 }

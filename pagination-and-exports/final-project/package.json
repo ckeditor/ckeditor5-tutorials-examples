@@ -14,5 +14,8 @@
   "dependencies": {
     "ckeditor5": "^43.1.0",
     "ckeditor5-premium-features": "^43.1.0"
-  }
+  },
+  "author": "CKSource (https://cksource.com/)",
+  "license": "SEE LICENSE.md",
+  "homepage": "https://ckeditor.com"
 }

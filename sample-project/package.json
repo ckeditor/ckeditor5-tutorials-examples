@@ -13,8 +13,7 @@
     "@ckeditor/ckeditor5-inspector": "^4.1.0",
     "vite": "^5.2.0"
   },
-  "dependencies": {},
   "author": "CKSource (https://cksource.com/)",
-  "license": "SEE LICENSE IN ../LICENSE.md",
+  "license": "SEE LICENSE.md",
   "homepage": "https://ckeditor.com"
 }
