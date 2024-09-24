@@ -12,7 +12,10 @@ jobs:
           command: yarn install
       - run:
           name: Lint
-          command: yarn lint
+          command: yarn run lint
+      - run:
+          name: Build tutorials
+          command: yarn run build
 
 workflows:
   commit-workflow:

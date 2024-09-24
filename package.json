@@ -3,10 +3,11 @@
   "private": true,
   "version": "0.1.0",
   "author": "CKSource (http://cksource.com/)",
-  "license": "GPL-2.0-or-later",
+  "license": "MIT",
   "scripts": {
     "prepare": "husky",
-    "lint": "eslint \"**/*.{js,ts,jsx,tsx}\""
+    "lint": "eslint \"**/*.{js,ts,jsx,tsx}\"",
+    "build": "yarn workspaces run build"
   },
   "devDependencies": {
     "eslint": "^8.57.1",
@@ -15,6 +16,17 @@
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10"
   },
+  "workspaces": [
+    "abbreviation-plugin/*",
+    "block-widget/*",
+    "crash-course",
+    "data-from-external-source/*",
+    "inline-widget/*",
+    "pagination-and-exports/*",
+    "react-widget/*",
+    "sample-project",
+    "timestamp-plugin/*"
+  ],
   "eslintIgnore": [
     "**/dist",
     "**/node_modules"
