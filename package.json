@@ -1,0 +1,27 @@
+{
+  "name": "ckeditor5-tutorials-examples",
+  "private": true,
+  "version": "0.1.0",
+  "author": "CKSource (http://cksource.com/)",
+  "license": "GPL-2.0-or-later",
+  "scripts": {
+    "prepare": "husky",
+    "lint": "eslint \"**/*.{js,ts,jsx,tsx}\""
+  },
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-ckeditor5": "^7.1.0",
+    "eslint-plugin-react": "^7.36.1",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10"
+  },
+  "eslintIgnore": [
+    "**/dist",
+    "**/node_modules"
+  ],
+  "lint-staged": {
+    "**/*.{js,ts,jsx,tsx}": [
+      "eslint --quiet"
+    ]
+  }
+}

@@ -7,7 +7,7 @@ import { Command, findAttributeRange, toMap } from 'ckeditor5';
 import getRangeText from './utils.js';
 
 export default class AbbreviationCommand extends Command {
-    refresh() {
+	refresh() {
 		const model = this.editor.model;
 		const selection = model.document.selection;
 		const firstRange = selection.getFirstRange();
