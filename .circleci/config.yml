@@ -1,0 +1,23 @@
+version: 2.1
+
+jobs:
+  test-tutorials:
+    docker:
+      - image: cimg/node:18.17.1
+        user: root
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: yarn install
+      - run:
+          name: Lint
+          command: yarn run lint
+      - run:
+          name: Build tutorials
+          command: yarn run build
+
+workflows:
+  commit-workflow:
+    jobs:
+      - test-tutorials

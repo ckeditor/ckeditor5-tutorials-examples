@@ -3,16 +3,16 @@
  * For licensing, see LICENSE.md.
  */
 
-import { 
-  ClassicEditor,
-  Bold,
-  Essentials,
-  Heading,
-  Italic,
-  Paragraph,
-  List,
-  Plugin,
-  ButtonView
+import {
+	ClassicEditor,
+	Bold,
+	Essentials,
+	Heading,
+	Italic,
+	Paragraph,
+	List,
+	Plugin,
+	ButtonView
 } from 'ckeditor5';
 import 'ckeditor5/ckeditor5.css';
 
@@ -29,14 +29,13 @@ class Timestamp extends Plugin {
 				withText: true
 			} );
 
-			//Execute a callback function when the button is clicked
+			// Execute a callback function when the button is clicked
 			button.on( 'execute', () => {
 				const now = new Date();
 
-				//Change the model using the model writer
+				// Change the model using the model writer
 				editor.model.change( writer => {
-
-					//Insert the text at the user's current position
+					// Insert the text at the user's current position
 					editor.model.insertContent( writer.createText( now.toString() ) );
 				} );
 			} );
@@ -57,4 +56,3 @@ ClassicEditor
 	.catch( error => {
 		console.error( error.stack );
 	} );
-	

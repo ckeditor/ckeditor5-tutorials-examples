@@ -16,50 +16,53 @@ import {
 	IndentBlock,
 	BlockQuote,
 	PageBreak,
-	CloudServices,
+	CloudServices
 } from 'ckeditor5';
 
-import { ExportPdf,ExportWord,Pagination } from 'ckeditor5-premium-features';
+import { ExportPdf, ExportWord, Pagination } from 'ckeditor5-premium-features';
 
 import 'ckeditor5/ckeditor5.css';
 import 'ckeditor5-premium-features/ckeditor5-premium-features.css';
-import './style.css'
+import './style.css';
 
 DecoupledEditor
-	.create(document.querySelector('#editor'),{
+	.create( document.querySelector( '#editor' ), {
 		plugins: [
-			Essentials,Paragraph,Bold,Heading,Italic,Font,Indent,IndentBlock,BlockQuote,List,Link,Table,TableProperties,TableCellProperties,TableToolbar,PageBreak,CloudServices,
+			Essentials, Paragraph, Bold, Heading, Italic, Font,
+			Indent, IndentBlock, BlockQuote, List, Link,
+			Table, TableProperties, TableCellProperties, TableToolbar,
+			PageBreak, CloudServices,
 			// Premium plugins
-			Pagination,ExportPdf,ExportWord
+			Pagination, ExportPdf, ExportWord
 		],
 		toolbar: [
-			'undo','redo',
-			'|','previousPage','nextPage','pageNavigation',
-			'|','exportWord','exportPdf',
-			'|','heading',
-			'|','fontfamily','fontsize','fontColor','fontBackgroundColor',
-			'|','bold','italic',
-			'|','link','insertTable','blockQuote',
-			'|','bulletedList','numberedList','outdent','indent'
+			'undo', 'redo',
+			'|', 'previousPage', 'nextPage', 'pageNavigation',
+			'|', 'exportWord', 'exportPdf',
+			'|', 'heading',
+			'|', 'fontfamily', 'fontsize', 'fontColor', 'fontBackgroundColor',
+			'|', 'bold', 'italic',
+			'|', 'link', 'insertTable', 'blockQuote',
+			'|', 'bulletedList', 'numberedList', 'outdent', 'indent'
 		],
 		table: {
-			contentToolbar: ['tableColumn','tableRow','mergeTableCells']
+			contentToolbar: [ 'tableColumn', 'tableRow', 'mergeTableCells' ]
 		},
-		licenseKey: 'your-license-key',
+		licenseKey: '<YOUR_LICENSE_KEY>',
 		cloudServices: {
 			tokenUrl: 'https://example.com/cs-token-endpoint'
 		}
-	})
-	.then(editor => {
-		console.log('Editor was initialized',editor);
+	} )
+	.then( editor => {
+		console.log( 'Editor was initialized', editor );
 
 		// Add toolbar.
-		const toolbarContainer = document.querySelector('#toolbar-container');
-		toolbarContainer.appendChild(editor.ui.view.toolbar.element);
+		const toolbarContainer = document.querySelector( '#toolbar-container' );
+		toolbarContainer.appendChild( editor.ui.view.toolbar.element );
 
 		// Expose for playing in the console.
 		window.editor = editor;
-	})
-	.catch(error => {
-		console.error(error.stack);
-	});
+	} )
+	.catch( error => {
+		console.error( error.stack );
+	} );

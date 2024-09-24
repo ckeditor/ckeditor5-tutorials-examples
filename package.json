@@ -1,0 +1,40 @@
+{
+  "name": "ckeditor5-tutorials-examples",
+  "private": true,
+  "version": "0.1.0",
+  "author": "CKSource (https://cksource.com/)",
+  "license": "SEE LICENSE.md",
+  "homepage": "https://ckeditor.com",
+  "scripts": {
+    "prepare": "husky",
+    "lint": "eslint \"**/*.{js,ts,jsx,tsx}\"",
+    "build": "yarn workspaces run build"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-ckeditor5": "^7.1.0",
+    "eslint-plugin-react": "^7.36.1",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10"
+  },
+  "workspaces": [
+    "abbreviation-plugin/*",
+    "block-widget/*",
+    "crash-course",
+    "data-from-external-source/*",
+    "inline-widget/*",
+    "pagination-and-exports/*",
+    "react-widget/*",
+    "sample-project",
+    "timestamp-plugin/*"
+  ],
+  "eslintIgnore": [
+    "**/dist",
+    "**/node_modules"
+  ],
+  "lint-staged": {
+    "**/*.{js,ts,jsx,tsx}": [
+      "eslint --quiet"
+    ]
+  }
+}
