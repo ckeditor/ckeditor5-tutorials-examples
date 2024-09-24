@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@ckeditor/ckeditor5-inspector": "^4.1.0",
     "vite": "^5.2.0"
   },
   "author": "CKSource (https://cksource.com/)",
