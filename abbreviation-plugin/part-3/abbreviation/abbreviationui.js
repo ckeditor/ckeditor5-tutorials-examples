@@ -16,7 +16,7 @@ export default class AbbreviationUI extends Plugin {
 	init() {
 		const editor = this.editor;
 
-        // Create the balloon and the form view.
+		// Create the balloon and the form view.
 		this._balloon = this.editor.plugins.get( ContextualBalloon );
 		this.formView = this._createFormView();
 
@@ -49,7 +49,7 @@ export default class AbbreviationUI extends Plugin {
 			};
 			editor.execute( 'addAbbreviation', value );
 
-            // Hide the form view after submit.
+			// Hide the form view after submit.
 			this._hideUI();
 		} );
 
@@ -67,9 +67,9 @@ export default class AbbreviationUI extends Plugin {
 		} );
 
 		formView.keystrokes.set( 'Esc', ( data, cancel ) => {
-            this._hideUI();
-            cancel();
-        } );
+			this._hideUI();
+			cancel();
+		} );
 
 		return formView;
 	}

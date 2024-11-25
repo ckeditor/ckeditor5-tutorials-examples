@@ -1,5 +1,5 @@
 {
-  "name": "starter-files",
+  "name": "pagination-and-exports-starter-files",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,11 +8,14 @@
     "build": "vite build",
     "preview": "vite preview"
   },
+  "dependencies": {
+    "ckeditor5": "^43.1.0",
+    "ckeditor5-premium-features": "^43.1.0"
+  },
   "devDependencies": {
     "vite": "^5.2.0"
   },
-  "dependencies": {
-    "ckeditor5": "^42.0.0",
-    "ckeditor5-premium-features": "^42.0.0"
-  }
+  "author": "CKSource (https://cksource.com/)",
+  "license": "SEE LICENSE.md",
+  "homepage": "https://ckeditor.com"
 }

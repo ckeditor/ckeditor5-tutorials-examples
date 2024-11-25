@@ -3,14 +3,14 @@
  * For licensing, see LICENSE.md.
  */
 
-import { 
-  ClassicEditor,
-  Bold,
-  Essentials,
-  Heading,
-  Italic,
-  Paragraph,
-  List
+import {
+	ClassicEditor,
+	Bold,
+	Essentials,
+	Heading,
+	Italic,
+	Paragraph,
+	List
 } from 'ckeditor5';
 import 'ckeditor5/ckeditor5.css';
 

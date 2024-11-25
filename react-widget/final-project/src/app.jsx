@@ -35,13 +35,23 @@ export default function App( props ) {
 	// the user types and modifies the content of the editor.
 	const [ editorData, setEditorData ] = useState( `<h2>Check our last minute deals!</h2>
 
-	<p>Aenean erat conubia pretium libero habitant turpis vivamus dignissim molestie, phasellus libero! Curae; consequat cubilia mattis. Litora non iaculis tincidunt.</p>
+	<p>
+		Aenean erat conubia pretium libero habitant turpis vivamus dignissim molestie, phasellus libero!
+		Curae; consequat cubilia mattis. Litora non iaculis tincidunt.
+	</p>
 	<section class="product" data-id="2">&nbsp;</section>
-	<p>Mollis gravida parturient ad maecenas euismod consectetur lacus rutrum urna eget ligula. Nisi imperdiet scelerisque natoque scelerisque cubilia nulla gravida. Eleifend malesuada pharetra est commodo venenatis aenean habitasse curae; fusce elit.</p>
+	<p>
+		Mollis gravida parturient ad maecenas euismod consectetur lacus rutrum urna eget ligula.
+		Nisi imperdiet scelerisque natoque scelerisque cubilia nulla gravida.
+		Eleifend malesuada pharetra est commodo venenatis aenean habitasse curae; fusce elit.
+	</p>
 	<section class="product" data-id="1">&nbsp;</section>
 
 	<h3>Other deals</h3>
-	<p>Ultricies dapibus placerat orci natoque fames commodo facilisi sollicitudin. Sed hendrerit mi dis non lacinia ipsum. Luctus fames scelerisque auctor pellentesque mi nunc mattis, amet sapien.</p>
+	<p>
+		Ultricies dapibus placerat orci natoque fames commodo facilisi sollicitudin.
+		Sed hendrerit mi dis non lacinia ipsum. Luctus fames scelerisque auctor pellentesque mi nunc mattis, amet sapien.
+	</p>
 
 	<figure class="table">
 		<table>
@@ -56,13 +66,20 @@ export default function App( props ) {
 					<td>
 						<section class="product" data-id="3">&nbsp;</section>
 					</td>
-					<td>Nascetur, nullam hac nibh curabitur elementum. Est ridiculus turpis adipiscing erat maecenas habitant montes. Curabitur mauris ut luctus semper. Neque orci auctor luctus accumsan quam cursus purus condimentum dis?</td>
+					<td>
+						Nascetur, nullam hac nibh curabitur elementum. Est ridiculus turpis adipiscing erat maecenas habitant montes.
+						Curabitur mauris ut luctus semper. Neque orci auctor luctus accumsan quam cursus purus condimentum dis?
+					</td>
 				</tr>
 				<tr>
 					<td>
 						<section class="product" data-id="4">&nbsp;</section>
 					</td>
-					<td>Elementum condimentum convallis porttitor cubilia consectetur cum. In pretium neque accumsan pharetra. Magna in quisque dignissim praesent facilisi diam. Ad habitant ultricies at faucibus. Ultricies auctor sodales massa nisi eget sem porta?</td>
+					<td>
+						Elementum condimentum convallis porttitor cubilia consectetur cum. In pretium neque accumsan pharetra.
+						Magna in quisque dignissim praesent facilisi diam. Ad habitant ultricies at faucibus.
+						Ultricies auctor sodales massa nisi eget sem porta?
+					</td>
 				</tr>
 			</tbody>
 		</table>
@@ -105,12 +122,12 @@ export default function App( props ) {
 								]
 							},
 							// The configuration of the Products plugin. It specifies a function that will allow
-            				// the editor to render a React <ProductPreview> component inside a product widget.
+							// the editor to render a React <ProductPreview> component inside a product widget.
 							products: {
 								productRenderer: ( id, domElement ) => {
 									const product = props.products.find( product => product.id === id );
 									const root = createRoot( domElement );
-						
+
 									root.render(
 										<ProductPreview id={ id } { ...product } />
 									);
@@ -119,12 +136,12 @@ export default function App( props ) {
 						    licenseKey: 'GPL'
 						} }
 						data={ editorData }
-						onReady={ ( editor ) => {
+						onReady={ editor => {
 							// A function executed when the editor has been initialized and is ready.
-    						// It synchronizes the initial data state and saves the reference to the editor instance.
+							// It synchronizes the initial data state and saves the reference to the editor instance.
 							setEditorRef( editor );
 							// CKEditor&nbsp;5 inspector allows you to take a peek into the editor's model and view
-        					// data layers. Use it to debug the application and learn more about the editor.
+							// data layers. Use it to debug the application and learn more about the editor.
 							CKEditorInspector.attach( editor );
 						} }
 						onChange={ ( evt, editor ) => {
@@ -137,12 +154,12 @@ export default function App( props ) {
 				<ProductList
 					key='product-list'
 					products={ props.products }
-					onClick={ ( id  ) => {
+					onClick={ id => {
 						editorRef.execute( 'insertProduct', id );
 						editorRef.editing.view.focus();
 					} }
 				/>
 			</> }
 		</div>
-	)
+	);
 }

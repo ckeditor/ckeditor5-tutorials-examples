@@ -5,7 +5,7 @@ export default function ProductList( props ) {
 		<div className='app__product-list'>
 			<h3>Products</h3>
 			<ul>
-				{props.products.map( ( product ) => {
+				{props.products.map( product => {
 					return (
 						<li key={ product.id }>
 							<ProductPreview
@@ -15,7 +15,7 @@ export default function ProductList( props ) {
 							/>
 						</li>
 					);
-				})}
+				} )}
 			</ul>
 			<p><b>Tip</b>: Clicking the product will add it to the editor.</p>
 		</div>

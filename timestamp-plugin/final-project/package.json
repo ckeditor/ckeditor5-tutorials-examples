@@ -1,5 +1,5 @@
 {
-  "name": "final-project",
+  "name": "timestamp-plugin-final-project",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,13 +8,13 @@
     "build": "vite build",
     "preview": "vite preview"
   },
+  "dependencies": {
+    "ckeditor5": "^43.1.0"
+  },
   "devDependencies": {
     "vite": "^5.2.0"
   },
-  "dependencies": {
-    "ckeditor5": "^42.0.0"
-  },
   "author": "CKSource (https://cksource.com/)",
-  "license": "SEE LICENSE IN ../LICENSE.md",
+  "license": "SEE LICENSE.md",
   "homepage": "https://ckeditor.com"
 }

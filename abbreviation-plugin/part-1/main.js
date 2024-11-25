@@ -9,15 +9,15 @@ import Abbreviation from './abbreviation/abbreviation';
 import 'ckeditor5/ckeditor5.css';
 
 ClassicEditor
-    .create( document.querySelector( '#editor' ), {
+	.create( document.querySelector( '#editor' ), {
 		plugins: [ Essentials, Bold, Italic, Heading, List, Paragraph, Abbreviation ],
 		toolbar: [ 'heading', '|', 'bold', 'italic', 'numberedList', 'bulletedList' ],
-        licenseKey: 'GPL'
-    } )
-    .then( editor => {
-        console.log( 'Editor was initialized', editor );
-        CKEditorInspector.attach( editor );
-    } )
-    .catch( error => {
-        console.error( error.stack );
-    } );
+    licenseKey: 'GPL'
+  } )
+	.then( editor => {
+		console.log( 'Editor was initialized', editor );
+		CKEditorInspector.attach( editor );
+	} )
+	.catch( error => {
+		console.error( error.stack );
+	} );

@@ -8,5 +8,5 @@ import { Plugin } from 'ckeditor5';
 export default class AbbreviationUI extends Plugin {
 	init() {
 		console.log( 'AbbreviationUI#init() got called' );
-    }
+	}
 }
