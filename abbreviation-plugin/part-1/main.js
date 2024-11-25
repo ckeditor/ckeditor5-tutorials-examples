@@ -12,7 +12,7 @@ ClassicEditor
 	.create( document.querySelector( '#editor' ), {
 		plugins: [ Essentials, Bold, Italic, Heading, List, Paragraph, Abbreviation ],
 		toolbar: [ 'heading', '|', 'bold', 'italic', 'numberedList', 'bulletedList' ],
-    licenseKey: 'GPL'
+    	licenseKey: 'GPL'
   } )
 	.then( editor => {
 		console.log( 'Editor was initialized', editor );

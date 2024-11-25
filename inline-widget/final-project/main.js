@@ -194,22 +194,22 @@ class PlaceholderEditing extends Plugin {
 }
 
 ClassicEditor
-  .create( document.querySelector( '#editor' ), {
-    plugins: [ Essentials, Paragraph, Heading, List, Bold, Italic, Placeholder ],
-    toolbar: [ 'heading', '|', 'bold', 'italic', 'numberedList', 'bulletedList', '|', 'placeholder' ],
-    placeholderConfig: {
-      types: [ 'date', 'color', 'first name', 'surname' ]
-    },
-    licenseKey: 'GPL'
-  } )
-  .then( editor => {
-    console.log( 'Editor was initialized', editor );
+	.create( document.querySelector( '#editor' ), {
+		plugins: [ Essentials, Paragraph, Heading, List, Bold, Italic, Placeholder ],
+		toolbar: [ 'heading', '|', 'bold', 'italic', 'numberedList', 'bulletedList', '|', 'placeholder' ],
+		placeholderConfig: {
+			types: [ 'date', 'color', 'first name', 'surname' ]
+		},
+		licenseKey: 'GPL'
+	} )
+	.then( editor => {
+		console.log( 'Editor was initialized', editor );
 
-    CKEditorInspector.attach( { 'editor': editor } );
+	CKEditorInspector.attach( { 'editor': editor } );
 
-    // Expose for playing in the console.
-    window.editor = editor;
-  } )
-  .catch( error => {
-    console.error( error.stack );
-  } );
+	// Expose for playing in the console.
+	window.editor = editor;
+	} )
+	.catch( error => {
+		console.error( error.stack );
+	} );

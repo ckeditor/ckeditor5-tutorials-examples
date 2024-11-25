@@ -12,16 +12,16 @@ import {
 import 'ckeditor5/ckeditor5.css';
 
 ClassicEditor
-  .create( document.querySelector( '#editor' ), {
-    plugins: [ Essentials, Paragraph, Heading, List, Bold, Italic ],
-    toolbar: [ 'heading', 'bold', 'italic', 'numberedList', 'bulletedList' ],
-    licenseKey: 'GPL'
-  } )
-  .then( editor => {
-    console.log( 'Editor was initialized', editor );
+	.create( document.querySelector( '#editor' ), {
+		plugins: [ Essentials, Paragraph, Heading, List, Bold, Italic ],
+ 		toolbar: [ 'heading', 'bold', 'italic', 'numberedList', 'bulletedList' ],
+		licenseKey: 'GPL'
+  	} )
+	.then( editor => {
+		console.log( 'Editor was initialized', editor );
 		// Expose for playing in the console.
 		window.editor = editor;
 	} )
 	.catch( error => {
-	  console.error( error.stack );
+		console.error( error.stack );
 	} );

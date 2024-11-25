@@ -220,18 +220,17 @@ function createSimpleBox( writer ) {
 }
 
 ClassicEditor
-  .create( document.querySelector( '#editor' ), {
-      plugins: [ Essentials, Bold, Italic, Heading, List, Paragraph, SimpleBox ],
-      toolbar: [ 'heading', '|', 'bold', 'italic', 'numberedList', 'bulletedList', 'simpleBox' ],
-      licenseKey: 'GPL'
+	.create( document.querySelector( '#editor' ), {
+		plugins: [ Essentials, Bold, Italic, Heading, List, Paragraph, SimpleBox ],
+		toolbar: [ 'heading', '|', 'bold', 'italic', 'numberedList', 'bulletedList', 'simpleBox' ],
+		licenseKey: 'GPL'
   } )
-  .then( editor => {
-      console.log( 'Editor was initialized', editor );
+	.then( editor => {
+		console.log( 'Editor was initialized', editor );
 
-      CKEditorInspector.attach( { 'editor': editor } );
-
-      window.editor = editor;
+      	CKEditorInspector.attach( { 'editor': editor } );
+		window.editor = editor;
   } )
-  .catch( err => {
-      console.error( err.stack );
+	.catch( err => {
+		console.error( err.stack );
   } );

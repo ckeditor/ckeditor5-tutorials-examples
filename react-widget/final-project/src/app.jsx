@@ -133,7 +133,7 @@ export default function App( props ) {
 									);
 								}
 							},
-						    licenseKey: 'GPL'
+							licenseKey: 'GPL'
 						} }
 						data={ editorData }
 						onReady={ editor => {
