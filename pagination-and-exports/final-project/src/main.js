@@ -97,10 +97,11 @@ DecoupledEditor
 					}
 				}
 			}
-		}
-	} )
-	.then( editor => {
-		console.log( 'Editor was initialized', editor );
+		},
+		licenseKey: 'GPL'
+	})
+	.then(editor => {
+		console.log('Editor was initialized',editor);
 
 		// Add toolbar.
 		const toolbarContainer = document.querySelector( '#toolbar-container' );

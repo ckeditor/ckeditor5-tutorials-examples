@@ -7,8 +7,9 @@ import 'ckeditor5/ckeditor5.css';
 ClassicEditor
 	.create( document.querySelector( '#editor' ), {
 		plugins: [ Essentials, Paragraph, Heading, List, Bold, Italic ],
-		toolbar: [ 'heading', 'bold', 'italic', 'numberedList', 'bulletedList', '|', 'undo', 'redo' ]
-	} )
+		toolbar: [ 'heading', 'bold', 'italic', 'numberedList', 'bulletedList', '|', 'undo', 'redo' ],
+		licenseKey: 'GPL'
+    } )
 	.then( editor => {
 		console.log( 'Editor was initialized', editor );
 

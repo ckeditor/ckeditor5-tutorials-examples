@@ -195,7 +195,8 @@ class ExternalDataWidgetEditing extends Plugin {
 ClassicEditor
 	.create( document.querySelector( '#editor' ), {
 		plugins: [ Essentials, Paragraph, Heading, List, Bold, Italic, ExternalDataWidget ],
-		toolbar: [ 'external', '|', 'heading', 'bold', 'italic', 'numberedList', 'bulletedList', '|', 'undo', 'redo' ]
+		toolbar: [ 'external', '|', 'heading', 'bold', 'italic', 'numberedList', 'bulletedList', '|', 'undo', 'redo' ],
+		licenseKey: 'GPL'
 	} )
 	.then( editor => {
 		console.log( 'Editor was initialized', editor );

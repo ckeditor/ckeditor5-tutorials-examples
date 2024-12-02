@@ -51,18 +51,19 @@ DecoupledEditor
 		licenseKey: '<YOUR_LICENSE_KEY>',
 		cloudServices: {
 			tokenUrl: 'https://example.com/cs-token-endpoint'
-		}
-	} )
-	.then( editor => {
-		console.log( 'Editor was initialized', editor );
-
+		},
+		licenseKey: 'GPL'
+	})
+	.then(editor => {
+		console.log('Editor was initialized',editor);
+  
 		// Add toolbar.
-		const toolbarContainer = document.querySelector( '#toolbar-container' );
-		toolbarContainer.appendChild( editor.ui.view.toolbar.element );
+	  const toolbarContainer = document.querySelector( '#toolbar-container' );
+	  toolbarContainer.appendChild( editor.ui.view.toolbar.element );
 
-		// Expose for playing in the console.
-		window.editor = editor;
+	  // Expose for playing in the console.
+	  window.editor = editor;
 	} )
 	.catch( error => {
-		console.error( error.stack );
+	  console.error( error.stack );
 	} );

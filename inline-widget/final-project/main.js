@@ -199,15 +199,16 @@ ClassicEditor
 		toolbar: [ 'heading', '|', 'bold', 'italic', 'numberedList', 'bulletedList', '|', 'placeholder' ],
 		placeholderConfig: {
 			types: [ 'date', 'color', 'first name', 'surname' ]
-		}
+		},
+		licenseKey: 'GPL'
 	} )
 	.then( editor => {
 		console.log( 'Editor was initialized', editor );
 
-		CKEditorInspector.attach( { editor } );
+	CKEditorInspector.attach( { 'editor': editor } );
 
-		// Expose for playing in the console.
-		window.editor = editor;
+	// Expose for playing in the console.
+	window.editor = editor;
 	} )
 	.catch( error => {
 		console.error( error.stack );

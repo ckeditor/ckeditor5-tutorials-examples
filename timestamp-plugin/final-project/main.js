@@ -48,7 +48,8 @@ class Timestamp extends Plugin {
 ClassicEditor
 	.create( document.querySelector( '#editor' ), {
 		plugins: [ Essentials, Paragraph, Heading, List, Bold, Italic, Timestamp ],
-		toolbar: [ 'heading', 'bold', 'italic', 'numberedList', 'bulletedList', 'timestamp' ]
+		toolbar: [ 'heading', 'bold', 'italic', 'numberedList', 'bulletedList', 'timestamp' ],
+		licenseKey: 'GPL'
 	} )
 	.then( editor => {
 		console.log( 'Editor was initialized', editor );
