@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@ckeditor/ckeditor5-inspector": "^4.1.0",
-    "ckeditor5": "^44.0.0"
+    "ckeditor5": "latest"
   },
   "devDependencies": {
     "vite": "^5.2.0"

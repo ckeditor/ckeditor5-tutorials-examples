@@ -9,8 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "ckeditor5": "^44.0.0",
-    "ckeditor5-premium-features": "^44.0.0"
+    "ckeditor5": "latest",
+    "ckeditor5-premium-features": "latest"
   },
   "devDependencies": {
     "vite": "^5.2.0"
