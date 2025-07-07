@@ -11,7 +11,7 @@ import 'ckeditor5/ckeditor5.css';
 ClassicEditor
 	.create( document.querySelector( '#editor' ), {
 		plugins: [ Essentials, Bold, Italic, Heading, List, Paragraph, Abbreviation ],
-		toolbar: [ 'heading', '|', 'bold', 'italic', 'numberedList', 'bulletedList' ],
+		toolbar: [ 'heading', '|', 'bold', 'italic', 'numberedList', 'bulletedList', '|', 'abbreviation' ],
 		licenseKey: 'GPL'
 	} )
 	.then( editor => {

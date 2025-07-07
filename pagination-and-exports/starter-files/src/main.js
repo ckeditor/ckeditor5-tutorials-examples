@@ -48,22 +48,21 @@ DecoupledEditor
 		table: {
 			contentToolbar: [ 'tableColumn', 'tableRow', 'mergeTableCells' ]
 		},
-		licenseKey: '<YOUR_LICENSE_KEY>',
 		cloudServices: {
 			tokenUrl: 'https://example.com/cs-token-endpoint'
 		},
 		licenseKey: 'GPL'
-	})
-	.then(editor => {
-		console.log('Editor was initialized',editor);
-  
-		// Add toolbar.
-	  const toolbarContainer = document.querySelector( '#toolbar-container' );
-	  toolbarContainer.appendChild( editor.ui.view.toolbar.element );
+	} )
+	.then( editor => {
+		console.log( 'Editor was initialized', editor );
 
-	  // Expose for playing in the console.
-	  window.editor = editor;
+		// Add toolbar.
+		const toolbarContainer = document.querySelector( '#toolbar-container' );
+		toolbarContainer.appendChild( editor.ui.view.toolbar.element );
+
+		// Expose for playing in the console.
+		window.editor = editor;
 	} )
 	.catch( error => {
-	  console.error( error.stack );
+		console.error( error.stack );
 	} );

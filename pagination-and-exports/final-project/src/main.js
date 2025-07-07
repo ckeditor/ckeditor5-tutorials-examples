@@ -48,7 +48,6 @@ DecoupledEditor
 		table: {
 			contentToolbar: [ 'tableColumn', 'tableRow', 'mergeTableCells' ]
 		},
-		licenseKey: '<YOUR_LICENSE_KEY>',
 		cloudServices: {
 			tokenUrl: 'https://example.com/cs-token-endpoint'
 		},
@@ -99,9 +98,9 @@ DecoupledEditor
 			}
 		},
 		licenseKey: 'GPL'
-	})
-	.then(editor => {
-		console.log('Editor was initialized',editor);
+	} )
+	.then( editor => {
+		console.log( 'Editor was initialized', editor );
 
 		// Add toolbar.
 		const toolbarContainer = document.querySelector( '#toolbar-container' );
