@@ -7,7 +7,7 @@ Code samples in this repository are licensed under the terms of the MIT License 
 
 	http://en.wikipedia.org/wiki/MIT_License
 
-Please bear in mind that while these code samples are availbale under MIT License, the CKEditor 5 software [is licensed differently](https://github.com/ckeditor/ckeditor5/blob/stable/LICENSE.md).
+Please bear in mind that while these code samples are available under MIT License, the CKEditor 5 software [is licensed differently](https://github.com/ckeditor/ckeditor5/blob/stable/LICENSE.md).
 
 Trademarks
 ----------
