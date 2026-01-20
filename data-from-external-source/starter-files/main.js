@@ -9,7 +9,7 @@ ClassicEditor
 		plugins: [ Essentials, Paragraph, Heading, List, Bold, Italic ],
 		toolbar: [ 'heading', 'bold', 'italic', 'numberedList', 'bulletedList', '|', 'undo', 'redo' ],
 		licenseKey: 'GPL'
-    } )
+	} )
 	.then( editor => {
 		console.log( 'Editor was initialized', editor );
 

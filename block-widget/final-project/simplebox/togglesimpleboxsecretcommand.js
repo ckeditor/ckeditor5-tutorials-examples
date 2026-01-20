@@ -9,14 +9,17 @@ export default class ToggleSimpleBoxSecretCommand extends Command {
 		this.value = !!( element && element.getAttribute( 'secret' ) );
 	}
 
-	execute( { value } ) {
+	execute( options = {} ) {
 		const editor = this.editor;
 		const model = editor.model;
 		const simpleBox = getClosestSelectedSimpleBoxElement( model.document.selection );
 
+		// Toggle the current state if no value is provided.
+		const newValue = options.value === undefined ? !this.value : options.value;
+
 		if ( simpleBox ) {
 			model.change( writer => {
-				if ( value ) {
+				if ( newValue ) {
 					writer.setAttribute( 'secret', true, simpleBox );
 				} else {
 					writer.removeAttribute( 'secret', simpleBox );
