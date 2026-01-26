@@ -205,10 +205,10 @@ ClassicEditor
 	.then( editor => {
 		console.log( 'Editor was initialized', editor );
 
-	CKEditorInspector.attach( { 'editor': editor } );
+		CKEditorInspector.attach( { editor } );
 
-	// Expose for playing in the console.
-	window.editor = editor;
+		// Expose for playing in the console.
+		window.editor = editor;
 	} )
 	.catch( error => {
 		console.error( error.stack );

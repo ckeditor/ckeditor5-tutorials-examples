@@ -47,8 +47,9 @@ export default class SimpleBoxUI extends Plugin {
 			switchButton.bind( 'isOn', 'isEnabled' ).to( command, 'value', 'isEnabled' );
 
 			// Execute the command when the switch is toggled.
+			// The command will automatically toggle based on its current state.
 			this.listenTo( switchButton, 'execute', () => {
-				editor.execute( 'toggleSimpleBoxSecret', { value: !command.value } );
+				editor.execute( 'toggleSimpleBoxSecret' );
 			} );
 
 			return switchButton;
